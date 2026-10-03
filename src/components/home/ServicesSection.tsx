@@ -3,14 +3,41 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "motion/react";
 import { servicesData } from "@/data/services";
 
 export default function ServicesSection() {
+  const mainServices = servicesData.slice(0, 6);
+
   // Current slide index (0-based)
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // We show 3 cards at a time on desktop. Max index allows scrolling to remaining items.
-  const maxIndex = Math.max(0, servicesData.length - 3);
+  const [itemsPerView, setItemsPerView] = useState(3);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  // Responsive items-per-view detection
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setItemsPerView(3);
+      } else if (window.innerWidth >= 640) {
+        setItemsPerView(2);
+      } else {
+        setItemsPerView(1);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Max index depends on screen size (0 on mobile shows 1 card at a time through index 5)
+  const maxIndex = Math.max(0, mainServices.length - itemsPerView);
+
+  // Clamp index if screen resized
+  React.useEffect(() => {
+    setCurrentIndex((prev) => Math.min(prev, maxIndex));
+  }, [maxIndex]);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1));
@@ -20,12 +47,45 @@ export default function ServicesSection() {
     setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
   };
 
+  // Touch swipe support for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (diff > 45) {
+      handleNext();
+    } else if (diff < -45) {
+      handlePrev();
+    }
+    setTouchStartX(null);
+  };
+
+  // Exact transform calculation for mobile (1 card), tablet (2 cards), and desktop (3 cards)
+  const getTransformStyle = () => {
+    if (itemsPerView === 1) {
+      return `translateX(calc(-${currentIndex} * (100% + 1.5rem)))`;
+    }
+    if (itemsPerView === 2) {
+      return `translateX(calc(-${currentIndex} * (50% + 12px)))`;
+    }
+    return `translateX(calc(-${currentIndex} * ((100% + 2rem) / 3)))`;
+  };
+
   return (
     <section id="services" className="bg-white text-neutral-900 py-24 sm:py-32 overflow-hidden border-t border-neutral-100">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12 sm:space-y-16">
         
         {/* HEADER: Badge + All-Caps Title */}
-        <div className="text-center space-y-4 max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center space-y-4 max-w-2xl mx-auto"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
             <span>OUR SERVICES</span>
@@ -34,22 +94,32 @@ export default function ServicesSection() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 uppercase">
             Services We Offer
           </h2>
-        </div>
+        </motion.div>
 
-        {/* 3-CARD CAROUSEL CONTAINER */}
-        <div className="relative">
-          <div className="overflow-hidden">
+        {/* CAROUSEL CONTAINER (1 Card on mobile, 2 on tablet, 3 on desktop) */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+          className="relative"
+        >
+          <div
+            className="overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <div
               className="flex transition-transform duration-500 ease-out gap-6 lg:gap-8"
               style={{
-                transform: `translateX(-${currentIndex * (100 / 3 + 1.2)}%)`,
+                transform: getTransformStyle(),
               }}
             >
-              {servicesData.map((service) => (
+              {mainServices.map((service) => (
                 <Link
                   key={service.slug}
                   href={`/services/${service.slug}`}
-                  className="group block flex-shrink-0 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-21.33px)] space-y-4 cursor-pointer"
+                  className="group block flex-shrink-0 w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-4rem)/3)] space-y-4 cursor-pointer"
                 >
                   {/* Card Image */}
                   <div className="relative h-[280px] sm:h-[340px] w-full overflow-hidden rounded-sm bg-neutral-100">
@@ -128,10 +198,16 @@ export default function ServicesSection() {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* BOTTOM DARK BANNER ("Built Right. Built to Last." + Stats) */}
-        <div className="relative rounded-sm overflow-hidden bg-neutral-950 text-white p-8 sm:p-12 lg:p-16 shadow-xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="relative rounded-sm overflow-hidden bg-neutral-950 text-white p-8 sm:p-12 lg:p-16 shadow-xl"
+        >
           {/* Background villa image with Next.js Image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -156,7 +232,7 @@ export default function ServicesSection() {
               </p>
               <div>
                 <Link
-                  href="#projects"
+                  href="/projects"
                   className="inline-flex items-center px-6 py-3 rounded-sm bg-white text-neutral-950 font-bold text-sm hover:bg-neutral-100 transition-all active:scale-95 shadow-md"
                 >
                   View Our Work
@@ -203,7 +279,7 @@ export default function ServicesSection() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

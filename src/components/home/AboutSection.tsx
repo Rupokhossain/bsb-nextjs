@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 interface AboutSectionProps {
   bannerImageUrl?: string;
@@ -17,7 +20,13 @@ export default function AboutSection({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
           {/* Left Column (Badge + Headline + Button) */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 space-y-6"
+          >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
               <span>ABOUT</span>
@@ -29,7 +38,7 @@ export default function AboutSection({
 
             <div className="pt-2">
               <Link
-                href="#projects"
+                href="/about"
                 className="inline-flex items-center rounded-sm bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-sm pl-5 pr-1.5 py-1.5 transition-all group active:scale-95 shadow-sm"
               >
                 <span>Learn More</span>
@@ -46,10 +55,16 @@ export default function AboutSection({
                 </div>
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column (Intro paragraph + Big Stat Counters) */}
-          <div className="lg:col-span-5 space-y-8 pt-2">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 space-y-8 pt-2"
+          >
             <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal">
               Fixed, transparent pricing from day one. A single dedicated engineering team for your whole build. 100% leak-proof structural craftsmanship guaranteed in writing.
             </p>
@@ -73,69 +88,68 @@ export default function AboutSection({
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
         {/* MIDDLE: Big Wide Architectural Image Banner */}
-        <div className="relative w-full h-[320px] sm:h-[460px] lg:h-[580px] overflow-hidden rounded-sm shadow-md bg-neutral-100">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative w-full h-[320px] sm:h-[460px] lg:h-[580px] overflow-hidden rounded-sm shadow-md bg-neutral-100"
+        >
           <Image
             src={bannerImageUrl}
             alt="BSB Architectural Custom Project Banner"
             fill
-            className="object-cover object-center hover:scale-[1.01] transition-transform duration-700 ease-out"
+            className="object-cover object-center hover:scale-[1.02] transition-transform duration-700 ease-out"
             sizes="(max-width: 1440px) 100vw, 1440px"
-            priority
           />
-        </div>
+        </motion.div>
 
-        {/* BOTTOM: 4 Key Pillars Grid (01. Fixed Pricing, 02. Craftsmanship, etc.) */}
+        {/* BOTTOM: 4 Key Pillars Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pt-4">
-          
-          {/* Pillar 01 */}
-          <div className="space-y-2">
-            <h3 className="text-base font-bold text-neutral-950 tracking-tight">
-              <span className="text-neutral-400 font-medium mr-1.5">01.</span>
-              Fixed Pricing
-            </h3>
-            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-              Your price is locked in writing before we break ground. No surprise costs or hidden fees.
-            </p>
-          </div>
-
-          {/* Pillar 02 */}
-          <div className="space-y-2">
-            <h3 className="text-base font-bold text-neutral-950 tracking-tight">
-              <span className="text-neutral-400 font-medium mr-1.5">02.</span>
-              Craftsmanship
-            </h3>
-            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-              Master trades, precision waterproofing, and architectural finishes built to last decades.
-            </p>
-          </div>
-
-          {/* Pillar 03 */}
-          <div className="space-y-2">
-            <h3 className="text-base font-bold text-neutral-950 tracking-tight">
-              <span className="text-neutral-400 font-medium mr-1.5">03.</span>
-              One Team
-            </h3>
-            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-              A single dedicated team of engineers and architects owns your build from end to end.
-            </p>
-          </div>
-
-          {/* Pillar 04 */}
-          <div className="space-y-2">
-            <h3 className="text-base font-bold text-neutral-950 tracking-tight">
-              <span className="text-neutral-400 font-medium mr-1.5">04.</span>
-              On Time
-            </h3>
-            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-              Clear milestone schedules and weekly photo/video progress updates, start to finish.
-            </p>
-          </div>
-
+          {[
+            {
+              num: "01.",
+              title: "Fixed Pricing",
+              desc: "Your price is locked in writing before we break ground. No surprise costs or hidden fees.",
+            },
+            {
+              num: "02.",
+              title: "Craftsmanship",
+              desc: "Master trades, precision waterproofing, and architectural finishes built to last decades.",
+            },
+            {
+              num: "03.",
+              title: "One Team",
+              desc: "A single dedicated team of engineers and architects owns your build from end to end.",
+            },
+            {
+              num: "04.",
+              title: "On Time",
+              desc: "Clear milestone schedules and weekly photo/video progress updates, start to finish.",
+            },
+          ].map((pillar, idx) => (
+            <motion.div
+              key={pillar.num}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
+              className="space-y-2 p-3 -m-3 rounded hover:bg-neutral-50/70 transition-colors"
+            >
+              <h3 className="text-base font-bold text-neutral-950 tracking-tight">
+                <span className="text-[#E5A53D] font-bold mr-1.5">{pillar.num}</span>
+                {pillar.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                {pillar.desc}
+              </p>
+            </motion.div>
+          ))}
         </div>
 
       </div>

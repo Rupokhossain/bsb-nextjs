@@ -2,14 +2,24 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   theme?: "dark" | "light";
 }
 
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Team", href: "/team" },
+  { name: "Projects", href: "/projects" },
+];
+
 export default function Navbar({ theme = "dark" }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
   const isLight = theme === "light";
 
   // Sticky scroll detection
@@ -22,15 +32,23 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isLinkActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(href);
+  };
+
+  // When scrolled OR when on light-themed pages, show the clean white background with dark text
+  const isScrolledOrLight = isLight || scrolled;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 px-6 sm:px-10 lg:px-16 transition-all duration-300 ${
-        isLight
-          ? scrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-neutral-200/80 shadow-sm py-4"
-            : "bg-white/90 backdrop-blur-sm border-b border-neutral-100 py-6"
-          : scrolled
-          ? "bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800/80 shadow-lg py-4"
+        scrolled
+          ? "bg-white/95 backdrop-blur-md border-b border-neutral-200/80 shadow-sm py-4"
+          : isLight
+          ? "bg-white/90 backdrop-blur-sm border-b border-neutral-100 py-6"
           : "bg-transparent py-6"
       }`}
     >
@@ -39,7 +57,7 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
         <Link href="/" className="flex items-center gap-2 group">
           <span
             className={`text-2xl font-black tracking-tight transition-colors ${
-              isLight
+              isScrolledOrLight
                 ? "text-neutral-950 group-hover:text-[#E5A53D]"
                 : "text-white group-hover:text-[#E5A53D]"
             }`}
@@ -48,9 +66,9 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
           </span>
           <span
             className={`text-[10px] tracking-widest uppercase font-semibold border-l pl-2 transition-colors ${
-              isLight
+              isScrolledOrLight
                 ? "text-neutral-500 border-neutral-300"
-                : "text-slate-300 border-white/30"
+                : "text-slate-200 border-white/30"
             }`}
           >
             Outdoor Living
@@ -59,48 +77,42 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
 
         {/* Center Nav Links (Desktop) - Home, About, Services, Team, Projects */}
         <nav
-          className={`hidden md:flex items-center gap-7 lg:gap-9 text-sm font-medium transition-colors ${
-            isLight ? "text-neutral-700" : "text-white/90"
+          className={`hidden md:flex items-center gap-7 lg:gap-9 text-sm transition-colors ${
+            isScrolledOrLight ? "text-neutral-700" : "text-white"
           }`}
         >
-          <Link
-            href="/"
-            className={isLight ? "hover:text-[#E5A53D]" : "hover:text-[#E5A53D]"}
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            className={isLight ? "hover:text-[#E5A53D]" : "hover:text-[#E5A53D]"}
-          >
-            About
-          </Link>
-          <Link
-            href="/#services"
-            className={isLight ? "hover:text-[#E5A53D]" : "hover:text-[#E5A53D]"}
-          >
-            Services
-          </Link>
-          <Link
-            href="/#team"
-            className={isLight ? "hover:text-[#E5A53D]" : "hover:text-[#E5A53D]"}
-          >
-            Team
-          </Link>
-          <Link
-            href="/#projects"
-            className={isLight ? "hover:text-[#E5A53D]" : "hover:text-[#E5A53D]"}
-          >
-            Projects
-          </Link>
+          {navItems.map((item) => {
+            const active = isLinkActive(item.href);
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`relative py-1 transition-all ${
+                  active
+                    ? "text-[#E5A53D] font-bold"
+                    : isScrolledOrLight
+                    ? "font-medium text-neutral-700 hover:text-[#E5A53D]"
+                    : "font-medium text-white/90 hover:text-white"
+                }`}
+              >
+                <span>{item.name}</span>
+                {/* Active Indicator Underline */}
+                {active && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#E5A53D] rounded-full" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right CTA Button */}
         <div className="hidden md:flex items-center">
           <Link
-            href="/#contact"
+            href="/contact"
             className={`px-6 py-2.5 rounded-sm font-semibold text-sm transition-all active:scale-95 shadow-sm ${
-              isLight
+              pathname === "/contact"
+                ? "bg-[#E5A53D] text-neutral-950 font-bold ring-2 ring-[#E5A53D]/40"
+                : isScrolledOrLight
                 ? "bg-neutral-950 text-white hover:bg-neutral-800"
                 : "bg-white text-neutral-900 hover:bg-neutral-100"
             }`}
@@ -113,7 +125,7 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className={`md:hidden p-2 focus:outline-none transition-colors ${
-            isLight ? "text-neutral-950" : "text-white"
+            isScrolledOrLight ? "text-neutral-950" : "text-white"
           }`}
           aria-label="Toggle Menu"
         >
@@ -131,47 +143,36 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-4 bg-neutral-950/98 backdrop-blur-md rounded-lg p-6 border border-white/10 space-y-4 text-white shadow-2xl">
-          <Link
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-base hover:text-[#E5A53D] transition-colors"
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-base hover:text-[#E5A53D] transition-colors"
-          >
-            About
-          </Link>
-          <Link
-            href="/#services"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-base hover:text-[#E5A53D] transition-colors"
-          >
-            Services
-          </Link>
-          <Link
-            href="/#team"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-base hover:text-[#E5A53D] transition-colors"
-          >
-            Team
-          </Link>
-          <Link
-            href="/#projects"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-base hover:text-[#E5A53D] transition-colors"
-          >
-            Projects
-          </Link>
+        <div className="md:hidden mt-4 bg-neutral-950/98 backdrop-blur-md rounded-lg p-5 border border-white/10 space-y-2 text-white shadow-2xl">
+          {navItems.map((item) => {
+            const active = isLinkActive(item.href);
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center justify-between text-base px-3.5 py-2.5 rounded-sm transition-all border-l-2 ${
+                  active
+                    ? "text-[#E5A53D] font-semibold bg-white/[0.06] border-[#E5A53D]"
+                    : "text-neutral-300 hover:text-white hover:bg-white/5 font-normal border-transparent"
+                }`}
+              >
+                <span>{item.name}</span>
+                {active && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E5A53D]" />
+                )}
+              </Link>
+            );
+          })}
           <div className="pt-2 border-t border-white/10">
             <Link
-              href="/#contact"
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center py-3 rounded-sm bg-white text-neutral-950 font-bold"
+              className={`block w-full text-center py-3 rounded-sm font-bold transition-all ${
+                pathname === "/contact"
+                  ? "bg-[#E5A53D] text-neutral-950 shadow-md"
+                  : "bg-white text-neutral-950 hover:bg-neutral-100"
+              }`}
             >
               Book a Consult
             </Link>

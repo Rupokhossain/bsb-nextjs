@@ -162,7 +162,7 @@ export default function Footer() {
             </div>
             <div className="pt-2">
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-block px-5 py-2.5 rounded-sm bg-[#E5A53D] text-neutral-950 font-bold text-xs uppercase tracking-wider hover:bg-[#d6952c] transition-all"
               >
                 Get Free Estimate

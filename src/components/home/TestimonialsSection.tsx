@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
 
 export interface Testimonial {
   id: string;
@@ -15,7 +16,7 @@ interface TestimonialsSectionProps {
   testimonials?: Testimonial[];
 }
 
-// Default list of testimonials (Apni eikhane apnar chobi, quote o nam boshiye nite parben)
+// Default list of testimonials
 const defaultTestimonials: Testimonial[] = [
   {
     id: "1",
@@ -23,7 +24,6 @@ const defaultTestimonials: Testimonial[] = [
       "“BSB built our forever home on time and on budget. The fixed price never moved, and the craftsmanship speaks for itself.”",
     author: "Michael & Sarah Henderson",
     role: "Homeowners - Oakhill",
-    // 📸 Apnar chobi public folder e rekhe eikhane path boshate parben, jemon: "/testimonial-1.jpg"
     image: "/t1.jpg",
   },
   {
@@ -32,7 +32,6 @@ const defaultTestimonials: Testimonial[] = [
       "“From the initial 3D rooftop concept to the final bioclimatic pergola installation, the attention to structural waterproofing and luxury finish was second to none.”",
     author: "Tanvir & Nabila Ahmed",
     role: "Penthouse Owners - Gulshan 2",
-    // 📸 Apnar chobi public folder e rekhe eikhane path boshate parben, jemon: "/testimonial-2.jpg"
     image: "/t2.jpg",
   },
   {
@@ -41,7 +40,6 @@ const defaultTestimonials: Testimonial[] = [
       "“Their engineering team designed our rooftop infinity pool with zero leak tolerance. Two years later, the water clarity and acoustics are still flawless.”",
     author: "Dr. K. Rashid",
     role: "Villa Owner - Bashundhara R/A",
-    // 📸 Apnar chobi public folder e rekhe eikhane path boshate parben, jemon: "/testimonial-3.jpg"
     image: "/t3.jpg",
   },
   {
@@ -50,7 +48,6 @@ const defaultTestimonials: Testimonial[] = [
       "“Having one accountable lead engineer oversee our entire luxury build gave us total peace of mind. We received weekly photographic progress reports every Friday without fail.”",
     author: "Zubair & Farhana Karim",
     role: "Estate Owners - Dhanmondi",
-    // 📸 Apnar chobi public folder e rekhe eikhane path boshate parben, jemon: "/testimonial-4.jpg"
     image: "/t4.jpg",
   },
 ];
@@ -77,7 +74,13 @@ export default function TestimonialsSection({
         {/* ============================================================ */}
         {/* HEADER: Centered Badge + Uppercase Grotesque Title */}
         {/* ============================================================ */}
-        <div className="text-center space-y-4 max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center space-y-4 max-w-3xl mx-auto"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
             <span>TESTIMONIALS</span>
@@ -87,45 +90,53 @@ export default function TestimonialsSection({
             Trusted By The <br />
             Families We Build For
           </h2>
-        </div>
+        </motion.div>
 
         {/* ============================================================ */}
         {/* MAIN SLIDER CARD: Left Photo + Right Quote & Controls */}
         {/* ============================================================ */}
         <div className="max-w-4xl mx-auto space-y-8 sm:space-y-10">
           
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-            {/* Left Column: Homeowner / Client Photo */}
-            <div className="md:col-span-5">
-              <div className="relative aspect-[4/4.5] w-full rounded-sm overflow-hidden bg-neutral-100 shadow-md">
-                <Image
-                  key={current.id}
-                  src={current.image}
-                  alt={current.author}
-                  fill
-                  className="object-cover object-center transition-all duration-500 ease-out"
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  priority
-                />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center"
+            >
+              {/* Left Column: Homeowner / Client Photo */}
+              <div className="md:col-span-5">
+                <div className="relative aspect-[4/4.5] w-full rounded-sm overflow-hidden bg-neutral-100 shadow-md">
+                  <Image
+                    src={current.image}
+                    alt={current.author}
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    priority
+                  />
+                </div>
               </div>
-            </div>
 
-            {/* Right Column: Quote + Author Details */}
-            <div className="md:col-span-7 space-y-6 sm:space-y-8">
-              <blockquote className="text-lg sm:text-xl lg:text-2xl font-medium text-neutral-900 leading-snug tracking-tight">
-                {current.quote}
-              </blockquote>
+              {/* Right Column: Quote + Author Details */}
+              <div className="md:col-span-7 space-y-6 sm:space-y-8">
+                <blockquote className="text-lg sm:text-xl lg:text-2xl font-medium text-neutral-900 leading-snug tracking-tight">
+                  {current.quote}
+                </blockquote>
 
-              <div className="space-y-1 pt-2">
-                <h3 className="text-base sm:text-lg font-bold text-neutral-950">
-                  {current.author}
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-500 font-normal">
-                  {current.role}
-                </p>
+                <div className="space-y-1 pt-2">
+                  <h3 className="text-base sm:text-lg font-bold text-neutral-950">
+                    {current.author}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-500 font-normal">
+                    {current.role}
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </AnimatePresence>
 
           {/* ============================================================ */}
           {/* SLIDER CONTROLS: Dot Indicators on Left + Arrows on Right */}

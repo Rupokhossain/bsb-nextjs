@@ -6,6 +6,7 @@ import { servicesData } from "@/data/services";
 import { projectsData } from "@/data/projects";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
+import { HeroMotion, FadeIn, StaggerContainer, StaggerItem } from "@/components/common/MotionWrapper";
 
 interface ServicePageProps {
   params: Promise<{
@@ -29,7 +30,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
   const service = servicesData[serviceIndex];
 
-  // Dynamically resolve related projects from projectsData (Relational model ready for backend)
+  // Dynamically resolve related projects from projectsData
   const relatedProjects = projectsData.filter((project) =>
     service.projectIds.includes(project.id)
   );
@@ -49,12 +50,12 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         
         {/* 1. HEADER SECTION */}
         <section className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
-          <div className="max-w-4xl mx-auto text-center space-y-4">
+          <HeroMotion className="max-w-4xl mx-auto text-center space-y-4">
             {/* Breadcrumbs */}
             <div className="text-xs font-semibold text-neutral-400 tracking-wider uppercase flex items-center justify-center gap-2">
               <Link href="/" className="hover:text-neutral-900 transition-colors">Home</Link>
               <span>/</span>
-              <Link href="/#services" className="hover:text-neutral-900 transition-colors">Services</Link>
+              <Link href="/services" className="hover:text-neutral-900 transition-colors">Services</Link>
               <span>/</span>
               <span className="text-[#E5A53D]">{service.title}</span>
             </div>
@@ -62,11 +63,11 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             {/* Service Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-              <span>SERVICE {String(serviceIndex + 1).padStart(2, "0")} / 05</span>
+              <span>SERVICE {String(serviceIndex + 1).padStart(2, "0")} / 06</span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-neutral-950 uppercase leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-neutral-950 uppercase leading-tight mt-2">
               {service.title}
             </h1>
 
@@ -74,182 +75,195 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             <p className="text-base sm:text-lg text-neutral-600 max-w-xl mx-auto font-light">
               {service.tagline}
             </p>
-          </div>
+          </HeroMotion>
         </section>
 
         {/* 2. SPECIFICATION STRIP */}
         <section className="max-w-5xl mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-sm bg-neutral-50 border border-neutral-200/80 shadow-sm">
-            <div className="space-y-1 border-r border-neutral-200/60 pr-4 last:border-none">
-              <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Timeline</span>
-              <span className="text-sm sm:text-base font-extrabold text-neutral-950 block">3 – 6 Weeks</span>
+          <FadeIn delay={0.1}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-sm bg-neutral-50 border border-neutral-200/80 shadow-sm">
+              <div className="space-y-1 border-r border-neutral-200/60 pr-4 last:border-none">
+                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Timeline</span>
+                <span className="text-sm sm:text-base font-extrabold text-neutral-950 block">3 – 6 Weeks</span>
+              </div>
+              <div className="space-y-1 sm:border-r border-neutral-200/60 pr-4 last:border-none">
+                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Warranty</span>
+                <span className="text-sm sm:text-base font-extrabold text-[#E5A53D] block">10-Yr Written</span>
+              </div>
+              <div className="space-y-1 border-r border-neutral-200/60 pr-4 last:border-none">
+                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Deliverable</span>
+                <span className="text-sm sm:text-base font-extrabold text-neutral-950 block">3D Plan + Build</span>
+              </div>
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Quality QA</span>
+                <span className="text-sm sm:text-base font-extrabold text-neutral-950 block">100% Tested</span>
+              </div>
             </div>
-            <div className="space-y-1 sm:border-r border-neutral-200/60 pr-4 last:border-none">
-              <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Warranty</span>
-              <span className="text-sm sm:text-base font-extrabold text-[#E5A53D] block">10-Yr Written</span>
-            </div>
-            <div className="space-y-1 border-r border-neutral-200/60 pr-4 last:border-none">
-              <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Deliverable</span>
-              <span className="text-sm sm:text-base font-extrabold text-neutral-950 block">3D Plan + Build</span>
-            </div>
-            <div className="space-y-1">
-              <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Quality QA</span>
-              <span className="text-sm sm:text-base font-extrabold text-neutral-950 block">100% Tested</span>
-            </div>
-          </div>
+          </FadeIn>
         </section>
 
         {/* 3. FEATURED HERO IMAGE */}
         <section className="max-w-5xl mx-auto px-6 sm:px-8">
-          <div className="relative w-full h-[340px] sm:h-[500px] lg:h-[600px] rounded-sm overflow-hidden bg-neutral-100 shadow-md group">
-            <Image
-              src={service.image}
-              alt={service.title}
-              fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-              sizes="(max-width: 1200px) 100vw, 1024px"
-              priority
-            />
-            <div className="absolute top-4 left-4 px-3 py-1 bg-neutral-950/80 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider rounded-sm border border-white/20">
-              BSB Engineering Portfolio
+          <FadeIn delay={0.2} scale>
+            <div className="relative w-full h-[340px] sm:h-[500px] lg:h-[600px] rounded-sm overflow-hidden bg-neutral-100 shadow-md group">
+              <Image
+                src={service.image}
+                alt={service.title}
+                fill
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                sizes="(max-width: 1200px) 100vw, 1024px"
+                priority
+              />
+              <div className="absolute top-4 left-4 px-3 py-1 bg-neutral-950/80 backdrop-blur-sm text-white text-[11px] font-semibold uppercase tracking-wider rounded-sm border border-white/20">
+                BSB Engineering Portfolio
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </section>
 
         {/* 4. EXECUTIVE ARCHITECTURAL OVERVIEW */}
         <section className="max-w-4xl mx-auto px-6 sm:px-8 space-y-12">
-          <div className="text-center space-y-4 max-w-2xl mx-auto">
+          <FadeIn className="text-center space-y-4 max-w-2xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-950 leading-snug">
               &ldquo;{service.mainHeadline}&rdquo;
             </h2>
             <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-light">
               {service.introParagraph}
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="bg-neutral-50 p-8 rounded-sm border border-neutral-200/80 space-y-4">
-            <h3 className="text-lg sm:text-xl font-bold tracking-tight text-neutral-950">
-              {service.subHeadline}
-            </h3>
-            <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-light">
-              {service.subParagraph1}
-            </p>
-            <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-light">
-              {service.subParagraph2}
-            </p>
-          </div>
+          <FadeIn delay={0.15}>
+            <div className="bg-neutral-50 p-8 rounded-sm border border-neutral-200/80 space-y-4">
+              <h3 className="text-lg sm:text-xl font-bold tracking-tight text-neutral-950">
+                {service.subHeadline}
+              </h3>
+              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-light">
+                {service.subParagraph1}
+              </p>
+              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-light">
+                {service.subParagraph2}
+              </p>
+            </div>
+          </FadeIn>
         </section>
 
         {/* 5. METHODOLOGY / CAPABILITIES GRID */}
         <section className="max-w-5xl mx-auto px-6 sm:px-8 space-y-8">
-          <div className="text-center space-y-2">
+          <FadeIn className="text-center space-y-2">
             <span className="text-xs font-bold text-[#E5A53D] uppercase tracking-widest">Our Methodology</span>
             <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-950">
               How We Deliver Exceptional Quality
             </h3>
-          </div>
+          </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-sm bg-white border border-neutral-200 shadow-sm space-y-3 hover:border-neutral-900 transition-colors">
-              <span className="text-2xl font-black text-[#E5A53D] block">01</span>
-              <h4 className="text-base font-bold text-neutral-950">Structural Verification</h4>
-              <p className="text-xs text-neutral-600 leading-relaxed font-light">
-                Certified load capacity and waterproofing barrier testing before laying a single brick.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-sm bg-white border border-neutral-200 shadow-sm space-y-3 hover:border-neutral-900 transition-colors">
-              <span className="text-2xl font-black text-[#E5A53D] block">02</span>
-              <h4 className="text-base font-bold text-neutral-950">Photorealistic 3D</h4>
-              <p className="text-xs text-neutral-600 leading-relaxed font-light">
-                Preview exact materials, night lights, and water reflections with virtual walk-throughs.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-sm bg-white border border-neutral-200 shadow-sm space-y-3 hover:border-neutral-900 transition-colors">
-              <span className="text-2xl font-black text-[#E5A53D] block">03</span>
-              <h4 className="text-base font-bold text-neutral-950">Premium Sourcing</h4>
-              <p className="text-xs text-neutral-600 leading-relaxed font-light">
-                Marine-grade stainless hardware, weather-sealed teak, and German waterproofing membranes.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-sm bg-white border border-neutral-200 shadow-sm space-y-3 hover:border-neutral-900 transition-colors">
-              <span className="text-2xl font-black text-[#E5A53D] block">04</span>
-              <h4 className="text-base font-bold text-neutral-950">Turnkey Handover</h4>
-              <p className="text-xs text-neutral-600 leading-relaxed font-light">
-                72-hour static water testing, full cleanup, and handover with signed warranty certificate.
-              </p>
-            </div>
-          </div>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                num: "01",
+                title: "Structural Verification",
+                desc: "Certified load capacity and waterproofing barrier testing before laying a single brick.",
+              },
+              {
+                num: "02",
+                title: "Photorealistic 3D",
+                desc: "Preview exact materials, night lights, and water reflections with virtual walk-throughs.",
+              },
+              {
+                num: "03",
+                title: "Premium Sourcing",
+                desc: "Marine-grade stainless hardware, weather-sealed teak, and German waterproofing membranes.",
+              },
+              {
+                num: "04",
+                title: "Turnkey Handover",
+                desc: "72-hour static water testing, full cleanup, and handover with signed warranty certificate.",
+              },
+            ].map((m) => (
+              <StaggerItem
+                key={m.num}
+                className="p-6 rounded-sm bg-white border border-neutral-200 shadow-sm space-y-3 hover:border-neutral-900 transition-colors"
+              >
+                <span className="text-2xl font-black text-[#E5A53D] block">{m.num}</span>
+                <h4 className="text-base font-bold text-neutral-950">{m.title}</h4>
+                <p className="text-xs text-neutral-600 leading-relaxed font-light">
+                  {m.desc}
+                </p>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </section>
 
         {/* 6. VIP CONSULTATION BANNER */}
         <section className="max-w-5xl mx-auto px-6 sm:px-8">
-          <div className="rounded-sm bg-neutral-950 text-white p-8 sm:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="space-y-2 text-center md:text-left">
-              <span className="text-xs font-bold text-[#E5A53D] uppercase tracking-widest block">Ready To Begin?</span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                Book a Free Site Survey & 3D Estimation
-              </h3>
-              <p className="text-xs sm:text-sm text-neutral-400 font-light max-w-md">
-                Our senior exterior engineer will visit your space, assess structural limits, and provide a complimentary 3D blueprint.
-              </p>
-            </div>
+          <FadeIn>
+            <div className="rounded-sm bg-neutral-950 text-white p-8 sm:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="space-y-2 text-center md:text-left">
+                <span className="text-xs font-bold text-[#E5A53D] uppercase tracking-widest block">Ready To Begin?</span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                  Book a Free Site Survey & 3D Estimation
+                </h3>
+                <p className="text-xs sm:text-sm text-neutral-400 font-light max-w-md">
+                  Our senior exterior engineer will visit your space, assess structural limits, and provide a complimentary 3D blueprint.
+                </p>
+              </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-              <Link
-                href="/#contact"
-                className="w-full sm:w-auto text-center px-6 py-3 rounded-sm bg-[#E5A53D] hover:bg-[#d6952c] text-neutral-950 font-bold text-sm transition-all active:scale-95 shadow-md whitespace-nowrap"
-              >
-                Schedule Site Visit
-              </Link>
-              <a
-                href="tel:+8801700000000"
-                className="w-full sm:w-auto text-center px-6 py-3 rounded-sm border border-neutral-700 hover:border-white text-white font-medium text-sm transition-all whitespace-nowrap"
-              >
-                Call Hotline
-              </a>
+              <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                <Link
+                  href="/contact"
+                  className="w-full sm:w-auto text-center px-6 py-3 rounded-sm bg-[#E5A53D] hover:bg-[#d6952c] text-neutral-950 font-bold text-sm transition-all active:scale-95 shadow-md whitespace-nowrap"
+                >
+                  Schedule Site Visit
+                </Link>
+                <a
+                  href="tel:+8801700000000"
+                  className="w-full sm:w-auto text-center px-6 py-3 rounded-sm border border-neutral-700 hover:border-white text-white font-medium text-sm transition-all whitespace-nowrap"
+                >
+                  Call Hotline
+                </a>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </section>
 
-        {/* 7. RELATED PROJECTS (Clickable and dynamically connected to projectsData) */}
+        {/* 7. RELATED PROJECTS */}
         {relatedProjects.length > 0 && (
           <section className="max-w-4xl mx-auto px-6 sm:px-8 pt-8 space-y-8">
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-950 text-center">
-              Related projects
-            </h2>
+            <FadeIn>
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-950 text-center">
+                Related projects
+              </h2>
+            </FadeIn>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {relatedProjects.map((project) => (
-                <Link
-                  key={project.id}
-                  href={`/projects/${project.id}`}
-                  className="group space-y-3 block"
-                >
-                  <div className="relative h-[240px] sm:h-[280px] rounded-sm overflow-hidden bg-neutral-100 shadow-sm">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-                  </div>
-                  <div className="space-y-1">
-                    <h3 className="text-base font-bold text-neutral-950 group-hover:text-[#E5A53D] transition-colors flex items-center justify-between">
-                      <span>{project.title}</span>
-                      <span className="text-xs font-semibold text-neutral-400 group-hover:text-[#E5A53D] transition-colors">
-                        View Details ↗
-                      </span>
-                    </h3>
-                    <p className="text-xs text-neutral-500 capitalize">{project.category} • {project.location}</p>
-                  </div>
-                </Link>
+                <StaggerItem key={project.id}>
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className="group space-y-3 block"
+                  >
+                    <div className="relative h-[240px] sm:h-[280px] rounded-sm overflow-hidden bg-neutral-100 shadow-sm">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                    </div>
+                    <div className="space-y-1">
+                      <h3 className="text-base font-bold text-neutral-950 group-hover:text-[#E5A53D] transition-colors flex items-center justify-between">
+                        <span>{project.title}</span>
+                        <span className="text-xs font-semibold text-neutral-400 group-hover:text-[#E5A53D] transition-colors">
+                          View Details ↗
+                        </span>
+                      </h3>
+                      <p className="text-xs text-neutral-500 capitalize">{project.category} • {project.location}</p>
+                    </div>
+                  </Link>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </section>
         )}
 

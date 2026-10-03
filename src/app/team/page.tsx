@@ -3,107 +3,101 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
-import { servicesData } from "@/data/services";
+import { teamMembers } from "@/data/team";
 import { HeroMotion, StaggerContainer, StaggerItem, FadeIn } from "@/components/common/MotionWrapper";
 
 export const metadata = {
-  title: "Our Services | BSB Architectural Living & Custom Builders",
+  title: "Our Team & Leadership | BSB Architectural Living & Custom Builders",
   description:
-    "Everything we do, under one roof. Architectural design, construction management, custom home building, kitchens & bathrooms, outdoor living, and renovations.",
+    "Experienced builders, trusted craftsmanship. Meet the architects, project managers, and craftspeople behind BSB.",
 };
 
-// 📸 Banner image:
-const servicesPageImages = {
-  banner: "/s7.jpg",
+// 📸 Banner Image:
+const teamPageImages = {
+  banner: "/team1.jpg",
 };
 
-export default function ServicesPage() {
-  // Primary 6 services matching the reference screenshots
-  const mainServices = servicesData.slice(0, 6);
-
+export default function TeamPage() {
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col">
-      {/* Sticky Navbar (Light theme on clean white page background) */}
+      {/* Sticky Navbar (Light theme on white background) */}
       <Navbar theme="light" />
 
       <main className="flex-1 pt-32 sm:pt-40 pb-20 sm:pb-28">
         {/* ============================================================ */}
-        {/* 1. SERVICES HEADER */}
+        {/* 1. HEADER SECTION */}
         {/* ============================================================ */}
         <section className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 text-center space-y-4 mb-16 sm:mb-20">
           <HeroMotion>
             {/* Yellow Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-              <span>SERVICES</span>
+              <span>LEADERSHIP</span>
             </div>
 
             {/* Heading: All-Caps, Bold, Centered */}
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-neutral-950 uppercase leading-[1.08] mt-4">
-              EVERYTHING WE DO, <br />
-              UNDER ONE ROOF
+              EXPERIENCED BUILDERS, <br />
+              TRUSTED CRAFTSMANSHIP
             </h1>
           </HeroMotion>
         </section>
 
         {/* ============================================================ */}
-        {/* 2. 6-CARD GRID WITH STAGGERED REVEAL */}
+        {/* 2. 12-TEAM MEMBERS GRID WITH STAGGERED MOTION */}
         {/* ============================================================ */}
         <section className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 mb-24 sm:mb-32">
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-            {mainServices.map((service) => (
-              <StaggerItem key={service.slug}>
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="group block space-y-3.5 cursor-pointer"
-                >
-                  {/* Image Container with hover zoom */}
-                  <div className="relative aspect-[16/11] w-full overflow-hidden rounded-sm bg-neutral-100 shadow-sm">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 items-start">
+            {teamMembers.map((member) => (
+              <StaggerItem key={member.id} className="space-y-3 group">
+                {/* Photo container with object-top */}
+                <div className="relative aspect-[4/4.5] w-full rounded-sm overflow-hidden bg-neutral-100 shadow-sm">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                  {/* Floating Specialty Pill at bottom-left corner */}
+                  <div className="absolute bottom-3 left-3 z-10 px-2.5 py-1 rounded-sm bg-neutral-950/85 backdrop-blur-sm text-white text-[11px] font-medium tracking-normal shadow-sm">
+                    {member.specialty}
                   </div>
+                </div>
 
-                  {/* Title & Category text beneath image */}
-                  <div className="space-y-0.5 pt-0.5">
-                    <h2 className="text-lg sm:text-[19px] font-bold text-neutral-950 group-hover:text-[#E5A53D] transition-colors">
-                      {service.title}
-                    </h2>
-                    <p className="text-xs sm:text-sm text-neutral-500 font-normal">
-                      {service.title}
-                    </p>
-                  </div>
-                </Link>
+                {/* Name & Role beneath image */}
+                <div className="space-y-0.5 pt-0.5">
+                  <h2 className="text-base sm:text-[17px] font-bold text-neutral-950 group-hover:text-[#E5A53D] transition-colors">
+                    {member.name}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-neutral-500 font-normal">
+                    {member.role}
+                  </p>
+                </div>
               </StaggerItem>
             ))}
           </StaggerContainer>
         </section>
 
         {/* ============================================================ */}
-        {/* 3. READY TO WORK WITH US? BANNER */}
+        {/* 3. MEET YOUR BUILD TEAM TODAY BANNER */}
         {/* ============================================================ */}
         <section className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
           <FadeIn>
             <div className="relative w-full rounded-sm overflow-hidden min-h-[420px] sm:min-h-[480px] lg:min-h-[520px] p-8 sm:p-12 lg:p-16 flex flex-col justify-end shadow-md">
               
-              {/* Background Image: Crisp, natural building photo */}
+              {/* Background Image: Crisp architectural villa exterior */}
               <div className="absolute inset-0 z-0">
                 <Image
-                  src={servicesPageImages.banner}
-                  alt="Ready to work with BSB"
+                  src={teamPageImages.banner}
+                  alt="Meet Your Build Team Today"
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 1440px) 100vw, 1440px"
                   priority
                 />
-                {/* Subtle dark gradient on left/bottom for text contrast */}
+                {/* Subtle dark gradient behind text */}
                 <div className="absolute inset-0 bg-neutral-950/20" />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/75 via-neutral-950/25 to-transparent sm:bg-gradient-to-r sm:from-neutral-950/80 sm:via-neutral-950/30 sm:to-transparent" />
               </div>
 
               {/* Content Row: Bottom-aligned left text + bottom-right button */}
@@ -112,11 +106,12 @@ export default function ServicesPage() {
                 {/* Left Column: Heading + Paragraph */}
                 <div className="space-y-4 max-w-lg">
                   <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white uppercase leading-[1.05] drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
-                    READY TO WORK <br />
-                    WITH US?
+                    MEET YOUR <br />
+                    BUILD TEAM <br />
+                    TODAY.
                   </h2>
                   <p className="text-xs sm:text-sm text-white/95 font-light leading-relaxed max-w-sm drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
-                    We believe every family deserves a home built with care. Take the next step and start the conversation with our team.
+                    Behind every great home is the right team. Browse our people and find the experts who&apos;ll bring your project to life.
                   </p>
                 </div>
 

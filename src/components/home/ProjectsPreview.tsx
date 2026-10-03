@@ -1,10 +1,13 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
 import { projectsData } from "@/data/projects";
 
 export default function ProjectsPreview() {
-  // Take the first 3 projects for the home showcase (matching reference screenshot)
+  // Take the first 3 projects for the home showcase
   const previewProjects = projectsData.slice(0, 3);
 
   return (
@@ -12,7 +15,13 @@ export default function ProjectsPreview() {
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12 sm:space-y-16">
         
         {/* HEADER: Badge + Headline + Subtitle */}
-        <div className="text-center space-y-4 max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center space-y-4 max-w-3xl mx-auto"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
             <span>SELECTED WORK</span>
@@ -25,44 +34,57 @@ export default function ProjectsPreview() {
           <p className="text-sm sm:text-base text-neutral-600 max-w-2xl mx-auto font-light">
             A look at recent custom rooftops, infinity pools, and architectural renovations — each designed, engineered and built by the same dedicated team.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 3 PROJECTS GRID */}
+        {/* 3 PROJECTS GRID WITH STAGGERED REVEAL */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {previewProjects.map((project) => (
-            <Link
+          {previewProjects.map((project, idx) => (
+            <motion.div
               key={project.id}
-              href={`/projects/${project.id}`}
-              className="group space-y-4 block"
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
             >
-              <div className="relative h-[280px] sm:h-[340px] w-full rounded-sm overflow-hidden bg-neutral-100 shadow-sm">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
-              </div>
+              <Link
+                href={`/projects/${project.id}`}
+                className="group space-y-4 block cursor-pointer"
+              >
+                <div className="relative h-[280px] sm:h-[340px] w-full rounded-sm overflow-hidden bg-neutral-100 shadow-sm">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300" />
+                </div>
 
-              <div className="space-y-1 pt-1">
-                <h3 className="text-lg sm:text-xl font-bold text-neutral-950 group-hover:text-[#E5A53D] transition-colors flex items-center justify-between">
-                  <span>{project.title}</span>
-                  <span className="text-xs text-neutral-400 group-hover:text-[#E5A53D] transition-colors font-medium">
-                    View Case Study ↗
-                  </span>
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-500 capitalize">
-                  {project.category} • {project.location}
-                </p>
-              </div>
-            </Link>
+                <div className="space-y-1 pt-1">
+                  <h3 className="text-lg sm:text-xl font-bold text-neutral-950 group-hover:text-[#E5A53D] transition-colors flex items-center justify-between">
+                    <span>{project.title}</span>
+                    <span className="text-xs text-neutral-400 group-hover:text-[#E5A53D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all font-medium">
+                      View Case Study ↗
+                    </span>
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-500 capitalize">
+                    {project.category} • {project.location}
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
 
         {/* CENTER CTA BUTTON: "View All Projects" */}
-        <div className="text-center pt-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center pt-6"
+        >
           <Link
             href="/projects"
             className="inline-flex items-center rounded-sm bg-[#E5A53D] hover:bg-[#d6952c] text-neutral-950 font-bold text-sm sm:text-base pl-6 pr-2 py-2 transition-all group shadow-md active:scale-95"
@@ -80,7 +102,7 @@ export default function ProjectsPreview() {
               </svg>
             </div>
           </Link>
-        </div>
+        </motion.div>
 
       </div>
     </section>

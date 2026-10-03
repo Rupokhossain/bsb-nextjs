@@ -1,52 +1,74 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 interface HeroSectionProps {
   backgroundImageUrl?: string;
 }
 
 export default function HeroSection({
-  // Natural bright architectural villa photo (exact match to the reference screenshot)
   backgroundImageUrl = "/hero-bg.jpg",
 }: HeroSectionProps) {
   return (
     <section className="relative min-h-screen flex items-center bg-neutral-900 text-white overflow-hidden">
-      {/* Background Image - Clean, bright, and natural without heavy dark filters */}
-      <div
+      {/* Background Image - Cinematic slow zoom out into position */}
+      <motion.div
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.6, ease: [0.25, 1, 0.5, 1] }}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('${backgroundImageUrl}')` }}
       />
 
-      {/* Very subtle soft left gradient only to ensure text readability while keeping the photo bright */}
-       {/* <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-transparent" /> */}
-      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20" /> */}
-
-      {/* Hero Content Container - Aligned further to the left */}
-      <div className="relative z-10 max-w-[1440px] mx-auto   w-full pt-32 pb-20">
+      {/* Hero Content Container - Aligned with consistent responsive side padding */}
+      <div className="relative z-10 max-w-[1440px] mx-auto w-full px-6 sm:px-10 lg:px-16 pt-32 pb-20">
         <div className="max-w-3xl space-y-5 sm:space-y-6">
           
-          {/* Badge (Pill tag matching the reference screenshot) */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs sm:text-xs font-bold tracking-wider uppercase shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-            <span>CUSTOM DESIGN & BUILDERS</span>
-          </div>
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs sm:text-xs font-bold tracking-wider uppercase shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
+              <span>CUSTOM DESIGN & BUILDERS</span>
+            </div>
+          </motion.div>
 
-          {/* Big Bold Headline (Architectural grotesque typography) */}
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight text-white leading-20 uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+          {/* Big Bold Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-[1.2] lg:leading-[1.16] uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+          >
             We Build <br />
             Spaces Made To <br />
             Last A Lifetime
-          </h1>
+          </motion.h1>
 
           {/* Subheading / Description covering rooftops, pools, and all related exterior works */}
-          <p className="max-w-xl text-base sm:text-lg text-white/95 leading-relaxed font-normal drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
+            className="max-w-xl text-sm sm:text-base lg:text-lg text-white/95 leading-relaxed font-normal drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]"
+          >
             From luxury rooftop retreats and custom swimming pools to complete architectural outdoor living, we craft bespoke spaces with fixed pricing and true craftsmanship.
-          </p>
+          </motion.p>
 
           {/* Call to Action Button */}
-          <div className="pt-2">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            className="pt-2"
+          >
             <Link
-              href="#contact"
+              href="/contact"
               className="inline-flex items-center rounded-sm bg-[#E5A53D] hover:bg-[#d6952c] text-neutral-950 font-bold text-sm sm:text-base pl-5 pr-1.5 py-1.5 transition-all group shadow-md active:scale-95"
             >
               <span>Book a Consultation</span>
@@ -62,7 +84,7 @@ export default function HeroSection({
                 </svg>
               </div>
             </Link>
-          </div>
+          </motion.div>
 
         </div>
       </div>

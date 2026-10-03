@@ -15,6 +15,9 @@ export interface Project {
 }
 
 export const projectsData: Project[] = [
+  // ==========================================
+  // 1. Oakhill Residence
+  // ==========================================
   {
     id: "oakhill-residence",
     title: "Oakhill Residence",
@@ -23,7 +26,8 @@ export const projectsData: Project[] = [
     area: "3,800 sq.ft",
     duration: "60 Days",
     year: "2025",
-    image: "/service-1.jpg",
+    // 📸 Apnar chobi boshanor jonno image path change kore din
+    image: "/p1.jpg",
     galleryImages: ["/service-5.jpg", "/about-banner.jpg"],
     description: "A contemporary multi-level architectural villa with integrated reflection pools and cedarwood cladding.",
     vision: "To blend raw concrete geometry with warm vertical timber elements, blurring indoor living with outdoor water features.",
@@ -34,6 +38,10 @@ export const projectsData: Project[] = [
       "Automated architectural wall sconce night illumination",
     ],
   },
+
+  // ==========================================
+  // 2. Marina Bay Home
+  // ==========================================
   {
     id: "marina-bay-home",
     title: "Marina Bay Home",
@@ -42,7 +50,7 @@ export const projectsData: Project[] = [
     area: "2,200 sq.ft",
     duration: "45 Days",
     year: "2025",
-    image: "/service-3.jpg",
+    image: "/p2.jpg",
     galleryImages: ["/service-4.jpg", "/service-1.jpg"],
     description: "An architectural infinity edge pool looking onto a teak relaxation patio and glass pavilion.",
     vision: "Creating a resort-grade private aquatic sanctuary with whisper-quiet filtration and acoustic water walls.",
@@ -53,6 +61,10 @@ export const projectsData: Project[] = [
       "Color-adaptive underwater LED lighting presets",
     ],
   },
+
+  // ==========================================
+  // 3. Highgrove House
+  // ==========================================
   {
     id: "highgrove-house",
     title: "Highgrove House",
@@ -61,7 +73,7 @@ export const projectsData: Project[] = [
     area: "1,850 sq.ft",
     duration: "35 Days",
     year: "2024",
-    image: "/service-2.jpg",
+    image: "/p3.jpg",
     galleryImages: ["/service-7.jpg", "/service-6.jpg"],
     description: "A private penthouse sky terrace featuring bioclimatic motorized pergola, BBQ counter, and lush tropical flora.",
     vision: "Transforming an underutilized rooftop slab into a vibrant, heat-deflecting sky garden.",
@@ -72,6 +84,10 @@ export const projectsData: Project[] = [
       "Weather-sealed outdoor kitchen with granite preparation counter",
     ],
   },
+
+  // ==========================================
+  // 4. Ridgeline House
+  // ==========================================
   {
     id: "ridgeline-house",
     title: "Ridgeline House",
@@ -80,7 +96,7 @@ export const projectsData: Project[] = [
     area: "4,200 sq.ft",
     duration: "75 Days",
     year: "2024",
-    image: "/service-5.jpg",
+    image: "/p4.jpg",
     galleryImages: ["/service-1.jpg", "/service-3.jpg"],
     description: "Tiered architectural estate harmonizing natural stone masonry, glass corridors, and landscaped courtyard.",
     vision: "An estate celebrating permanence and tactile materials tailored for multi-generational living.",
@@ -91,6 +107,10 @@ export const projectsData: Project[] = [
       "Central water reflection courtyard with koi pond",
     ],
   },
+
+  // ==========================================
+  // 5. Poolhouse Pavilion
+  // ==========================================
   {
     id: "poolhouse-pavilion",
     title: "Poolhouse Pavilion",
@@ -99,7 +119,7 @@ export const projectsData: Project[] = [
     area: "1,600 sq.ft",
     duration: "30 Days",
     year: "2024",
-    image: "/service-4.jpg",
+    image: "/p5.jpg",
     galleryImages: ["/service-3.jpg", "/about-banner.jpg"],
     description: "An open-air cedar entertainment pavilion overlooking a custom inground heated plunge pool.",
     vision: "Seamless luxury entertainment zone connecting outdoor barbecue dining with hydrotherapy pool.",
@@ -110,6 +130,10 @@ export const projectsData: Project[] = [
       "All-weather motorized drop-down weather screens",
     ],
   },
+
+  // ==========================================
+  // 6. Crestwood Courtyard
+  // ==========================================
   {
     id: "crestwood-courtyard",
     title: "Crestwood Courtyard",
@@ -118,7 +142,7 @@ export const projectsData: Project[] = [
     area: "5,100 sq.ft",
     duration: "65 Days",
     year: "2024",
-    image: "/about-banner.jpg",
+    image: "/p6.jpg",
     galleryImages: ["/service-2.jpg", "/service-5.jpg"],
     description: "A commercial rooftop boutique resort deck with sunset infinity pool, private cabanas, and bar.",
     vision: "A premier destination rooftop delivering 360-degree skyline views in a resort setting.",
@@ -127,6 +151,150 @@ export const projectsData: Project[] = [
       "Resort-grade 40-meter glass infinity edge pool",
       "Private VIP poolside cabanas with custom daybeds",
       "Smart app-controlled dynamic ambient night lighting",
+    ],
+  },
+
+  // ==========================================
+  // 7. Verdant Terrace
+  // ==========================================
+  {
+    id: "verdant-terrace",
+    title: "Verdant Terrace",
+    category: "Rooftop Sanctuary",
+    location: "Baridhara DOHS, Dhaka",
+    area: "2,400 sq.ft",
+    duration: "40 Days",
+    year: "2025",
+    // 📸 Apnar chobi public folder e rekhe eikhane boshiye diben
+    image: "/p-7.jpg",
+    galleryImages: ["/s2.jpg", "/s3.jpg"],
+    description: "A private multi-tiered sky terrace integrating a modern glass pavilion, Japanese dry garden, and cantilevered viewing deck.",
+    vision: "Crafting an elevated botanical haven above the urban skyline with shaded outdoor living lounges and drought-tolerant greenery.",
+    engineeringHighlight: "Lightweight aerated concrete substrates and dual-membrane elastomeric waterproofing rated for high hydrostatic pressure.",
+    highlights: [
+      "Bespoke Japanese stone water fountain with ambient LED backlighting",
+      "Motorized bioclimatic louvered pergola with wind sensor auto-retract",
+      "Custom outdoor cocktail bar with honed quartzite countertop",
+    ],
+  },
+
+  // ==========================================
+  // 8. The Glasshouse Villa
+  // ==========================================
+  {
+    id: "the-glasshouse-villa",
+    title: "The Glasshouse Villa",
+    category: "New Build & Landscape",
+    location: "Purbachal, Dhaka",
+    area: "5,400 sq.ft",
+    duration: "90 Days",
+    year: "2025",
+    // 📸 Apnar chobi public folder e rekhe eikhane boshiye diben
+    image: "/p-8.jpg",
+    galleryImages: ["/s5.jpg", "/s6.jpg"],
+    description: "An expansive minimalist glass pavilion residence featuring central reflecting ponds, sunken courtyards, and monolithic stone pylons.",
+    vision: "Maximizing natural daylight and unobstructed garden vistas through structural glass walls and floating roof planes.",
+    engineeringHighlight: "Low-E acoustic insulated double-glazed structural curtain walls with concealed drainage channels.",
+    highlights: [
+      "Frameless triple-track sliding pocket glass doors",
+      "Sunken conversation pit with built-in ethanol fireplace",
+      "Integrated subterranean rainwater harvesting and filtration system",
+    ],
+  },
+
+  // ==========================================
+  // 9. Azure Horizon Pool
+  // ==========================================
+  {
+    id: "azure-horizon-pool",
+    title: "Azure Horizon Pool",
+    category: "Custom Pool & Spa",
+    location: "Sylhet Sadar",
+    area: "2,800 sq.ft",
+    duration: "50 Days",
+    year: "2024",
+    // 📸 Apnar chobi public folder e rekhe eikhane boshiye diben
+    image: "/p-9.jpg",
+    galleryImages: ["/service-3.jpg", "/service-4.jpg"],
+    description: "A dramatic infinity pool perched on rolling hills, featuring zero-edge perimeter overflow and an adjacent open-air cedar cabana.",
+    vision: "Merging hillside landscape architecture with crystalline water reflections and resort-grade lounging zones.",
+    engineeringHighlight: "Retaining wall micro-pile reinforcement and computer-balanced hydraulic surge tanks for silent water recirculation.",
+    highlights: [
+      "Glass-fronted acrylic underwater viewing panel",
+      "Submerged sun shelf with in-water loungers and umbrella sleeves",
+      "Automated ozone mineral water sanitation system",
+    ],
+  },
+
+  // ==========================================
+  // 10. The Haven Penthouse
+  // ==========================================
+  {
+    id: "the-haven-penthouse",
+    title: "The Haven Penthouse",
+    category: "Renovation & Additions",
+    location: "Gulshan-1, Dhaka",
+    area: "3,100 sq.ft",
+    duration: "55 Days",
+    year: "2024",
+    // 📸 Apnar chobi public folder e rekhe eikhane boshiye diben
+    image: "/p-10.jpg",
+    galleryImages: ["/about2.jpg", "/about-bottom.jpg"],
+    description: "A comprehensive penthouse transformation incorporating double-height living areas, smoked oak joinery, and private rooftop plunge pool.",
+    vision: "Reinventing an older penthouse into a contemporary, light-filled architectural masterpiece with tactile finishes.",
+    engineeringHighlight: "Precision structural beam reinforcement allowing column-free open plan living and high ceiling clearance.",
+    highlights: [
+      "Bookmatched Calacatta marble fireplace centerpiece",
+      "Custom architectural staircase with floating oak treads and glass balustrades",
+      "Heated rooftop stainless steel plunge pool with skyline panoramas",
+    ],
+  },
+
+  // ==========================================
+  // 11. Cedar Ridge Retreat
+  // ==========================================
+  {
+    id: "cedar-ridge-retreat",
+    title: "Cedar Ridge Retreat",
+    category: "Outdoor Living & Pergola",
+    location: "Gazipur",
+    area: "3,600 sq.ft",
+    duration: "45 Days",
+    year: "2024",
+    // 📸 Apnar chobi public folder e rekhe eikhane boshiye diben
+    image: "/p-11.jpg",
+    galleryImages: ["/service-7.jpg", "/service-1.jpg"],
+    description: "An outdoor culinary pavilion and fire lounge nestled in forested landscape with integrated wood-fired pizza oven and dining terrace.",
+    vision: "Creating an authentic farm-to-table outdoor entertaining sanctuary celebrating raw timber and artisanal stonework.",
+    engineeringHighlight: "Kiln-dried western red cedar framing treated with marine grade UV-resistant micro-sealer and concealed seismic anchors.",
+    highlights: [
+      "Wood-fired artisan refractory brick pizza oven and built-in smoker",
+      "Hand-chiseled slate paving stones with permeable grass joints",
+      "Concealed infrared ceiling patio heaters for year-round warmth",
+    ],
+  },
+
+  // ==========================================
+  // 12. Solis Sky Lounge
+  // ==========================================
+  {
+    id: "solis-sky-lounge",
+    title: "Solis Sky Lounge",
+    category: "Commercial / Rooftop",
+    location: "Tejgaon I/A, Dhaka",
+    area: "4,800 sq.ft",
+    duration: "60 Days",
+    year: "2024",
+    // 📸 Apnar chobi public folder e rekhe eikhane boshiye diben
+    image: "/p-12.jpg",
+    galleryImages: ["/service-2.jpg", "/service-5.jpg"],
+    description: "A luxury corporate rooftop retreat designed with private executive pods, drought-resilient vertical green walls, and water features.",
+    vision: "Providing urban corporate wellness through biophilic design, panoramic city vistas, and acoustic water soundscapes.",
+    engineeringHighlight: "Commercial-grade lightweight substrate planting beds and storm-surge automated drainage overflow valves.",
+    highlights: [
+      "Automated hydroponic living green wall with 3,000+ tropical plants",
+      "Executive conference glass pod with smart switchable privacy glass",
+      "Multi-zone ambient audio system with low-frequency acoustic baffles",
     ],
   },
 ];

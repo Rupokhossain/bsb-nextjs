@@ -21,7 +21,7 @@ export const servicesData: ServiceDetail[] = [
     tagline: "Design-led homes, engineered to build.",
     shortDesc: "Design-led architectural plans, spatial modeling, and buildable concepts.",
     // 📸 Apnar chobi thakle "/services/architectural-design.jpg" eivabe change kore nite parben
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    image: "/s1.jpg",
     mainHeadline: "Thoughtful design that makes every square foot count.",
     introParagraph:
       "Great projects start with great design. Our in-house studio shapes light, space and materials into bespoke residences, luxury retreats and architectural spaces that are beautiful to live in and practical to build.",
@@ -39,7 +39,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Construction Management",
     tagline: "Your build, managed end to end with full transparency.",
     shortDesc: "Dedicated site supervision, trade coordination, and milestone accountability.",
-    image: "https://images.unsplash.com/photo-1541888946425-d0fbb186156f?auto=format&fit=crop&w=1200&q=80",
+    image: "/s2.jpg",
     mainHeadline: "One team accountable for the whole build.",
     introParagraph:
       "Complex builds need one steady hand. Our construction management keeps schedule, budget, trades and quality under a single dedicated project lead.",
@@ -57,7 +57,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Custom Home Building",
     tagline: "From bare ground to the keys in your hand.",
     shortDesc: "From bare ground to the keys in your hand with guaranteed fixed pricing.",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+    image: "/s3.jpg",
     mainHeadline: "Bespoke residences crafted with fixed pricing and master craftsmanship.",
     introParagraph:
       "We bring custom home visions to life with uncompromising material standards, dedicated engineering oversight, and transparent fixed pricing from day one.",
@@ -75,7 +75,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Kitchens & Bathrooms",
     tagline: "Precision craftsmanship for the heart of your home.",
     shortDesc: "Custom cabinetry, stone waterfall islands, and spa-inspired master ensuites.",
-    image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80",
+    image: "/s4.jpg",
     mainHeadline: "Spaces where everyday rituals meet timeless materials.",
     introParagraph:
       "Kitchens and bathrooms demand the highest precision in the home. From custom bookmatched stone to bespoke oak joinery and concealed acoustic plumbing, we create spaces built for both beauty and daily performance.",
@@ -93,7 +93,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Outdoor Living",
     tagline: "Resort-inspired pools, sky gardens, and all-season pavilions.",
     shortDesc: "Architectural swimming pools, luxury rooftop terraces, and bioclimatic pergolas.",
-    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80",
+    image: "/s5.jpg",
     mainHeadline: "Extending your living space seamlessly into the open air.",
     introParagraph:
       "We engineer architectural outdoor spaces that blend indoor comfort with open-air relaxation—including custom swimming pools, sky gardens, sunken fire lounges, and outdoor kitchens.",
@@ -111,7 +111,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Renovations & Additions",
     tagline: "Transforming existing structures into modern architectural statements.",
     shortDesc: "Heritage restoration, rear pavilion extensions, and complete home reinventions.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+    image: "/s6.jpg",
     mainHeadline: "Breathing new life into homes while preserving character.",
     introParagraph:
       "Extending or renovating a home requires deep architectural sensitivity and structural ingenuity. We seamlessly merge modern living spaces with existing foundations, ensuring structural harmony.",
@@ -129,7 +129,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Rooftop Living & Gardens",
     tagline: "Your rooftop, transformed into a private sky sanctuary.",
     shortDesc: "Design-led green roofs, bioclimatic pergolas, and outdoor lounges.",
-    image: "/service-2.jpg",
+    image: "/s7.jpg",
     mainHeadline: "Biophilic outdoor living engineered for sky terraces.",
     introParagraph:
       "Transforming an empty roof requires specialized civil understanding—from structural load calculations to lightweight biophilic landscaping and automated irrigation.",
@@ -145,7 +145,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Custom Swimming Pools",
     tagline: "Architectural infinity pools and spas engineered to perfection.",
     shortDesc: "Rooftop infinity edge, heated plunge pools, and inground spas.",
-    image: "/service-3.jpg",
+    image: "/s7.jpg",
     mainHeadline: "Water features engineered with zero-leak precision.",
     introParagraph:
       "Whether designing an acrylic glass-walled rooftop infinity pool or a minimalist inground villa oasis, our engineering team ensures zero water loss and crystal filtration.",
