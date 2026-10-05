@@ -1,3 +1,63 @@
+export interface CompletedProject {
+  id: string;
+  title: string;
+  location: string;
+  image: string;
+}
+
+// 📸 8 Completed Corporate Projects (From client's official portfolio)
+// ⚠️ No detail pages - pure visual showcase
+export const completedProjectsData: CompletedProject[] = [
+  {
+    id: "jmi-shankur-auto-tank",
+    title: "JMI Shankur Auto Tank Limited.",
+    location: "Chattogram.",
+    image: "/Steel-Building-Projects.jpg",
+  },
+  {
+    id: "akij-biri-factory",
+    title: "Akij Biri Factory Ltd.",
+    location: "Rangpur.",
+    image: "/Steel-Building-Projects-2.jpg",
+  },
+  {
+    id: "onion-cold-storage",
+    title: "200 MT Onion Cold Storage.",
+    location: "Pabna.",
+    image: "/Steel-Building-Projects-3.jpg",
+  },
+  {
+    id: "maysha-spining-mill",
+    title: "MAYSHA SPINING MILL",
+    location: "Gazipur",
+    image: "/Steel-Building-Projects-4.jpg",
+  },
+  {
+    id: "jmi-industrial-gas",
+    title: "JMI Industrial Gas Limited.",
+    location: "Chattogram.",
+    image: "/Steel-Building-Projects-1.jpg",
+  },
+  {
+    id: "sa-paribahan-building",
+    title: "5-Storied Building For SA Paribahan.",
+    location: "Kakrail, Gazipur.",
+    image: "/Steel-Building-Projects-5.jpg",
+  },
+  {
+    id: "sa-agro-feed",
+    title: "SA Agro Feed Office building.",
+    location: "Rangpur.",
+    image: "/Steel-Building-Projects-6.jpg",
+  },
+  {
+    id: "anira-international",
+    title: "Anira International Ltd.",
+    location: "Dhamrai, Dhaka.",
+    image: "/Steel-Building-Projects-7.jpg",
+  },
+];
+
 export interface Project {
   id: string;
   title: string;

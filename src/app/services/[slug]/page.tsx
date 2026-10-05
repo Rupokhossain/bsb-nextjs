@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { servicesData } from "@/data/services";
-import { projectsData } from "@/data/projects";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import { HeroMotion, FadeIn, StaggerContainer, StaggerItem } from "@/components/common/MotionWrapper";
@@ -30,17 +29,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
   const service = servicesData[serviceIndex];
 
-  // Dynamically resolve related projects from projectsData
-  const relatedProjects = projectsData.filter((project) =>
-    service.projectIds.includes(project.id)
-  );
-
-  // Prev & Next navigation links
-  const prevService =
-    serviceIndex > 0 ? servicesData[serviceIndex - 1] : servicesData[servicesData.length - 1];
-  const nextService =
-    serviceIndex < servicesData.length - 1 ? servicesData[serviceIndex + 1] : servicesData[0];
-
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col">
       {/* Top Navbar with light theme for crisp visibility */}
@@ -63,7 +51,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             {/* Service Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-              <span>SERVICE {String(serviceIndex + 1).padStart(2, "0")} / 06</span>
+              <span>SERVICE {String(serviceIndex + 1).padStart(2, "0")} / 03</span>
             </div>
 
             {/* Headline */}
@@ -78,31 +66,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           </HeroMotion>
         </section>
 
-        {/* 2. SPECIFICATION STRIP */}
-        <section className="max-w-5xl mx-auto px-6 sm:px-8">
-          <FadeIn delay={0.1}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-sm bg-neutral-50 border border-neutral-200/80 shadow-sm">
-              <div className="space-y-1 border-r border-neutral-200/60 pr-4 last:border-none">
-                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Timeline</span>
-                <span className="text-sm sm:text-base font-extrabold text-neutral-950 block">3 – 6 Weeks</span>
-              </div>
-              <div className="space-y-1 sm:border-r border-neutral-200/60 pr-4 last:border-none">
-                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Warranty</span>
-                <span className="text-sm sm:text-base font-extrabold text-[#E5A53D] block">10-Yr Written</span>
-              </div>
-              <div className="space-y-1 border-r border-neutral-200/60 pr-4 last:border-none">
-                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Deliverable</span>
-                <span className="text-sm sm:text-base font-extrabold text-neutral-950 block">3D Plan + Build</span>
-              </div>
-              <div className="space-y-1">
-                <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest block">Quality QA</span>
-                <span className="text-sm sm:text-base font-extrabold text-neutral-950 block">100% Tested</span>
-              </div>
-            </div>
-          </FadeIn>
-        </section>
-
-        {/* 3. FEATURED HERO IMAGE */}
+        {/* 2. FEATURED HERO IMAGE */}
         <section className="max-w-5xl mx-auto px-6 sm:px-8">
           <FadeIn delay={0.2} scale>
             <div className="relative w-full h-[340px] sm:h-[500px] lg:h-[600px] rounded-sm overflow-hidden bg-neutral-100 shadow-md group">
@@ -147,6 +111,43 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           </FadeIn>
         </section>
 
+        {/* 4.5. SERVICE SCOPE & SPECIALIZED CAPABILITIES */}
+        {service.features && service.features.length > 0 && (
+          <section className="max-w-4xl mx-auto px-6 sm:px-8">
+            <FadeIn>
+              <div className="bg-[#FAF9F6] p-8 sm:p-10 rounded-sm border border-neutral-200/90 shadow-sm space-y-6">
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[11px] font-bold tracking-wider uppercase">
+                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
+                    <span>SERVICE SCOPE</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-neutral-950 pt-2">
+                    Included Capabilities & Specialized Solutions
+                  </h3>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
+                  {service.features.map((feature, fIdx) => (
+                    <div
+                      key={fIdx}
+                      className="flex items-center gap-3 p-3.5 bg-white rounded-sm border border-neutral-200/70 shadow-xs"
+                    >
+                      <div className="w-6 h-6 rounded-full bg-[#E31E24] text-white flex items-center justify-center shrink-0 shadow-xs">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className="text-sm sm:text-[15px] font-bold text-neutral-900 tracking-tight">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          </section>
+        )}
+
         {/* 5. METHODOLOGY / CAPABILITIES GRID */}
         <section className="max-w-5xl mx-auto px-6 sm:px-8 space-y-8">
           <FadeIn className="text-center space-y-2">
@@ -160,23 +161,23 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             {[
               {
                 num: "01",
-                title: "Structural Verification",
-                desc: "Certified load capacity and waterproofing barrier testing before laying a single brick.",
+                title: "Structural Modeling",
+                desc: "Certified load capacity analysis, wind & seismic simulation, and BNBC building code compliance.",
               },
               {
                 num: "02",
-                title: "Photorealistic 3D",
-                desc: "Preview exact materials, night lights, and water reflections with virtual walk-throughs.",
+                title: "Precision 3D BIM",
+                desc: "Advanced 3D virtual modeling and detailing to prevent assembly conflicts before on-site fabrication.",
               },
               {
                 num: "03",
-                title: "Premium Sourcing",
-                desc: "Marine-grade stainless hardware, weather-sealed teak, and German waterproofing membranes.",
+                title: "Certified Fabrication",
+                desc: "High-grade certified steel plates, ultrasonic tested welding, and anti-corrosive primer coating.",
               },
               {
                 num: "04",
-                title: "Turnkey Handover",
-                desc: "72-hour static water testing, full cleanup, and handover with signed warranty certificate.",
+                title: "Guaranteed Handover",
+                desc: "Dedicated crane rigging, strict on-site safety supervision, and turnkey commissioning on schedule.",
               },
             ].map((m) => (
               <StaggerItem
@@ -208,14 +209,16 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               </div>
 
               <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-                <Link
-                  href="/contact"
+                <a
+                  href="https://wa.me/8801711181860"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full sm:w-auto text-center px-6 py-3 rounded-sm bg-[#E5A53D] hover:bg-[#d6952c] text-neutral-950 font-bold text-sm transition-all active:scale-95 shadow-md whitespace-nowrap"
                 >
                   Schedule Site Visit
-                </Link>
+                </a>
                 <a
-                  href="tel:+8801700000000"
+                  href="tel:+8801711181860"
                   className="w-full sm:w-auto text-center px-6 py-3 rounded-sm border border-neutral-700 hover:border-white text-white font-medium text-sm transition-all whitespace-nowrap"
                 >
                   Call Hotline
@@ -223,67 +226,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               </div>
             </div>
           </FadeIn>
-        </section>
-
-        {/* 7. RELATED PROJECTS */}
-        {relatedProjects.length > 0 && (
-          <section className="max-w-4xl mx-auto px-6 sm:px-8 pt-8 space-y-8">
-            <FadeIn>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-950 text-center">
-                Related projects
-              </h2>
-            </FadeIn>
-
-            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {relatedProjects.map((project) => (
-                <StaggerItem key={project.id}>
-                  <Link
-                    href={`/projects/${project.id}`}
-                    className="group space-y-3 block"
-                  >
-                    <div className="relative h-[240px] sm:h-[280px] rounded-sm overflow-hidden bg-neutral-100 shadow-sm">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-                    </div>
-                    <div className="space-y-1">
-                      <h3 className="text-base font-bold text-neutral-950 group-hover:text-[#E5A53D] transition-colors flex items-center justify-between">
-                        <span>{project.title}</span>
-                        <span className="text-xs font-semibold text-neutral-400 group-hover:text-[#E5A53D] transition-colors">
-                          View Details ↗
-                        </span>
-                      </h3>
-                      <p className="text-xs text-neutral-500 capitalize">{project.category} • {project.location}</p>
-                    </div>
-                  </Link>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </section>
-        )}
-
-        {/* 8. PREV / NEXT BOTTOM NAVIGATION */}
-        <section className="max-w-4xl mx-auto px-6 sm:px-8 pt-12 border-t border-neutral-100">
-          <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-neutral-700">
-            <Link
-              href={`/services/${prevService.slug}`}
-              className="inline-flex items-center gap-1.5 hover:text-[#E5A53D] transition-colors"
-            >
-              <span>‹ {prevService.title}</span>
-            </Link>
-
-            <Link
-              href={`/services/${nextService.slug}`}
-              className="inline-flex items-center gap-1.5 hover:text-[#E5A53D] transition-colors"
-            >
-              <span>{nextService.title} ›</span>
-            </Link>
-          </div>
         </section>
 
       </main>

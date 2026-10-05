@@ -286,12 +286,14 @@ export default function AboutPage() {
 
               {/* Consultation Button & Social Links */}
               <div className="pt-2 flex flex-wrap items-center gap-5">
-                <Link
-                  href="/contact"
+                <a
+                  href="https://wa.me/8801711181860"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center rounded-sm bg-[#E5A53D] text-neutral-950 font-bold text-sm px-6 py-3 transition-all active:scale-95 shadow-md"
                 >
                   <span>Book Consultation With Us</span>
-                </Link>
+                </a>
 
                 <div className="flex items-center gap-2.5 text-neutral-500">
                   <span className="text-xs uppercase tracking-wider font-semibold mr-1">
@@ -415,8 +417,10 @@ export default function AboutPage() {
 
               {/* Contact Us Button */}
               <div className="pt-2">
-                <Link
-                  href="/contact"
+                <a
+                  href="https://wa.me/8801711181860"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center rounded-sm bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-sm pl-5 pr-1.5 py-1.5 transition-all group active:scale-95 shadow-sm"
                 >
                   <span>Consult an Engineer</span>
@@ -435,7 +439,7 @@ export default function AboutPage() {
                       />
                     </svg>
                   </div>
-                </Link>
+                </a>
               </div>
             </FadeIn>
           </div>
@@ -840,8 +844,10 @@ export default function AboutPage() {
                 </div>
 
                 <div className="self-start md:self-end">
-                  <Link
-                    href="/contact"
+                  <a
+                    href="https://wa.me/8801711181860"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center pl-4 sm:pl-5 pr-1.5 py-1.5 rounded-sm bg-[#E5A53D] hover:bg-[#d89830] text-neutral-950 font-bold text-xs sm:text-sm tracking-wide transition-all active:scale-95 shadow-md group"
                   >
                     <span>Book a Consultation</span>
@@ -860,7 +866,7 @@ export default function AboutPage() {
                         />
                       </svg>
                     </div>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>

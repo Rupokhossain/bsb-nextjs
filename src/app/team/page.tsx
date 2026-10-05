@@ -117,8 +117,10 @@ export default function TeamPage() {
 
                 {/* Right Column: Signature Gold CTA Button with black arrow square */}
                 <div className="self-start md:self-end">
-                  <Link
-                    href="/contact"
+                  <a
+                    href="https://wa.me/8801711181860"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center pl-4 sm:pl-5 pr-1.5 py-1.5 rounded-sm bg-[#E5A53D] hover:bg-[#d89830] text-neutral-950 font-bold text-xs sm:text-sm tracking-wide transition-all active:scale-95 shadow-md group"
                   >
                     <span>Book a Consultation</span>
@@ -127,7 +129,7 @@ export default function TeamPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
                       </svg>
                     </div>
-                  </Link>
+                  </a>
                 </div>
 
               </div>

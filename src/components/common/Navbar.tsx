@@ -13,8 +13,9 @@ const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "Team", href: "/team" },
+  { name: "Nirman Bsb", href: "/nirman-bsb" },
   { name: "Projects", href: "/projects" },
+  { name: "Contact Us", href: "/contact" },
 ];
 
 export default function Navbar({ theme = "dark" }: NavbarProps) {
@@ -105,20 +106,20 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
           })}
         </nav>
 
-        {/* Right CTA Button */}
+        {/* Right CTA Button -> WhatsApp Book a Consult */}
         <div className="hidden md:flex items-center">
-          <Link
-            href="/contact"
+          <a
+            href="https://wa.me/8801711181860"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`px-6 py-2.5 rounded-sm font-semibold text-sm transition-all active:scale-95 shadow-sm ${
-              pathname === "/contact"
-                ? "bg-[#E5A53D] text-neutral-950 font-bold ring-2 ring-[#E5A53D]/40"
-                : isScrolledOrLight
+              isScrolledOrLight
                 ? "bg-neutral-950 text-white hover:bg-neutral-800"
                 : "bg-white text-neutral-900 hover:bg-neutral-100"
             }`}
           >
             Book a Consult
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -165,17 +166,15 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
             );
           })}
           <div className="pt-2 border-t border-white/10">
-            <Link
-              href="/contact"
+            <a
+              href="https://wa.me/8801711181860"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              className={`block w-full text-center py-3 rounded-sm font-bold transition-all ${
-                pathname === "/contact"
-                  ? "bg-[#E5A53D] text-neutral-950 shadow-md"
-                  : "bg-white text-neutral-950 hover:bg-neutral-100"
-              }`}
+              className="block w-full text-center py-3 rounded-sm font-bold transition-all bg-[#E5A53D] text-neutral-950 shadow-md"
             >
               Book a Consult
-            </Link>
+            </a>
           </div>
         </div>
       )}

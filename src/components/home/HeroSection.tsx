@@ -67,8 +67,10 @@ export default function HeroSection({
             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
             className="pt-2"
           >
-            <Link
-              href="/contact"
+            <a
+              href="https://wa.me/8801711181860"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center rounded-sm bg-[#E5A53D] hover:bg-[#d6952c] text-neutral-950 font-bold text-sm sm:text-base pl-5 pr-1.5 py-1.5 transition-all group shadow-md active:scale-95"
             >
               <span>Book a Consultation</span>
@@ -83,7 +85,7 @@ export default function HeroSection({
                   <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
               </div>
-            </Link>
+            </a>
           </motion.div>
 
         </div>

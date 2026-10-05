@@ -52,7 +52,7 @@ export default function ContactPage() {
               {/* Map Container with "Open in Maps" button (Matching Screenshot) */}
               <div className="relative w-full h-[280px] sm:h-[320px] rounded-sm overflow-hidden bg-neutral-100 border border-neutral-200/90 shadow-sm">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14606.070196884144!2d90.40716615!3d23.77881775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7715a40c603%3A0xec01cd75f5e3ad72!2sGulshan%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
+                  src="https://maps.google.com/maps?q=BANGLADESH+STEEL+BUILDERS+LTD.%2C++Shyamoli%2C+Dhaka-1207&z=17&hl=en&t=k&output=embed&iwloc=near"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -65,7 +65,7 @@ export default function ContactPage() {
 
                 {/* Floating "Open in Maps ↗" Button */}
                 <a
-                  href="https://maps.google.com/?q=Gulshan-1,Dhaka"
+                  href="https://maps.google.com/?q=BANGLADESH+STEEL+BUILDERS+LTD.%2C++Shyamoli%2C+Dhaka-1207"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/95 backdrop-blur-md rounded-sm border border-neutral-200 text-xs font-semibold text-neutral-800 shadow-sm hover:text-[#E5A53D] hover:border-[#E5A53D] transition-colors"
@@ -84,10 +84,10 @@ export default function ContactPage() {
                       Email
                     </span>
                     <a
-                      href="mailto:hello@bsbliving.com"
+                      href="mailto:smebsbltd@gmail.com"
                       className="text-sm sm:text-base font-medium text-white hover:text-[#E5A53D] transition-colors block break-all"
                     >
-                      hello@bsbliving.com
+                      smebsbltd@gmail.com
                     </a>
                   </div>
 
@@ -97,10 +97,10 @@ export default function ContactPage() {
                       Phone
                     </span>
                     <a
-                      href="tel:+8801700000000"
+                      href="tel:+8801711181860"
                       className="text-sm sm:text-base font-medium text-white hover:text-[#E5A53D] transition-colors block"
                     >
-                      +880 1700-000000
+                      +880 1711-181860
                     </a>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ export default function ContactPage() {
                     Address
                   </span>
                   <p className="text-sm sm:text-base font-medium text-white leading-relaxed">
-                    House 12, Road 4, Gulshan-1 / Banani, Dhaka 1212, Bangladesh
+                   House # 9/2, Khan Niketon, Flat # 2/A, Garden Street, Ring Road, Shyamoli, Dhaka-1207.
                   </p>
                 </div>
               </div>
@@ -296,7 +296,9 @@ export default function ContactPage() {
 
                 <div className="pt-2">
                   <a
-                    href="#contact-form"
+                    href="https://wa.me/8801711181860"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center rounded-sm bg-[#E5A53D] hover:bg-[#d6952c] text-neutral-950 font-bold text-sm sm:text-base pl-6 pr-2 py-2 transition-all group shadow-lg active:scale-95"
                   >
                     <span>Book a Consultation</span>

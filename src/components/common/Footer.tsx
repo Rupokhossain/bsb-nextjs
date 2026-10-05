@@ -163,17 +163,21 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-white text-base font-bold mb-4 tracking-wide uppercase text-xs">Contact Us</h3>
             <div className="space-y-3 text-sm text-neutral-400">
-              <p>Gulshan-1 / Banani, Dhaka, Bangladesh</p>
-              <p>Hotline: +880 1700-000000</p>
-              <p>Email: hello@bsbliving.com</p>
+              <p>House # 9/2, Khan Niketon, Flat # 2/A, Garden Street, Ring Road, Shyamoli, Dhaka-1207.</p>
+              <p>Hotline: +880 1711-181860</p>
+              <p>Phone: +880 1977-181860</p>
+              <p>smebsbltd@gmail.com</p>
+              <p>smebsbltd@gmail.com</p>
             </div>
             <div className="pt-2">
-              <Link
-                href="/contact"
+              <a
+                href="https://wa.me/8801711181860"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block px-5 py-2.5 rounded-sm bg-[#E5A53D] text-neutral-950 font-bold text-xs uppercase tracking-wider hover:bg-[#d6952c] transition-all"
               >
                 Get Free Estimate
-              </Link>
+              </a>
             </div>
           </div>
         </div>

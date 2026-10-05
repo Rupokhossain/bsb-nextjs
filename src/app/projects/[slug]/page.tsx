@@ -198,12 +198,14 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   Schedule a complimentary site consultation with our architectural team and get a full 3D design blueprint.
                 </p>
               </div>
-              <Link
-                href="/contact"
+              <a
+                href="https://wa.me/8801711181860"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-3.5 rounded-sm bg-[#E5A53D] hover:bg-[#d6952c] text-neutral-950 font-bold text-sm whitespace-nowrap active:scale-95 shadow-md"
               >
                 Request 3D Blueprint
-              </Link>
+              </a>
             </div>
           </FadeIn>
         </section>

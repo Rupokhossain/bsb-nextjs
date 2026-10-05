@@ -9,151 +9,164 @@ export interface ServiceDetail {
   subHeadline: string;
   subParagraph1: string;
   subParagraph2: string;
-  // Foreign key array linking to Project.id in projectsData (Backend-ready relational structure)
+  // 📋 The exact 8 checklist features from BSB website
+  features: string[];
+  // Foreign key array linking to Project.id in projectsData
   projectIds: string[];
 }
 
 export const servicesData: ServiceDetail[] = [
-  // 1. Architectural Design
+  // ==========================================
+  // 1. Steel Building Services
+  // ==========================================
   {
-    slug: "architectural-design",
-    title: "Architectural Design",
-    tagline: "Design-led homes, engineered to build.",
-    shortDesc: "Design-led architectural plans, spatial modeling, and buildable concepts.",
-    // 📸 Apnar chobi thakle "/services/architectural-design.jpg" eivabe change kore nite parben
-    image: "/s1.jpg",
-    mainHeadline: "Thoughtful design that makes every square foot count.",
+    slug: "steel-building-services",
+    title: "Steel Building Services",
+    tagline: "Custom design, precision fabrication, and certified steel building erection.",
+    shortDesc: "Comprehensive pre-engineered steel building solutions, heavy industrial structural fabrication, installation, and anti-rust protection.",
+    image: "/steel-building.jpg",
+    mainHeadline: "High-Precision Steel Building Solutions Built to Stand for Generations",
     introParagraph:
-      "Great projects start with great design. Our in-house studio shapes light, space and materials into bespoke residences, luxury retreats and architectural spaces that are beautiful to live in and practical to build.",
-    subHeadline: "Design and build as one",
+      "At Bangladesh Steel Builders Ltd., our Steel Building Services cover the entire lifecycle of industrial and commercial steel infrastructure. From initial custom design and computerized structural analysis to automated factory fabrication, on-site crane erection, and long-lasting anti-corrosion finishing, we deliver certified turnkey solutions.",
+    subHeadline: "Certified Engineering, Certified Materials & Guaranteed Handover",
     subParagraph1:
-      "Because our designers and builders work together, every idea is costed and pressure-tested for buildability as it's drawn.",
+      "Our pre-engineered buildings (PEB) utilize high-tensile steel designed to reduce foundation load, withstand high wind and seismic stresses, and accelerate project handover by up to 50% compared to traditional concrete.",
     subParagraph2:
-      "That means no expensive gap between an ambitious architectural drawing and what can actually be built to budget.",
-    projectIds: ["oakhill-residence", "ridgeline-house"],
-  },
-
-  // 2. Construction Management
-  {
-    slug: "construction-management",
-    title: "Construction Management",
-    tagline: "Your build, managed end to end with full transparency.",
-    shortDesc: "Dedicated site supervision, trade coordination, and milestone accountability.",
-    image: "/s2.jpg",
-    mainHeadline: "One team accountable for the whole build.",
-    introParagraph:
-      "Complex builds need one steady hand. Our construction management keeps schedule, budget, trades and quality under a single dedicated project lead.",
-    subHeadline: "Single point of accountability",
-    subParagraph1:
-      "We coordinate every supplier and trade, run rigorous quality assurance on site, and report to you with photographic progress weekly.",
-    subParagraph2:
-      "You get real-time budget transparency and the peace of mind that your project will complete on time and on budget.",
-    projectIds: ["highgrove-house", "crestwood-courtyard"],
-  },
-
-  // 3. Custom Home Building
-  {
-    slug: "custom-home-building",
-    title: "Custom Home Building",
-    tagline: "From bare ground to the keys in your hand.",
-    shortDesc: "From bare ground to the keys in your hand with guaranteed fixed pricing.",
-    image: "/s3.jpg",
-    mainHeadline: "Bespoke residences crafted with fixed pricing and master craftsmanship.",
-    introParagraph:
-      "We bring custom home visions to life with uncompromising material standards, dedicated engineering oversight, and transparent fixed pricing from day one.",
-    subHeadline: "End-to-End Craftsmanship",
-    subParagraph1:
-      "A single dedicated team handles civil foundation, structural framing, high-end interior joinery, and landscape architecture.",
-    subParagraph2:
-      "You receive weekly photographic milestone reports and a complete turnkey handover with written 10-year structural warranties.",
+      "Every steel frame is manufactured under stringent BNBC and AISC standards with ultrasonic weld verification and millimeter-precise bolt connections.",
+    features: [
+      "Custom Steel Building Design",
+      "Pre-engineered Steel Building",
+      "Steel Structure Fabrication",
+      "Steel Building Installation",
+      "Commercial Steel Building Construction",
+      "Residential Steel Building",
+      "Steel Structure Building Construction",
+      "Steel Rust Prevention and Polishing",
+    ],
     projectIds: ["oakhill-residence", "marina-bay-home"],
   },
 
-  // 4. Kitchens & Bathrooms
+  // ==========================================
+  // 2. Construction Services
+  // ==========================================
   {
-    slug: "kitchens-bathrooms",
-    title: "Kitchens & Bathrooms",
-    tagline: "Precision craftsmanship for the heart of your home.",
-    shortDesc: "Custom cabinetry, stone waterfall islands, and spa-inspired master ensuites.",
-    image: "/s4.jpg",
-    mainHeadline: "Spaces where everyday rituals meet timeless materials.",
+    slug: "construction-services",
+    title: "Construction Services",
+    tagline: "Turnkey general contracting, high-rise buildings, and civil infrastructure.",
+    shortDesc: "End-to-end construction management for high-rise commercial towers, hospitals, power substations, deep piling, and civil works.",
+    image: "/construction.jpg",
+    mainHeadline: "Turnkey Civil Infrastructure & Large-Scale Construction Management",
     introParagraph:
-      "Kitchens and bathrooms demand the highest precision in the home. From custom bookmatched stone to bespoke oak joinery and concealed acoustic plumbing, we create spaces built for both beauty and daily performance.",
-    subHeadline: "Master Joinery & Waterproofing",
+      "Our Construction Services division provides single-point management for commercial high-rises, healthcare facilities, industrial manufacturing complexes, and public infrastructure. We combine engineering excellence, certified equipment, and disciplined site coordination to deliver projects on time and within budget.",
+    subHeadline: "From Deep Groundwork to Structural Topping Out",
     subParagraph1:
-      "Every bathroom undergoes multi-stage waterproofing barrier testing before stone or tile installation begins.",
+      "We execute deep cast-in-situ foundation piling, reinforced concrete superstructures, electrical substation frameworks, and road infrastructure engineered for heavy operational loads.",
     subParagraph2:
-      "Our custom millwork is crafted in-house, ensuring millimeter-precise tolerances and seamless integration with appliances.",
+      "With over 17 years of construction leadership in Bangladesh, our site managers enforce rigorous QA/QC inspections and uncompromising safety protocols across every phase.",
+    features: [
+      "High Rise Building Construction",
+      "Residential Building Construction",
+      "Hospital Building Construction",
+      "Roads and Highway Construction",
+      "Bridge & Culvert Construction",
+      "Power Plant Construction",
+      "Sub Station Construction",
+      "Foundation & Piling Service",
+    ],
     projectIds: ["highgrove-house", "ridgeline-house"],
   },
 
-  // 5. Outdoor Living
+  // ==========================================
+  // 3. Architectural Services
+  // ==========================================
   {
-    slug: "outdoor-living",
-    title: "Outdoor Living",
-    tagline: "Resort-inspired pools, sky gardens, and all-season pavilions.",
-    shortDesc: "Architectural swimming pools, luxury rooftop terraces, and bioclimatic pergolas.",
-    image: "/s5.jpg",
-    mainHeadline: "Extending your living space seamlessly into the open air.",
+    slug: "architectural-services",
+    title: "Architectural Services",
+    tagline: "Functional architectural planning, 3D visualization, and interior modeling.",
+    shortDesc: "Complete building design, 3D photorealistic BIM modeling, sustainable architecture, interior design, and structural analysis.",
+    image: "/Steel-Building-Projects-8.webp",
+    mainHeadline: "Visionary Architectural Aesthetics Grounded in Structural Feasibility",
     introParagraph:
-      "We engineer architectural outdoor spaces that blend indoor comfort with open-air relaxation—including custom swimming pools, sky gardens, sunken fire lounges, and outdoor kitchens.",
-    subHeadline: "Engineering Meets Nature",
+      "BSB's Architectural Services team bridges the gap between creative design and engineering reality. We produce comprehensive architectural layouts, 3D visualizations, and municipal zoning documentation that optimize space, natural lighting, and long-term functionality.",
+    subHeadline: "Photorealistic 3D Modeling & Sustainable Engineering",
     subParagraph1:
-      "Every swimming pool and rooftop retreat is built with 100% leak-proof structural engineering, silent filtration systems, and marine-grade materials.",
+      "Through advanced 3D BIM visualization, clients can virtually inspect their industrial factory or commercial facility before fabrication begins, eliminating costly on-site revisions.",
     subParagraph2:
-      "From automated pergolas to ambient lighting, our outdoor living spaces are designed to be enjoyed across every season.",
-    projectIds: ["crestwood-courtyard", "poolhouse-pavilion"],
+      "Our architects incorporate climate-resilient sustainable design, optimal structural analysis, and interior layout planning to deliver spaces that are both inspiring and efficient.",
+    features: [
+      "Interior Design Services",
+      "Building Design & Drafting",
+      "3D Visualization",
+      "Architectural Planning & Zoning",
+      "Landscape Architecture",
+      "Sustainable Building Design",
+      "Renovation & Restoration Design",
+      "Structural Analysis",
+    ],
+    projectIds: ["oakhill-residence", "ridgeline-house"],
   },
 
-  // 6. Renovations & Additions
+  // ==========================================
+  // Legacy / Direct Aliases (Ensuring no 404s)
+  // ==========================================
   {
-    slug: "renovations-additions",
-    title: "Renovations & Additions",
-    tagline: "Transforming existing structures into modern architectural statements.",
-    shortDesc: "Heritage restoration, rear pavilion extensions, and complete home reinventions.",
-    image: "/s6.jpg",
-    mainHeadline: "Breathing new life into homes while preserving character.",
-    introParagraph:
-      "Extending or renovating a home requires deep architectural sensitivity and structural ingenuity. We seamlessly merge modern living spaces with existing foundations, ensuring structural harmony.",
-    subHeadline: "Seamless Architectural Integration",
-    subParagraph1:
-      "We resolve heritage guidelines, structural load transfers, and energy efficiency upgrades without compromising character.",
-    subParagraph2:
-      "Our experienced builders ensure existing structures are fortified while adding light-filled, open-concept living zones.",
+    slug: "pre-engineered-steel-buildings",
+    title: "Pre-Engineered Steel Buildings (PEB)",
+    tagline: "Custom-designed, factory-manufactured steel frameworks.",
+    shortDesc: "Turnkey PEB solutions for industrial manufacturing sheds, heavy warehouses, and commercial steel buildings.",
+    image: "/s1.jpg",
+    mainHeadline: "Pioneering Pre-Engineered Steel Solutions Across Bangladesh",
+    introParagraph: "Bangladesh Steel Builders Ltd. designs, fabricates, and erects world-class Pre-Engineered Steel Buildings (PEB).",
+    subHeadline: "Engineered for Strength, Speed & Cost Optimization",
+    subParagraph1: "Our PEB frameworks reduce construction timelines by up to 50% compared to traditional concrete.",
+    subParagraph2: "Every column, rafter, and purlin is precision-manufactured in our certified fabrication facility.",
+    features: [
+      "Custom Steel Building Design",
+      "Pre-engineered Steel Building",
+      "Commercial Steel Building Construction",
+      "Residential Steel Building",
+      "Industrial Factory Sheds & Warehouses",
+      "Heavy Load Truss Systems",
+    ],
+    projectIds: ["oakhill-residence", "marina-bay-home"],
+  },
+  {
+    slug: "structural-steel-fabrication",
+    title: "Structural Steel Fabrication & Installation",
+    tagline: "Millimeter-precision steel fabrication and certified erection.",
+    shortDesc: "Certified fabrication of heavy industrial steel beams, high-tensile trusses, and precision on-site erection.",
+    image: "/s2.jpg",
+    mainHeadline: "Heavy Industrial Steel Fabrication Built to Last",
+    introParagraph: "We specialize in heavy structural steel fabrication and erection for industrial plants and infrastructure.",
+    subHeadline: "Master Craftsmanship & Certified Welding",
+    subParagraph1: "Our fabrication works adhere strictly to AISC and BNBC engineering standards.",
+    subParagraph2: "Dedicated crane fleet and certified rigging crews for safe on-site erection.",
+    features: [
+      "Steel Structure Fabrication",
+      "Steel Building Installation",
+      "Steel Structure Building Construction",
+      "High-Tensile Beam Welding",
+      "Heavy Industrial Rigging",
+    ],
+    projectIds: ["highgrove-house", "ridgeline-house"],
+  },
+  {
+    slug: "industrial-commercial-construction",
+    title: "Industrial & Commercial Construction",
+    tagline: "Turnkey civil engineering and high-rise commercial structures.",
+    shortDesc: "Comprehensive construction services for high-rise commercial towers and industrial facilities.",
+    image: "/s3.jpg",
+    mainHeadline: "Turnkey Construction Management from Foundation to Handover",
+    introParagraph: "BSB delivers comprehensive general contracting and construction management.",
+    subHeadline: "Single Point of Engineering Accountability",
+    subParagraph1: "Unified management of steel structures, civil works, and mechanical installations.",
+    subParagraph2: "Milestone-driven construction schedule with zero budget creep.",
+    features: [
+      "High Rise Building Construction",
+      "Residential Building Construction",
+      "Hospital Building Construction",
+      "Commercial Factory Complexes",
+    ],
     projectIds: ["oakhill-residence", "highgrove-house"],
-  },
-
-  // Legacy/Support routes (preserving existing backlinks)
-  {
-    slug: "rooftop-gardens",
-    title: "Rooftop Living & Gardens",
-    tagline: "Your rooftop, transformed into a private sky sanctuary.",
-    shortDesc: "Design-led green roofs, bioclimatic pergolas, and outdoor lounges.",
-    image: "/s7.jpg",
-    mainHeadline: "Biophilic outdoor living engineered for sky terraces.",
-    introParagraph:
-      "Transforming an empty roof requires specialized civil understanding—from structural load calculations to lightweight biophilic landscaping and automated irrigation.",
-    subHeadline: "Precision waterproofing & comfort",
-    subParagraph1:
-      "Every terrace installation features multi-layer waterproof membrane protection and lightweight soil architecture.",
-    subParagraph2:
-      "From motorized cedar pergolas to outdoor kitchens, we create all-weather retreats built to last.",
-    projectIds: ["highgrove-house", "crestwood-courtyard"],
-  },
-  {
-    slug: "custom-swimming-pools",
-    title: "Custom Swimming Pools",
-    tagline: "Architectural infinity pools and spas engineered to perfection.",
-    shortDesc: "Rooftop infinity edge, heated plunge pools, and inground spas.",
-    image: "/s7.jpg",
-    mainHeadline: "Water features engineered with zero-leak precision.",
-    introParagraph:
-      "Whether designing an acrylic glass-walled rooftop infinity pool or a minimalist inground villa oasis, our engineering team ensures zero water loss and crystal filtration.",
-    subHeadline: "Acoustic & Hydraulic Excellence",
-    subParagraph1:
-      "We calculate water movement, pump acoustics, and multi-stage filtration systems so your pool runs quietly.",
-    subParagraph2:
-      "Automated saltwater chlorination and submerged LED mood lighting ensure seamless luxury with minimal maintenance.",
-    projectIds: ["marina-bay-home", "poolhouse-pavilion"],
   },
 ];
