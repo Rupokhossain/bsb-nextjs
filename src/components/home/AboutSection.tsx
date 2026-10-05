@@ -33,7 +33,7 @@ export default function AboutSection({
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold tracking-tight text-neutral-950 leading-[1.25]">
-              We design and build one-of-a-kind custom spaces, rooftop retreats, and luxury pools, guiding you from first sketch to handover with clarity, craftsmanship and care.
+              Bangladesh Steel Builders Ltd. is a pioneer in engineered steel building construction, delivering durable, cost-effective, and bespoke structures nationwide since 2009.
             </h2>
 
             <div className="pt-2">
@@ -66,26 +66,77 @@ export default function AboutSection({
             className="lg:col-span-5 space-y-8 pt-2"
           >
             <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal">
-              Fixed, transparent pricing from day one. A single dedicated engineering team for your whole build. 100% leak-proof structural craftsmanship guaranteed in writing.
+        From custom steel homes to large-scale industrial facilities, we provide made-to-measure solutions that secure durability, efficiency, and guaranteed on-time completion.
             </p>
 
-            <div className="grid grid-cols-2 gap-8 pt-4 border-t border-neutral-100">
-              <div>
-                <span className="block text-4xl sm:text-5xl font-extrabold text-neutral-950 tracking-tight">
-                  15<sup className="text-2xl sm:text-3xl font-bold text-[#E5A53D]">+</sup>
-                </span>
-                <span className="mt-2 block text-xs sm:text-sm text-neutral-500 font-medium leading-snug">
-                  Years Building Custom Spaces
-                </span>
+            {/* 4 STATS GRID (Matching Real Company Data) */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-5 border-t border-neutral-100">
+              {/* Stat 1: 28+ Employees */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-full bg-red-50 text-[#E31E24] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="block text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                    28<sup className="text-lg sm:text-xl font-bold text-[#E5A53D]">+</sup>
+                  </span>
+                  <span className="block text-xs sm:text-sm text-neutral-600 font-medium leading-snug">
+                    Employees
+                  </span>
+                </div>
               </div>
 
-              <div>
-                <span className="block text-4xl sm:text-5xl font-extrabold text-neutral-950 tracking-tight">
-                  250<sup className="text-2xl sm:text-3xl font-bold text-[#E5A53D]">+</sup>
-                </span>
-                <span className="mt-2 block text-xs sm:text-sm text-neutral-500 font-medium leading-snug">
-                  Projects Designed & Built
-                </span>
+              {/* Stat 2: 12+ Programs & Trainings */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-full bg-red-50 text-[#E31E24] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="block text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                    12<sup className="text-lg sm:text-xl font-bold text-[#E5A53D]">+</sup>
+                  </span>
+                  <span className="block text-xs sm:text-sm text-neutral-600 font-medium leading-snug">
+                    Programs & Trainings
+                  </span>
+                </div>
+              </div>
+
+              {/* Stat 3: 112+ Successfully Projects */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-full bg-red-50 text-[#E31E24] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="block text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                    112<sup className="text-lg sm:text-xl font-bold text-[#E5A53D]">+</sup>
+                  </span>
+                  <span className="block text-xs sm:text-sm text-neutral-600 font-medium leading-snug">
+                    Successful Projects
+                  </span>
+                </div>
+              </div>
+
+              {/* Stat 4: 17+ Years of experience */}
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 rounded-full bg-red-50 text-[#E31E24] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="block text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                    17<sup className="text-lg sm:text-xl font-bold text-[#E5A53D]">+</sup>
+                  </span>
+                  <span className="block text-xs sm:text-sm text-neutral-600 font-medium leading-snug">
+                    Years of Experience
+                  </span>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -115,22 +166,22 @@ export default function AboutSection({
             {
               num: "01.",
               title: "Fixed Pricing",
-              desc: "Your price is locked in writing before we break ground. No surprise costs or hidden fees.",
+              desc: "Transparent engineering cost estimation before we break ground. No hidden expenses or surprises.",
             },
             {
               num: "02.",
               title: "Craftsmanship",
-              desc: "Master trades, precision waterproofing, and architectural finishes built to last decades.",
+              desc: "Certified steel fabrication, high-grade structural alloys, and precision welding built to last decades.",
             },
             {
               num: "03.",
               title: "One Team",
-              desc: "A single dedicated team of engineers and architects owns your build from end to end.",
+              desc: "A single dedicated team of structural engineers and architects oversees your project end to end.",
             },
             {
               num: "04.",
               title: "On Time",
-              desc: "Clear milestone schedules and weekly photo/video progress updates, start to finish.",
+              desc: "Strict milestone adherence, modern erection technology, and guaranteed on-time project handover.",
             },
           ].map((pillar, idx) => (
             <motion.div

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 interface NavbarProps {
@@ -53,25 +54,24 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
       }`}
     >
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
-        {/* Brand Text Logo (BSB) */}
-        <Link href="/" className="flex items-center gap-2 group">
+        {/* Brand Logo & Full Company Name */}
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group py-1">
+          <Image
+            src="/logo.png"
+            alt="Bangladesh Steel Builders Ltd."
+            width={64}
+            height={48}
+            className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
+            priority
+          />
           <span
-            className={`text-2xl font-black tracking-tight transition-colors ${
-              isScrolledOrLight
-                ? "text-neutral-950 group-hover:text-[#E5A53D]"
-                : "text-white group-hover:text-[#E5A53D]"
+            className={`text-[11px] sm:text-xs md:text-sm lg:text-[15px] font-extrabold uppercase tracking-tight leading-none transition-colors whitespace-nowrap ${
+              isScrolledOrLight ? "text-[#006837]" : "text-white"
             }`}
           >
-            BSB
-          </span>
-          <span
-            className={`text-[10px] tracking-widest uppercase font-semibold border-l pl-2 transition-colors ${
-              isScrolledOrLight
-                ? "text-neutral-500 border-neutral-300"
-                : "text-slate-200 border-white/30"
-            }`}
-          >
-            Outdoor Living
+            <span>BANGLADESH </span>
+            <span className="text-[#E31E24]">STEEL </span>
+            <span>BUILDERS LTD.</span>
           </span>
         </Link>
 

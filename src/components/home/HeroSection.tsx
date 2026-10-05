@@ -46,7 +46,7 @@ export default function HeroSection({
             className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-[1.2] lg:leading-[1.16] uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
           >
             We Build <br />
-            Spaces Made To <br />
+            Stand Strong To <br />
             Last A Lifetime
           </motion.h1>
 
@@ -57,7 +57,7 @@ export default function HeroSection({
             transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
             className="max-w-xl text-sm sm:text-base lg:text-lg text-white/95 leading-relaxed font-normal drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]"
           >
-            From luxury rooftop retreats and custom swimming pools to complete architectural outdoor living, we craft bespoke spaces with fixed pricing and true craftsmanship.
+            We are committed to providing excellence in the construction industry. We are dedicated to providing strong, innovative and cost-effective solutions to meet the incomparable needs of our clients in the design and construction of steel buildings. accumsan id imperdiet et, porttitor at sem.
           </motion.p>
 
           {/* Call to Action Button */}

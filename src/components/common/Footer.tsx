@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -9,14 +10,20 @@ export default function Footer() {
           
           {/* Col 1: Brand & Bio */}
           <div className="space-y-5">
-            <Link href="/" className="flex items-center gap-2 group">
-              <span className="text-2xl font-black tracking-tight text-white group-hover:text-amber-400 transition-colors">
-                BSB
+            {/* <Link href="/" className="inline-flex items-center gap-3 group py-1">
+              <Image
+                src="/logo.png"
+                alt="Bangladesh Steel Builders Ltd."
+                width={64}
+                height={48}
+                className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              /> */}
+              <span className="text-sm sm:text-base font-extrabold uppercase tracking-tight leading-none text-white whitespace-nowrap">
+                <span>BANGLADESH </span>
+                <span className="text-[#E31E24]">STEEL </span>
+                <span>BUILDERS LTD.</span>
               </span>
-              <span className="text-[10px] tracking-widest text-slate-300 uppercase font-semibold border-l border-white/30 pl-2">
-                Outdoor Living
-              </span>
-            </Link>
+            
 
             <p className="text-sm text-neutral-400 leading-relaxed font-light">
               We design and construct bespoke architectural spaces, luxury rooftop retreats, and custom swimming pools with 100% leak-proof precision and timeless craftsmanship.

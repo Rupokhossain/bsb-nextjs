@@ -12,113 +12,153 @@ import {
 } from "@/components/common/MotionWrapper";
 
 export const metadata = {
-  title: "About Us | BSB Architectural Living & Custom Builders",
+  title: "About Us | Bangladesh Steel Builders Ltd. (BSB)",
   description:
-    "We build every home the way we'd build our own. Discover our story, leadership, and obsessive craftsmanship.",
+    "Discover Bangladesh Steel Builders Ltd. (BSB) — pioneering pre-engineered steel buildings, industrial factories, and custom structures across Bangladesh since 2009.",
 };
 
 // 📸 Image Configuration:
 const aboutImages = {
   heroBg: "/about-banner.jpg",
   whoWeAre: "/about1.jpg",
+  founder: "/S.M-Anayet.webp",
+  vision: "/vision.jpg",
+  mission: "/mission.jpg",
   journeySite: "/about2.jpg",
   bottomBanner: "/about-bottom.jpg",
 };
 
 // Specialty tags under Who We Are
 const specialties = [
-  "Architectural Design",
-  "Construction Management",
-  "Custom Home Building",
-  "Kitchens & Bathrooms",
-  "Outdoor Living",
-  "Renovations & Additions",
+  "Pre-Engineered Buildings (PEB)",
+  "Industrial Factories & Sheds",
+  "Commercial Multi-Storey Buildings",
+  "Heavy Steel Warehouses",
+  "Custom Residential Steel Homes",
+  "Structural Steel Fabrication",
 ];
 
-// 4 Core Principles
-const principles = [
+// Why Choose BSB - 4 Core Pillars
+const whyChoosePillars = [
   {
-    title: "Design-Led Thinking",
-    desc: "We turn complex briefs into clear, buildable, design-led plans.",
+    title: "Pioneering Steel Expertise",
+    desc: "Over 17 years of leadership in structural steel fabrication, delivering certified, robust frameworks engineered for maximum safety.",
     icon: (
-      <svg className="w-5 h-5 text-neutral-800" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      <svg
+        className="w-5 h-5 text-[#E31E24]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+        />
       </svg>
     ),
   },
   {
-    title: "Client Commitment",
-    desc: "Every home is handled with attention, care and a focus on real outcomes.",
+    title: "Tailored Custom Engineering",
+    desc: "From complex manufacturing facilities to bespoke commercial spaces, every structure is made-to-measure for your operational needs.",
     icon: (
-      <svg className="w-5 h-5 text-neutral-800" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+      <svg
+        className="w-5 h-5 text-[#E31E24]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"
+        />
       </svg>
     ),
   },
   {
-    title: "Proven Experience",
-    desc: "Our experience ensures reliable, high-quality building across every project.",
+    title: "Cost-Effective & Sustainable",
+    desc: "Optimized PEB structural modeling and advanced fabrication reduce material wastage and deliver lasting cost efficiency.",
     icon: (
-      <svg className="w-5 h-5 text-neutral-800" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
+      <svg
+        className="w-5 h-5 text-[#E31E24]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
       </svg>
     ),
   },
   {
-    title: "Clear Communication",
-    desc: "We keep clarity and consistency throughout every stage of the build.",
+    title: "Guaranteed Timely Handover",
+    desc: "Rigorous milestone scheduling, dedicated project supervisors, and precision erection guarantee project completion strictly on schedule.",
     icon: (
-      <svg className="w-5 h-5 text-neutral-800" fill="none" stroke="currentColor" strokeWidth={1.75} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.502 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+      <svg
+        className="w-5 h-5 text-[#E31E24]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
       </svg>
     ),
   },
 ];
 
-// Leadership Team Members
+// Key Executive Leadership
 const leadershipMembers = [
   {
-    name: "Marcus Hale",
-    role: "Founder & Principal Builder",
-    specialty: "Architectural Design",
-    image: "/team1.png",
+    name: "Umme Habiba",
+    role: "Chairwoman",
+    image: "/Chairwoman.webp",
   },
   {
-    name: "Daniel Reyes",
-    role: "Lead Architect",
-    specialty: "Renovations & Additions",
-    image: "/team2.png",
+    name: "S.M. Anayet",
+    role: "Founder & Managing Director",
+    image: "/founder.jpg",
   },
   {
-    name: "Nathan Brooks",
-    role: "Design Director",
-    specialty: "Kitchens & Bathrooms",
-    image: "/team3.png",
+    name: "Nayeem Rezvan",
+    role: "Director",
+    image: "/Director.webp",
   },
   {
-    name: "Owen Carter",
-    role: "Senior Project Manager",
-    specialty: "Custom Home Building",
-    image: "/team4.png",
+    name: "Shoaib Hossen Yamin",
+    role: "Founder & Managing Director",
+    image: "/ED - Executive Director.webp",
   },
-  {
-    name: "Ethan Walsh",
-    role: "Construction Manager",
-    specialty: "Outdoor Living",
-    image: "/team5.png",
-  },
-  {
-    name: "Cole Bennett",
-    role: "Site Superintendent",
-    specialty: "Construction Management",
-    image: "/team6.png",
-  },
-  {
-    name: "Liam Foster",
-    role: "Interior Designer",
-    specialty: "Kitchens & Bathrooms",
-    image: "/team7.png",
-  },
+];
+
+// Esteemed Clients & Industrial Partners (c1.png to c15.jpg in public/)
+const clientLogos = [
+  { id: 1, name: "Prime Pusti Limited", src: "/c1.png" },
+  { id: 2, name: "Advance Tech Ltd.", src: "/c2.png" },
+  { id: 3, name: "HR Jute Mills Pvt. Limited", src: "/c3.jpg" },
+  { id: 4, name: "Hasan Jute Mills Limited", src: "/c4.jpg" },
+  { id: 5, name: "Ayesha Knit Composite", src: "/c5.jpg" },
+  { id: 6, name: "Industrial Partner 6", src: "/c6.jpg" },
+  { id: 7, name: "Industrial Partner 7", src: "/c7.jpg" },
+  { id: 8, name: "Industrial Partner 8", src: "/c8.jpg" },
+  { id: 9, name: "Industrial Partner 9", src: "/c9.jpg" },
+  { id: 10, name: "Industrial Partner 10", src: "/c10.jpg" },
+  { id: 11, name: "Industrial Partner 11", src: "/c11.jpg" },
+  { id: 12, name: "Industrial Partner 12", src: "/c12.jpg" },
+  { id: 13, name: "Industrial Partner 13", src: "/c13.jpg" },
+  { id: 14, name: "Industrial Partner 14", src: "/c14.jpg" },
+  { id: 15, name: "Industrial Partner 15", src: "/c15.jpg" },
 ];
 
 export default function AboutPage() {
@@ -136,9 +176,9 @@ export default function AboutPage() {
           <HeroZoom className="relative w-full h-full">
             <Image
               src={aboutImages.heroBg}
-              alt="BSB Architectural Luxury Home"
+              alt="Bangladesh Steel Builders Ltd. Infrastructure"
               fill
-              className="object-cover object-center opacity-45"
+              className="object-cover object-center opacity-40"
               priority
               sizes="100vw"
             />
@@ -149,18 +189,171 @@ export default function AboutPage() {
         <HeroMotion className="relative z-10 max-w-4xl mx-auto px-6 sm:px-10 text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-            <span>WHY BSB</span>
+            <span>BUILT TO STAND STRONG</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-[58px] font-extrabold tracking-tight text-white uppercase leading-[1.12] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
-            We Build Every Home The Way <br className="hidden sm:inline" />
-            We&apos;d Build Our Own
+          <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-white uppercase leading-[1.12] drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+            Engineering Steel Structures <br className="hidden sm:inline" />
+            Built To Stand For Generations
           </h1>
 
           <p className="text-sm sm:text-base lg:text-lg text-white/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
-            Fixed pricing, real craftsmanship and one accountable team — the standards BSB was founded on.
+            Pioneering pre-engineered steel buildings, heavy industrial
+            infrastructure, and sustainable commercial architecture across
+            Bangladesh since 2009.
           </p>
         </HeroMotion>
+      </section>
+
+      {/* 3. OUR FOUNDER SECTION */}
+      {/* ============================================================ */}
+      <section className="py-24 sm:py-32 bg-[#FBFBFA] border-t border-neutral-200/70">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left: Founder Portrait Card */}
+            <FadeIn className="lg:col-span-5">
+              <div className="relative rounded-sm overflow-hidden bg-neutral-900 shadow-xl border border-neutral-200/80 group">
+                <div className="relative aspect-[4/4.5] w-full overflow-hidden bg-neutral-950">
+                  <Image
+                    src={aboutImages.founder}
+                    alt="S.M. Anayet - Founder of Bangladesh Steel Builders Ltd."
+                    fill
+                    className="object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                    priority
+                  />
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" /> */}
+                </div>
+
+                {/* Floating Badge */}
+                <div className="absolute bottom-5 left-5 right-5 p-4 rounded-sm bg-neutral-950/90 backdrop-blur-md border border-white/10 text-white space-y-1">
+                  {/* <div className="text-xs uppercase tracking-widest text-[#E5A53D] font-bold">
+                    Leadership & Vision
+                  </div> */}
+                  <div className="text-xl font-extrabold tracking-tight">
+                    S.M. Anayet
+                  </div>
+                  <div className="text-xs text-neutral-300 font-light">
+                    Founder & Managing Director • 17+ Years Industry Experience
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Right: Founder Story & Vision */}
+            <FadeIn delay={0.15} className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-black inline-block" />
+                <span>OUR FOUNDER</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 uppercase leading-tight">
+                Pioneering Ingenuity <br />& Structural Integrity
+              </h2>
+
+              <div className="space-y-4 text-neutral-600 font-light text-base sm:text-lg leading-relaxed">
+                <p>
+                  Founded by{" "}
+                  <strong className="font-semibold text-neutral-950">
+                    S.M. Anayet
+                  </strong>
+                  , a visionary passionate about structural precision and
+                  world-class building standards, Bangladesh Steel Builders Ltd.
+                  was established to transform the commercial and industrial
+                  landscape through sustainable steel engineering.
+                </p>
+                <p>
+                  With more than 17 years of leadership across the construction
+                  and steel fabrication sector, Mr. Anayet has steered BSB with
+                  an unyielding commitment to delivering projects on schedule,
+                  within budget, and to the highest safety and engineering
+                  benchmarks.
+                </p>
+              </div>
+
+              {/* Blockquote */}
+              <div className="p-5 rounded-sm bg-neutral-100/80 border-l-4 border-[#006837] space-y-2">
+                <p className="text-sm sm:text-base font-medium text-neutral-900 italic leading-snug">
+                  “Our reputation for excellence is founded on a devotion to
+                  creative designs, certified craftsmanship, and on-time project
+                  completion — making us the dependable partner for nationwide
+                  industries.”
+                </p>
+                <span className="block text-xs font-bold text-neutral-500 uppercase tracking-wider">
+                  — S.M. Anayet, Founder
+                </span>
+              </div>
+
+              {/* Consultation Button & Social Links */}
+              <div className="pt-2 flex flex-wrap items-center gap-5">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center rounded-sm bg-[#E5A53D] text-neutral-950 font-bold text-sm px-6 py-3 transition-all active:scale-95 shadow-md"
+                >
+                  <span>Book Consultation With Us</span>
+                </Link>
+
+                <div className="flex items-center gap-2.5 text-neutral-500">
+                  <span className="text-xs uppercase tracking-wider font-semibold mr-1">
+                    Follow:
+                  </span>
+                  
+                  {/* Facebook */}
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="w-9 h-9 rounded-sm bg-neutral-100 hover:bg-[#1877F2] hover:text-white text-neutral-600 flex items-center justify-center transition-all shadow-sm border border-neutral-200/80 active:scale-95 group"
+                  >
+                    <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                    </svg>
+                  </a>
+
+                  {/* Twitter / X */}
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter / X"
+                    className="w-9 h-9 rounded-sm bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-600 flex items-center justify-center transition-all shadow-sm border border-neutral-200/80 active:scale-95 group"
+                  >
+                    <svg className="w-3.5 h-3.5 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                  </a>
+
+                  {/* YouTube */}
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                    className="w-9 h-9 rounded-sm bg-neutral-100 hover:bg-[#FF0000] hover:text-white text-neutral-600 flex items-center justify-center transition-all shadow-sm border border-neutral-200/80 active:scale-95 group"
+                  >
+                    <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </a>
+
+                  {/* LinkedIn */}
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="w-9 h-9 rounded-sm bg-neutral-100 hover:bg-[#0A66C2] hover:text-white text-neutral-600 flex items-center justify-center transition-all shadow-sm border border-neutral-200/80 active:scale-95 group"
+                  >
+                    <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.53 1.53 0 1 0 0-3.06 1.53 1.53 0 0 0 0 3.06m1.39 9.74v-8.37H5.07v8.37h2.78z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
       </section>
 
       {/* ============================================================ */}
@@ -168,7 +361,6 @@ export default function AboutPage() {
       {/* ============================================================ */}
       <section className="py-24 sm:py-32 bg-white border-t border-neutral-100">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12 sm:space-y-16">
-          
           {/* Header Row: Badge & Large Headline */}
           <FadeIn className="space-y-4 max-w-5xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
@@ -177,19 +369,19 @@ export default function AboutPage() {
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight text-neutral-950 leading-[1.25]">
-              BSB was built on one principle — craftsmanship drives everything. We design and build custom homes with transparency, care and an obsessive eye for detail.
+              A Decade & A Half of Pioneering Steel Building Construction,
+              Precision Engineering, and Nationwide Trust.
             </h2>
           </FadeIn>
 
           {/* 2 Columns: Left Photo + Right Details */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            
-            {/* Left Column: Modern Living Room / Interior Photo */}
+            {/* Left Column: Industrial Construction Site Photo */}
             <FadeIn delay={0.1} className="lg:col-span-6">
               <div className="relative h-[340px] sm:h-[440px] lg:h-[480px] w-full rounded-sm overflow-hidden bg-neutral-100 shadow-md">
                 <Image
                   src={aboutImages.whoWeAre}
-                  alt="BSB Architectural Interior"
+                  alt="BSB Steel Fabrication and Construction"
                   fill
                   className="object-cover object-center hover:scale-105 transition-transform duration-700 ease-out"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -213,7 +405,12 @@ export default function AboutPage() {
 
               {/* Description Paragraph */}
               <p className="text-base sm:text-lg text-neutral-600 font-light leading-relaxed">
-                BSB is a design-build custom home builder delivering bespoke homes, rooftop retreats, and luxury renovations for families who value quality, honesty and homes made to last.
+                Established in 2009, Bangladesh Steel Builders Ltd. (BSB) stands
+                as a prominent name in structural steel fabrication and
+                pre-engineered buildings. From custom residential steel homes to
+                sprawling industrial manufacturing plants and high-capacity
+                warehouses, we deliver turnkey solutions tailored for maximum
+                durability, cost efficiency, and structural safety.
               </p>
 
               {/* Contact Us Button */}
@@ -222,50 +419,174 @@ export default function AboutPage() {
                   href="/contact"
                   className="inline-flex items-center rounded-sm bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-sm pl-5 pr-1.5 py-1.5 transition-all group active:scale-95 shadow-sm"
                 >
-                  <span>Contact Us</span>
+                  <span>Consult an Engineer</span>
                   <div className="ml-4 w-8 h-8 rounded-sm bg-white flex items-center justify-center text-neutral-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M7 17L17 7M17 7H7M17 7V17"
+                      />
                     </svg>
                   </div>
                 </Link>
               </div>
             </FadeIn>
-
           </div>
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* 3. PRINCIPLES THAT DEFINE OUR APPROACH */}
+
       {/* ============================================================ */}
-      <section className="py-24 sm:py-32 bg-[#F9F8F6] border-t border-neutral-200/60">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16 sm:space-y-20">
-          
-          {/* Centered Header */}
+      {/* 4. VISION & MISSION DUAL CARDS */}
+      {/* ============================================================ */}
+      <section className="py-24 sm:py-32 bg-white border-t border-neutral-100">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16">
           <FadeIn className="text-center space-y-4 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-              <span>WHAT DRIVES US</span>
+              <span>CORE PURPOSE</span>
             </div>
-
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 uppercase leading-tight">
-              Principles That <br />
-              Define Our Approach
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 uppercase">
+              Our Vision & Mission
             </h2>
           </FadeIn>
 
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+            {/* Vision Card */}
+            <FadeIn
+              delay={0.1}
+              className="flex flex-col rounded-sm overflow-hidden border border-neutral-200/90 shadow-md group bg-[#FAF9F6]"
+            >
+              <div className="relative h-[260px] sm:h-[300px] w-full overflow-hidden bg-neutral-900">
+                <Image
+                  src={aboutImages.vision}
+                  alt="Our Vision - Bangladesh Steel Builders Ltd."
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-sm bg-white text-black text-xs font-bold uppercase tracking-wider shadow">
+                  OUR VISION
+                </div>
+              </div>
+              <div className="p-8 sm:p-10 space-y-4 flex-1 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-950">
+                    To Pioneer Sustainable & Modern Steel Building Solutions
+                  </h3>
+                  <p className="text-sm sm:text-base text-neutral-600 font-light leading-relaxed">
+                    Our vision is to be the foremost leader in pre-engineered
+                    steel buildings across Bangladesh, celebrated for
+                    innovation, structural resilience, and an unwavering
+                    commitment to environmental sustainability and technological
+                    advancement.
+                  </p>
+                </div>
+                <div className="pt-2 text-xs font-bold text-[#006837] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#006837]" />
+                  <span>Redefining The Construction Industry</span>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Mission Card */}
+            <FadeIn
+              delay={0.2}
+              className="flex flex-col rounded-sm overflow-hidden border border-neutral-200/90 shadow-md group bg-[#FAF9F6]"
+            >
+              <div className="relative h-[260px] sm:h-[300px] w-full overflow-hidden bg-neutral-900">
+                <Image
+                  src={aboutImages.mission}
+                  alt="Our Mission - Bangladesh Steel Builders Ltd."
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute top-4 left-4 px-3 py-1 rounded-sm bg-white text-black text-xs font-bold uppercase tracking-wider shadow">
+                  OUR MISSION
+                </div>
+              </div>
+              <div className="p-8 sm:p-10 space-y-4 flex-1 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-950">
+                    Precision Fabrication & Guaranteed On-Time Delivery
+                  </h3>
+                  <p className="text-sm sm:text-base text-neutral-600 font-light leading-relaxed">
+                    At Bangladesh Steel Builders Ltd., our mission is to deliver
+                    superior steel building solutions that surpass customer
+                    expectations. We engineer innovative designs, supply
+                    certified high-grade materials, and uphold international
+                    safety standards across every industrial, commercial, and
+                    residential endeavor.
+                  </p>
+                </div>
+                <div className="pt-2 text-xs font-bold text-[#E31E24] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#E31E24]" />
+                  <span>Uncompromising Quality & Client Trust</span>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 5. WHY CHOOSE BSB (Built to Stand Strong) */}
+      {/* ============================================================ */}
+      <section className="py-24 sm:py-32 bg-[#F9F8F6] border-t border-neutral-200/60">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16 sm:space-y-20">
+          {/* Header Row: Left Title & Right Description */}
+          <FadeIn className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950text-xs font-bold tracking-wider uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-black inline-block" />
+                <span>BUILT TO STAND STRONG</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 uppercase leading-tight">
+                Why Choose Bangladesh <br className="hidden sm:inline" />
+                Steel Builders Ltd.?
+              </h2>
+            </div>
+            <div className="lg:col-span-5 space-y-4">
+              <p className="text-sm sm:text-base text-neutral-600 font-light leading-relaxed">
+                Industrial entrepreneurs, corporate developers, and homeowners
+                rely on BSB for bespoke engineering, cost-effective structural
+                steel fabrication, and reliable turnkey execution.
+              </p>
+              <div>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#006837] hover:text-[#00502a] transition-colors underline underline-offset-4"
+                >
+                  <span>Explore Our Steel Services</span>
+                  <span>→</span>
+                </Link>
+              </div>
+            </div>
+          </FadeIn>
+
           {/* 4 Pillars Grid with Staggered Motion */}
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-            {principles.map((item, idx) => (
-              <StaggerItem key={idx} className="space-y-4 p-4 rounded-sm bg-white/60 hover:bg-white shadow-sm border border-neutral-100 transition-all">
-                {/* Icon in light square */}
-                <div className="w-10 h-10 rounded-sm bg-white border border-neutral-200/80 shadow-sm flex items-center justify-center">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {whyChoosePillars.map((item, idx) => (
+              <StaggerItem
+                key={idx}
+                className="space-y-4 p-6 rounded-sm bg-white hover:bg-neutral-50 shadow-sm border border-neutral-200/70 transition-all group"
+              >
+                {/* Icon in circle */}
+                <div className="w-12 h-12 rounded-full bg-red-50  group-hover:text-white transition-colors flex items-center justify-center">
                   {item.icon}
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold text-neutral-950">
+                  <h3 className="text-lg font-bold text-neutral-950 group-hover:text-[#006837] transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed">
@@ -275,30 +596,26 @@ export default function AboutPage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
-
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* 4. OUR JOURNEY BANNER */}
+      {/* 6. OUR JOURNEY & INFRASTRUCTURE BANNER */}
       {/* ============================================================ */}
-      <section className="py-20 sm:py-28 bg-white border-t border-neutral-100">
+      {/* <section className="py-20 sm:py-28 bg-white border-t border-neutral-100">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
           <FadeIn>
             <div className="grid grid-cols-1 lg:grid-cols-12 rounded-sm overflow-hidden shadow-lg border border-neutral-100 bg-[#FAF9F6]">
-              
-              {/* Left Photo */}
               <div className="lg:col-span-5 relative min-h-[320px] sm:min-h-[420px] bg-neutral-200 group overflow-hidden">
                 <Image
                   src={aboutImages.journeySite}
-                  alt="BSB Building Journey on Construction Site"
+                  alt="BSB Steel Erection Site"
                   fill
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   sizes="(max-width: 1024px) 100vw, 42vw"
                 />
               </div>
 
-              {/* Right Card */}
               <div className="lg:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-center space-y-6">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase w-fit">
                   <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
@@ -306,44 +623,54 @@ export default function AboutPage() {
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-neutral-950 leading-snug">
-                  A Commitment That Guides Everything We Do.
+                  From Foundational Roots To Industry Leadership Across
+                  Bangladesh.
                 </h3>
 
                 <p className="text-sm sm:text-base text-neutral-600 font-light leading-relaxed">
-                  Founded with a vision to build homes the right way, BSB has grown into a trusted design-build studio known for craftsmanship, transparent pricing and homes families love for a lifetime.
+                  Founded with a mission to deliver resilient steel
+                  infrastructure, Bangladesh Steel Builders Ltd. has
+                  successfully handed over hundreds of industrial, commercial,
+                  and residential structures nationwide. Our adherence to
+                  stringent engineering standards has earned us lasting
+                  relationships with industry leaders.
                 </p>
-              </div>
 
+                <div className="pt-2">
+                  <Link
+                    href="/projects"
+                    className="inline-flex items-center rounded-sm bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-xs sm:text-sm px-6 py-3 transition-all active:scale-95 shadow-sm"
+                  >
+                    <span>View Completed Projects</span>
+                  </Link>
+                </div>
+              </div>
             </div>
           </FadeIn>
         </div>
-      </section>
+      </section> */}
 
       {/* ============================================================ */}
-      {/* 5. LEADERSHIP SECTION */}
+      {/* 7. LEADERSHIP TEAM SECTION */}
       {/* ============================================================ */}
       <section className="py-24 sm:py-32 bg-[#F9F8F6] border-t border-neutral-200/60">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16 sm:space-y-20">
-          
           {/* Header Row */}
           <FadeIn className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-                <span>LEADERSHIP</span>
+                <span>EXECUTIVE LEADERSHIP</span>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 uppercase leading-none">
-                Experienced Builders, <br />
-                Trusted Craftsmanship
+                Experienced Engineers
+                <br />
+                Trusted Leadership
               </h2>
             </div>
-
-            <p className="text-sm sm:text-base text-neutral-600 max-w-xs font-light leading-relaxed">
-              Experienced leaders guiding every build with clarity and precision.
-            </p>
           </FadeIn>
 
-          {/* Leadership 8-Card Grid with Staggered Motion */}
+          {/* Leadership Grid with Staggered Motion */}
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 items-start">
             {leadershipMembers.map((member, idx) => (
               <StaggerItem key={idx} className="space-y-3 group">
@@ -355,13 +682,13 @@ export default function AboutPage() {
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
-                  <div className="absolute bottom-3 left-3 z-10 px-2.5 py-1 rounded-sm bg-neutral-950/85 backdrop-blur-sm text-white text-[11px] font-medium tracking-normal shadow-sm">
+                  {/* <div className="absolute bottom-3 left-3 z-10 px-2.5 py-1 rounded-sm bg-neutral-950/85 backdrop-blur-sm text-white text-[11px] font-medium tracking-normal shadow-sm">
                     {member.specialty}
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="space-y-0.5 pt-0.5">
-                  <h4 className="text-base sm:text-[17px] font-bold text-neutral-950 group-hover:text-[#E5A53D] transition-colors">
+                  <h4 className="text-base sm:text-[17px] font-bold text-neutral-950 group-hover:text-[#006837] transition-colors">
                     {member.name}
                   </h4>
                   <p className="text-xs sm:text-sm text-neutral-500 font-normal">
@@ -370,39 +697,122 @@ export default function AboutPage() {
                 </div>
               </StaggerItem>
             ))}
-
-            {/* 8th Card: Gold CTA Card */}
-            <StaggerItem className="space-y-3">
-              <div className="relative aspect-[4/4.5] w-full rounded-sm overflow-hidden bg-[#F2AC3E] p-6 sm:p-7 flex flex-col justify-end text-neutral-950 shadow-sm group hover:bg-[#e69f30] transition-colors">
-                <div className="space-y-3">
-                  <p className="text-sm sm:text-base font-semibold text-neutral-950 leading-snug">
-                    Meet the architects and builders behind BSB
-                  </p>
-                  <div>
-                    <Link
-                      href="/team"
-                      className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-neutral-950 underline underline-offset-4 hover:opacity-80 transition-opacity"
-                    >
-                      <span>Meet The Team</span>
-                      <span className="text-sm leading-none">↗</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </StaggerItem>
           </StaggerContainer>
-
         </div>
       </section>
 
       {/* ============================================================ */}
-      {/* 6. READY TO WORK WITH US? BANNER */}
+      {/* 8. OUR CLIENTS & INDUSTRIAL PARTNERS */}
+      {/* ============================================================ */}
+      <section className="py-24 sm:py-32 bg-[#FBFBFA] border-t border-neutral-200/70 overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12 sm:space-y-16">
+          {/* Header Row */}
+          <FadeIn className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
+            <div className="space-y-4 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
+                <span>HONORED CLIENTS & PARTNERS</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 uppercase leading-tight">
+                Trusted by Bangladesh&apos;s
+                <br />
+                Leading Enterprises
+              </h2>
+            </div>
+            <div className="max-w-md space-y-2">
+              <p className="text-sm sm:text-base text-neutral-600 font-light leading-relaxed">
+                From major textile mills and agro-conglomerates to heavy industrial facilities, we build enduring partnerships grounded in engineering precision and guaranteed project delivery.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* Quick Trust Highlights Strip */}
+          <FadeIn delay={0.1}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 py-6 px-6 sm:px-8 bg-white rounded-sm border border-neutral-200/70 shadow-xs">
+              <div className="space-y-1">
+                <div className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                  150<span className="text-[#E31E24]">+</span>
+                </div>
+                <div className="text-xs sm:text-sm text-neutral-500 font-medium">
+                  Steel Projects Completed
+                </div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                  17<span className="text-[#E5A53D]">+</span>
+                </div>
+                <div className="text-xs sm:text-sm text-neutral-500 font-medium">
+                  Years of Industry Trust
+                </div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                  100<span className="text-[#006837]">%</span>
+                </div>
+                <div className="text-xs sm:text-sm text-neutral-500 font-medium">
+                  Structural Safety Certified
+                </div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                  64<span className="text-[#E31E24]">+</span>
+                </div>
+                <div className="text-xs sm:text-sm text-neutral-500 font-medium">
+                  Districts Covered Nationwide
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Single-Track Smooth Infinite Marquee Ticker with Side Gradient Masks */}
+        <div className="relative mt-12 sm:mt-16 w-full overflow-hidden py-4">
+          {/* Left & Right Gradient Edge Fades */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 sm:w-36 lg:w-48 z-20 bg-gradient-to-r from-[#FBFBFA] via-[#FBFBFA]/80 to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 sm:w-36 lg:w-48 z-20 bg-gradient-to-l from-[#FBFBFA] via-[#FBFBFA]/80 to-transparent" />
+
+          {/* Single Continuous Seamless Marquee Track */}
+          <div className="flex gap-5 sm:gap-7 animate-marquee">
+            {[...clientLogos, ...clientLogos].map((client, idx) => (
+              <div
+                key={`client-${client.id}-${idx}`}
+                className="group/card flex-shrink-0 w-52 sm:w-64 h-24 sm:h-28 px-6 py-4 rounded-sm bg-white border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-[#E5A53D]/80 transition-all duration-300 flex items-center justify-center relative cursor-pointer"
+              >
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <Image
+                    src={client.src}
+                    alt={client.name}
+                    fill
+                    className="object-contain p-1 group-hover/card:scale-105 transition-transform duration-300"
+                    sizes="256px"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Consultation Callout */}
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 text-center">
+          <p className="text-xs sm:text-sm text-neutral-500 font-light">
+            Ready to partner with Bangladesh&apos;s leading steel building fabricator?{" "}
+            <Link
+              href="/contact"
+              className="font-semibold text-neutral-950 underline underline-offset-4 hover:text-[#006837] transition-colors"
+            >
+              Discuss your project requirements with our engineering team →
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* 9. READY TO WORK WITH US? BANNER */}
       {/* ============================================================ */}
       <section className="py-16 sm:py-24 bg-white border-t border-neutral-100">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
           <FadeIn>
             <div className="relative w-full rounded-sm overflow-hidden min-h-[420px] sm:min-h-[480px] lg:min-h-[520px] p-8 sm:p-12 lg:p-16 flex flex-col justify-end shadow-md">
-              
               <div className="absolute inset-0 z-0">
                 <Image
                   src={aboutImages.bottomBanner}
@@ -413,18 +823,19 @@ export default function AboutPage() {
                   priority
                 />
                 <div className="absolute inset-0 bg-neutral-950/20" />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/75 via-neutral-950/25 to-transparent sm:bg-gradient-to-r sm:from-neutral-950/80 sm:via-neutral-950/30 sm:to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-neutral-950/30 to-transparent sm:bg-gradient-to-r sm:from-neutral-950/85 sm:via-neutral-950/35 sm:to-transparent" />
               </div>
 
               <div className="relative z-10 w-full flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8">
-                
                 <div className="space-y-4 max-w-lg">
                   <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white uppercase leading-[1.05] drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
                     READY TO WORK <br />
                     WITH US?
                   </h2>
                   <p className="text-xs sm:text-sm text-white/95 font-light leading-relaxed max-w-sm drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
-                    We believe every family deserves a home built with care. Take the next step and start the conversation with our team.
+                    Every commercial and industrial facility deserves precision
+                    structural engineering. Take the next step and consult with
+                    our principal engineers.
                   </p>
                 </div>
 
@@ -435,15 +846,23 @@ export default function AboutPage() {
                   >
                     <span>Book a Consultation</span>
                     <div className="ml-3 sm:ml-4 w-7 h-7 rounded-sm bg-neutral-950 flex items-center justify-center text-[#E5A53D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                      <svg
+                        className="w-3.5 h-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M7 17L17 7M17 7H7M17 7V17"
+                        />
                       </svg>
                     </div>
                   </Link>
                 </div>
-
               </div>
-
             </div>
           </FadeIn>
         </div>
