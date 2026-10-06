@@ -10,6 +10,7 @@ import {
   StaggerContainer,
   StaggerItem,
 } from "@/components/common/MotionWrapper";
+import ClientsSection from "@/components/home/ClientsSection";
 
 export const metadata = {
   title: "About Us | Bangladesh Steel Builders Ltd. (BSB)",
@@ -45,7 +46,7 @@ const whyChoosePillars = [
     desc: "Over 17 years of leadership in structural steel fabrication, delivering certified, robust frameworks engineered for maximum safety.",
     icon: (
       <svg
-        className="w-5 h-5 text-[#E31E24]"
+        className="w-5 h-5 text-[#E5A53D]"
         fill="none"
         stroke="currentColor"
         strokeWidth={2}
@@ -64,7 +65,7 @@ const whyChoosePillars = [
     desc: "From complex manufacturing facilities to bespoke commercial spaces, every structure is made-to-measure for your operational needs.",
     icon: (
       <svg
-        className="w-5 h-5 text-[#E31E24]"
+        className="w-5 h-5 text-[#E5A53D]"
         fill="none"
         stroke="currentColor"
         strokeWidth={2}
@@ -83,7 +84,7 @@ const whyChoosePillars = [
     desc: "Optimized PEB structural modeling and advanced fabrication reduce material wastage and deliver lasting cost efficiency.",
     icon: (
       <svg
-        className="w-5 h-5 text-[#E31E24]"
+        className="w-5 h-5 text-[#E5A53D]"
         fill="none"
         stroke="currentColor"
         strokeWidth={2}
@@ -102,7 +103,7 @@ const whyChoosePillars = [
     desc: "Rigorous milestone scheduling, dedicated project supervisors, and precision erection guarantee project completion strictly on schedule.",
     icon: (
       <svg
-        className="w-5 h-5 text-[#E31E24]"
+        className="w-5 h-5 text-[#E5A53D]"
         fill="none"
         stroke="currentColor"
         strokeWidth={2}
@@ -148,7 +149,7 @@ const clientLogos = [
   { id: 2, name: "Advance Tech Ltd.", src: "/c2.png" },
   { id: 3, name: "HR Jute Mills Pvt. Limited", src: "/c3.jpg" },
   { id: 4, name: "Hasan Jute Mills Limited", src: "/c4.jpg" },
-  { id: 5, name: "Ayesha Knit Composite", src: "/c5.jpg" },
+  // { id: 5, name: "Ayesha Knit Composite", src: "/c5.jpg" },
   { id: 6, name: "Industrial Partner 6", src: "/c6.jpg" },
   { id: 7, name: "Industrial Partner 7", src: "/c7.jpg" },
   { id: 8, name: "Industrial Partner 8", src: "/c8.jpg" },
@@ -532,8 +533,8 @@ export default function AboutPage() {
                     residential endeavor.
                   </p>
                 </div>
-                <div className="pt-2 text-xs font-bold text-[#E31E24] uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#E31E24]" />
+                <div className="pt-2 text-xs font-bold text-[#E5A53D] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#E5A53D]" />
                   <span>Uncompromising Quality & Client Trust</span>
                 </div>
               </div>
@@ -585,12 +586,12 @@ export default function AboutPage() {
                 className="space-y-4 p-6 rounded-sm bg-white hover:bg-neutral-50 shadow-sm border border-neutral-200/70 transition-all group"
               >
                 {/* Icon in circle */}
-                <div className="w-12 h-12 rounded-full bg-red-50  group-hover:text-white transition-colors flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-[#E5A53D]/15 text-[#E5A53D] group-hover:bg-[#E5A53D] group-hover:text-neutral-950 transition-colors flex items-center justify-center">
                   {item.icon}
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold text-neutral-950 group-hover:text-[#006837] transition-colors">
+                  <h3 className="text-lg font-bold text-neutral-950 transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed">
@@ -708,107 +709,7 @@ export default function AboutPage() {
       {/* ============================================================ */}
       {/* 8. OUR CLIENTS & INDUSTRIAL PARTNERS */}
       {/* ============================================================ */}
-      <section className="py-24 sm:py-32 bg-[#FBFBFA] border-t border-neutral-200/70 overflow-hidden">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12 sm:space-y-16">
-          {/* Header Row */}
-          <FadeIn className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
-            <div className="space-y-4 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-                <span>HONORED CLIENTS & PARTNERS</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 uppercase leading-tight">
-                Trusted by Bangladesh&apos;s
-                <br />
-                Leading Enterprises
-              </h2>
-            </div>
-            <div className="max-w-md space-y-2">
-              <p className="text-sm sm:text-base text-neutral-600 font-light leading-relaxed">
-                From major textile mills and agro-conglomerates to heavy industrial facilities, we build enduring partnerships grounded in engineering precision and guaranteed project delivery.
-              </p>
-            </div>
-          </FadeIn>
-
-          {/* Quick Trust Highlights Strip */}
-          <FadeIn delay={0.1}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 py-6 px-6 sm:px-8 bg-white rounded-sm border border-neutral-200/70 shadow-xs">
-              <div className="space-y-1">
-                <div className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-                  150<span className="text-[#E31E24]">+</span>
-                </div>
-                <div className="text-xs sm:text-sm text-neutral-500 font-medium">
-                  Steel Projects Completed
-                </div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-                  17<span className="text-[#E5A53D]">+</span>
-                </div>
-                <div className="text-xs sm:text-sm text-neutral-500 font-medium">
-                  Years of Industry Trust
-                </div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-                  100<span className="text-[#006837]">%</span>
-                </div>
-                <div className="text-xs sm:text-sm text-neutral-500 font-medium">
-                  Structural Safety Certified
-                </div>
-              </div>
-              <div className="space-y-1">
-                <div className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-                  64<span className="text-[#E31E24]">+</span>
-                </div>
-                <div className="text-xs sm:text-sm text-neutral-500 font-medium">
-                  Districts Covered Nationwide
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-
-        {/* Single-Track Smooth Infinite Marquee Ticker with Side Gradient Masks */}
-        <div className="relative mt-12 sm:mt-16 w-full overflow-hidden py-4">
-          {/* Left & Right Gradient Edge Fades */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 sm:w-36 lg:w-48 z-20 bg-gradient-to-r from-[#FBFBFA] via-[#FBFBFA]/80 to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 sm:w-36 lg:w-48 z-20 bg-gradient-to-l from-[#FBFBFA] via-[#FBFBFA]/80 to-transparent" />
-
-          {/* Single Continuous Seamless Marquee Track */}
-          <div className="flex gap-5 sm:gap-7 animate-marquee">
-            {[...clientLogos, ...clientLogos].map((client, idx) => (
-              <div
-                key={`client-${client.id}-${idx}`}
-                className="group/card flex-shrink-0 w-52 sm:w-64 h-24 sm:h-28 px-6 py-4 rounded-sm bg-white border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-[#E5A53D]/80 transition-all duration-300 flex items-center justify-center relative cursor-pointer"
-              >
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <Image
-                    src={client.src}
-                    alt={client.name}
-                    fill
-                    className="object-contain p-1 group-hover/card:scale-105 transition-transform duration-300"
-                    sizes="256px"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Consultation Callout */}
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 text-center">
-          <p className="text-xs sm:text-sm text-neutral-500 font-light">
-            Ready to partner with Bangladesh&apos;s leading steel building fabricator?{" "}
-            <Link
-              href="/contact"
-              className="font-semibold text-neutral-950 underline underline-offset-4 hover:text-[#006837] transition-colors"
-            >
-              Discuss your project requirements with our engineering team →
-            </Link>
-          </p>
-        </div>
-      </section>
+            <ClientsSection/>
 
       {/* ============================================================ */}
       {/* 9. READY TO WORK WITH US? BANNER */}

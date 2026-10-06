@@ -56,24 +56,32 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
     >
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
         {/* Brand Logo & Full Company Name */}
-        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group py-1">
+        <Link href="/" className="flex items-center gap-3.5 sm:gap-4 group py-1">
           <Image
             src="/logo.png"
             alt="Bangladesh Steel Builders Ltd."
             width={64}
             height={48}
-            className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
+            className="h-9 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
             priority
           />
-          <span
-            className={`text-[11px] sm:text-xs md:text-sm lg:text-[15px] font-extrabold uppercase tracking-tight leading-none transition-colors whitespace-nowrap ${
-              isScrolledOrLight ? "text-[#006837]" : "text-white"
-            }`}
-          >
-            <span>BANGLADESH </span>
-            <span className="text-[#E31E24]">STEEL </span>
-            <span>BUILDERS LTD.</span>
-          </span>
+          <div className="flex flex-col justify-center">
+            <span
+              className={`text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] font-black uppercase tracking-wider leading-tight transition-colors whitespace-nowrap ${
+                isScrolledOrLight ? "text-neutral-950" : "text-white"
+              }`}
+            >
+              <span>BANGLADESH </span>
+              <span className="text-[#E5A53D]">STEEL</span>
+            </span>
+            <span
+              className={`text-[9px] sm:text-[10px] lg:text-[11px] font-bold uppercase tracking-[0.22em] leading-tight transition-colors whitespace-nowrap ${
+                isScrolledOrLight ? "text-neutral-500" : "text-neutral-300"
+              }`}
+            >
+              BUILDERS LTD.
+            </span>
+          </div>
         </Link>
 
         {/* Center Nav Links (Desktop) - Home, About, Services, Team, Projects */}

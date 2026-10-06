@@ -22,6 +22,10 @@ export default function HeroSection({
         style={{ backgroundImage: `url('${backgroundImageUrl}')` }}
       />
 
+      {/* Balanced Soft Cinematic Overlay - Architecture stays bright & sunny, text stays crisp */}
+      <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/60 via-neutral-950/25 to-transparent z-[1]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/35 via-transparent to-neutral-950/15 z-[1]" />
+
       {/* Hero Content Container - Aligned with consistent responsive side padding */}
       <div className="relative z-10 max-w-[1440px] mx-auto w-full px-6 sm:px-10 lg:px-16 pt-32 pb-20">
         <div className="max-w-3xl space-y-5 sm:space-y-6">
@@ -50,14 +54,14 @@ export default function HeroSection({
             Last A Lifetime
           </motion.h1>
 
-          {/* Subheading / Description covering rooftops, pools, and all related exterior works */}
+          {/* Subheading / Description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
-            className="max-w-xl text-sm sm:text-base lg:text-lg text-white/95 leading-relaxed font-normal drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]"
+            className="max-w-xl text-sm sm:text-base lg:text-lg text-white/95 leading-relaxed font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
-            We are committed to providing excellence in the construction industry. We are dedicated to providing strong, innovative and cost-effective solutions to meet the incomparable needs of our clients in the design and construction of steel buildings. accumsan id imperdiet et, porttitor at sem.
+            We are committed to providing excellence in the construction industry. Delivering strong, innovative, and cost-effective structural solutions tailored for industrial facilities, commercial complexes, and bespoke architecture across Bangladesh.
           </motion.p>
 
           {/* Call to Action Button */}

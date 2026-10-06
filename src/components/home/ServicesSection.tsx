@@ -218,7 +218,7 @@ export default function ServicesSection() {
           </h2>
 
           <p className="text-sm sm:text-base text-neutral-600 max-w-3xl mx-auto font-light leading-relaxed">
-            At Bangladesh Steel Builders Ltd., we deliver specialized construction services tailored to each client&apos;s specific needs. We focus on steel building solutions, comprehensive construction management, and real estate advisement, ensuring every project receives high-quality, cost-effective, and customized attention from concept to completion.
+            At Bangladesh Steel Builders Ltd., we deliver specialized engineering services tailored to each client&apos;s specific needs. We specialize in heavy industrial steel buildings, precision rooftop steel structures &amp; sky lounges, and turnkey construction management, ensuring every project receives high-quality, cost-effective attention from concept to completion.
           </p>
         </motion.div>
 
@@ -303,7 +303,7 @@ export default function ServicesSection() {
                                 key={fIdx}
                                 className="flex items-center gap-2.5 text-xs text-neutral-700 font-medium"
                               >
-                                <span className="w-4 h-4 rounded-full bg-[#E31E24] text-white flex items-center justify-center shrink-0 text-[9px] font-bold shadow-xs">
+                                <span className="w-4 h-4 rounded-full bg-[#E5A53D] text-neutral-950 flex items-center justify-center shrink-0 text-[9px] font-black shadow-xs">
                                   ✓
                                 </span>
                                 <span className="truncate">{feat}</span>
@@ -311,7 +311,7 @@ export default function ServicesSection() {
                             ))}
                           </ul>
                           {service.features.length > 4 && (
-                            <span className="text-[11px] font-semibold text-[#006837] block pt-1">
+                            <span className="text-[11px] font-semibold text-neutral-600 block pt-1">
                               + {service.features.length - 4} more specialized services
                             </span>
                           )}

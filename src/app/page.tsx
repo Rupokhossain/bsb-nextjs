@@ -4,6 +4,7 @@ import AboutSection from "@/components/home/AboutSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import ProcessSection from "@/components/home/ProcessSection";
 import TeamSection from "@/components/home/TeamSection";
+import ClientsSection from "@/components/home/ClientsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import ProjectsPreview from "@/components/home/ProjectsPreview";
 import Footer from "@/components/common/Footer";
@@ -31,6 +32,9 @@ export default function Home() {
 
       {/* The Team Behind Every Home & Team Grid */}
       <TeamSection />
+
+      {/* Our Happy Clients & Industrial Partners */}
+      <ClientsSection />
 
       {/* Testimonials Slider Section */}
       <TestimonialsSection />

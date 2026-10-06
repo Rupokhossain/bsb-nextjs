@@ -3,58 +3,95 @@ export interface CompletedProject {
   title: string;
   location: string;
   image: string;
+  category?: string;
 }
 
-// 📸 8 Completed Corporate Projects (From client's official portfolio)
+// 📸 12 Completed Corporate & Rooftop Projects (Balanced Showcase)
 // ⚠️ No detail pages - pure visual showcase
 export const completedProjectsData: CompletedProject[] = [
+  {
+    id: "skyline-rooftop-lounge",
+    title: "Skyline Rooftop Restaurant & Steel Lounge",
+    location: "Gulshan-2, Dhaka.",
+    image: "/restaurant-design-rooftop.webp",
+    category: "Rooftop Restaurant",
+  },
   {
     id: "jmi-shankur-auto-tank",
     title: "JMI Shankur Auto Tank Limited.",
     location: "Chattogram.",
     image: "/Steel-Building-Projects.jpg",
+    category: "Industrial Steel",
+  },
+  {
+    id: "bioclimatic-rooftop-pergola",
+    title: "Bioclimatic Rooftop Pergola & Steel Shed",
+    location: "Banani, Dhaka.",
+    image: "/p3.jpg",
+    category: "Rooftop Structure",
   },
   {
     id: "akij-biri-factory",
     title: "Akij Biri Factory Ltd.",
     location: "Rangpur.",
     image: "/Steel-Building-Projects-2.jpg",
+    category: "Factory Shed",
   },
   {
-    id: "onion-cold-storage",
-    title: "200 MT Onion Cold Storage.",
-    location: "Pabna.",
-    image: "/Steel-Building-Projects-3.jpg",
+    id: "cantilever-sky-terrace",
+    title: "Cantilever Sky Terrace & Glass Pavilion",
+    location: "Tejgaon I/A, Dhaka.",
+    image: "/r2.jpg",
+    category: "Sky Lounge",
   },
   {
     id: "maysha-spining-mill",
     title: "MAYSHA SPINING MILL",
-    location: "Gazipur",
+    location: "Gazipur.",
     image: "/Steel-Building-Projects-4.jpg",
+    category: "Spinning Mill",
   },
   {
-    id: "jmi-industrial-gas",
-    title: "JMI Industrial Gas Limited.",
-    location: "Chattogram.",
-    image: "/Steel-Building-Projects-1.jpg",
+    id: "rooftop-sanctuary-structure",
+    title: "Multi-Tiered Rooftop Steel Sanctuary & Shed",
+    location: "Baridhara DOHS, Dhaka.",
+    image: "/p-7.jpg",
+    category: "Rooftop Garden",
   },
   {
     id: "sa-paribahan-building",
     title: "5-Storied Building For SA Paribahan.",
     location: "Kakrail, Gazipur.",
     image: "/Steel-Building-Projects-5.jpg",
+    category: "Commercial Steel",
+  },
+  {
+    id: "elevated-rooftop-shed",
+    title: "Elevated Rooftop Steel Shed & Walkways",
+    location: "Uttara, Dhaka.",
+    image: "/Slope Roof Replacement.webp",
+    category: "Rooftop Shed",
+  },
+  {
+    id: "onion-cold-storage",
+    title: "200 MT Onion Cold Storage.",
+    location: "Pabna.",
+    image: "/Steel-Building-Projects-3.jpg",
+    category: "Cold Storage",
   },
   {
     id: "sa-agro-feed",
     title: "SA Agro Feed Office building.",
     location: "Rangpur.",
     image: "/Steel-Building-Projects-6.jpg",
+    category: "Commercial Office",
   },
   {
     id: "anira-international",
     title: "Anira International Ltd.",
     location: "Dhamrai, Dhaka.",
     image: "/Steel-Building-Projects-7.jpg",
+    category: "Industrial PEB",
   },
 ];
 

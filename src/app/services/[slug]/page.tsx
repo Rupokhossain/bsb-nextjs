@@ -51,7 +51,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             {/* Service Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-              <span>SERVICE {String(serviceIndex + 1).padStart(2, "0")} / 03</span>
+              <span>
+                {service.slug.startsWith("rooftop-") ? "ROOFTOP SPECIALTY" : "ENGINEERING SERVICE"}{" "}
+                {String(serviceIndex + 1).padStart(2, "0")}
+              </span>
             </div>
 
             {/* Headline */}
@@ -132,7 +135,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                       key={fIdx}
                       className="flex items-center gap-3 p-3.5 bg-white rounded-sm border border-neutral-200/70 shadow-xs"
                     >
-                      <div className="w-6 h-6 rounded-full bg-[#E31E24] text-white flex items-center justify-center shrink-0 shadow-xs">
+                      <div className="w-6 h-6 rounded-full bg-[#E5A53D] text-black flex items-center justify-center shrink-0 shadow-xs">
                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
@@ -182,7 +185,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             ].map((m) => (
               <StaggerItem
                 key={m.num}
-                className="p-6 rounded-sm bg-white border border-neutral-200 shadow-sm space-y-3 hover:border-neutral-900 transition-colors"
+                className="p-6 rounded-sm bg-white border border-neutral-200 shadow-sm space-y-3  transition-colors"
               >
                 <span className="text-2xl font-black text-[#E5A53D] block">{m.num}</span>
                 <h4 className="text-base font-bold text-neutral-950">{m.title}</h4>

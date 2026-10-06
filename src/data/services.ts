@@ -47,7 +47,127 @@ export const servicesData: ServiceDetail[] = [
   },
 
   // ==========================================
-  // 2. Construction Services
+  // 2. Rooftop Steel Structure & Sheds (NEW ROOFTOP FOCUS)
+  // ==========================================
+  {
+    slug: "rooftop-steel-structures",
+    title: "Rooftop Steel Structure & Sheds",
+    tagline: "High-tensile lightweight roof frameworks, weather-sealed sheds, and architectural trusses.",
+    shortDesc: "Turnkey rooftop steel shed fabrication, cantilever trusses, heat-reflective corrugated roofing, and weatherproofing for residential and industrial roofs.",
+    image: "/service-6.jpg",
+    mainHeadline: "Engineered Rooftop Steel Structures Designed for Maximum Safety and Space Utilization",
+    introParagraph:
+      "Transform underutilized building rooftops into functional, cyclone-resistant, and high-value covered spaces. Bangladesh Steel Builders Ltd. specializes in lightweight, high-tensile steel rooftop structures engineered to distribute weight safely across existing concrete slabs without compromising building foundations.",
+    subHeadline: "Certified Structural Load Calculation & Cyclone Wind Resistance",
+    subParagraph1:
+      "Every rooftop installation is preceded by a structural load audit of the host building. We engineer custom truss frameworks using certified galvanized steel, anti-leak flashings, and thermal insulation to reduce indoor temperatures.",
+    subParagraph2:
+      "From residential rooftop rain sheds and clothes-drying canopies to commercial factory warehouse rooftop extensions, our crews execute fast, zero-disturbance erection with high-grade elastomeric waterproofing.",
+    features: [
+      "Custom Rooftop Steel Shed Fabrication",
+      "Lightweight High-Tensile Steel Trusses",
+      "Curved & Gable Rooftop Roofing Systems",
+      "Waterproof Flashings & Rust-Resistant Gutters",
+      "Wind-Load Certified Structural Fasteners",
+      "Heat-Insulated Sandwich Roofing Panels",
+      "Factory & Commercial Roof Extensions",
+      "Electrostatic Anti-Corrosion Paint & Coating",
+    ],
+    projectIds: ["highgrove-house", "the-haven-penthouse"],
+  },
+
+  // ==========================================
+  // 3. Rooftop Restaurants & Sky Lounges (NEW ROOFTOP FOCUS)
+  // ==========================================
+  {
+    slug: "rooftop-restaurants-lounges",
+    title: "Rooftop Restaurant & Sky Lounges",
+    tagline: "Panoramic glass pavilions, luxury open-air dining decks, and commercial hospitality structures.",
+    shortDesc: "Specialized structural steel frameworks for high-end rooftop restaurants, cafes, acoustic enclosures, panoramic glass pavilions, and open-air decks.",
+    image: "/r1.jpg",
+    mainHeadline: "Bespoke Rooftop Hospitality Structures Engineered for Luxury & Ambiance",
+    introParagraph:
+      "Rooftop dining and hospitality venues require specialized engineering that balances dramatic aesthetics with heavy commercial kitchen loads, fire safety regulations, and weather resilience. BSB designs and fabricates turnkey rooftop restaurant frameworks across Dhaka and major commercial centers.",
+    subHeadline: "Integrated Glass Enclosures, Floating Decks & Acoustic Dampening",
+    subParagraph1:
+      "We fabricate elegant column-free steel pavilions with floor-to-ceiling double-glazed thermal break glass walls, offering breathtaking skyline vistas while protecting patrons from extreme heat, heavy monsoons, and wind turbulence.",
+    subParagraph2:
+      "Our engineers integrate dedicated grease trap supports, reinforced kitchen equipment slabs, acoustic vibration isolation, and ambient concealed architectural lighting channels.",
+    features: [
+      "Architectural Glass & Steel Pavilions",
+      "High-Load Commercial Kitchen Foundations",
+      "Acoustic & Vibration Isolated Floor Slabs",
+      "Panoramic Skyline Glass Facade Systems",
+      "Custom Steel Mezzanines & Dining Decks",
+      "Integrated Rain Drainage & Wind Deflectors",
+      "Fire-Retardant Structural Protective Coating",
+      "BNBC Commercial Compliance & Fast Permitting",
+    ],
+    projectIds: ["crestwood-courtyard", "solis-sky-lounge"],
+  },
+
+  // ==========================================
+  // 4. Rooftop Garden, Pergola & Sky Terraces (NEW ROOFTOP FOCUS)
+  // ==========================================
+  {
+    slug: "rooftop-garden-pergola",
+    title: "Rooftop Garden, Pergola & Sky Terraces",
+    tagline: "Motorized bioclimatic pergolas, luxury sky terrace framing, and green roof infrastructure.",
+    shortDesc: "Modern outdoor living structures, motorized bioclimatic aluminum/steel pergolas, water features, lightweight planters, and luxury sky gardens.",
+    image: "/p3.jpg",
+    mainHeadline: "Luxury Rooftop Living & Biophilic Sky Sanctuaries Engineered to Last",
+    introParagraph:
+      "Elevate your lifestyle with architecturally stunning rooftop gardens and modern pergolas. We combine high-strength steel and powder-coated aluminum framing with lightweight engineered substrate planting to create breathtaking urban rooftop retreats.",
+    subHeadline: "Bioclimatic Louvers, Weatherproof Pergolas & Dual Waterproofing",
+    subParagraph1:
+      "Our motorized louvered pergolas feature automated weather sensors that close during rainfall and adjust angle for optimal sun shading, providing comfortable outdoor living in all seasons.",
+    subParagraph2:
+      "We incorporate multi-layer root barriers, drainage membranes, concealed drip irrigation framing, and ambient LED fixtures to create a lush green oasis that safeguards the building from water intrusion.",
+    features: [
+      "Motorized Louvered Pergolas & Canopies",
+      "Multi-Tiered Rooftop Deck Framing",
+      "Lightweight Hydroponic Planter Boxes",
+      "UV-Protected Tensile Fabric Structures",
+      "Dual-Membrane Elastomeric Waterproofing",
+      "Concealed LED Sconce & Mood Illumination",
+      "All-Weather Powder-Coated Metal Finishes",
+      "Wind-Resistant Glass Balustrades & Railings",
+    ],
+    projectIds: ["highgrove-house", "verdant-terrace"],
+  },
+
+  // ==========================================
+  // 5. Rooftop Solar Canopies & Walkways (NEW ROOFTOP FOCUS)
+  // ==========================================
+  {
+    slug: "rooftop-solar-canopies",
+    title: "Rooftop Solar Canopies & Walkways",
+    tagline: "Heavy-duty elevated solar mounting structures, maintenance walkways, and rooftop extensions.",
+    shortDesc: "Elevated industrial solar mounting steel frameworks, safety railings, inspection walkways, and structural roof slab reinforcements.",
+    image: "/service-3.jpg",
+    mainHeadline: "High-Elevation Solar Mounting & Industrial Rooftop Access Frameworks",
+    introParagraph:
+      "Maximize renewable solar generation without losing usable rooftop floor area. Bangladesh Steel Builders Ltd. designs and erects elevated rooftop solar canopies that suspend solar arrays high above the roof surface, allowing the space below to remain fully utilized for parking, storage, or leisure.",
+    subHeadline: "Hot-Dip Galvanized Framing Rated for Severe Wind Gusts",
+    subParagraph1:
+      "Manufactured with premium hot-dip galvanized steel, our solar canopies withstand coastal winds and aggressive industrial atmospheric conditions with a lifespan exceeding 25 years.",
+    subParagraph2:
+      "We provide non-penetrating counterweight footing options or certified chemical anchoring, together with anti-slip inspection walkways, lifelines, and safety perimeter balustrades.",
+    features: [
+      "Elevated Solar Panel Mounting Trusses",
+      "Industrial Roof Walkways & Safety Catwalks",
+      "Galvanized Hot-Dip Structural Framing",
+      "High-Velocity Cyclone Wind Resistance",
+      "Existing Slab Load-Bearing Verification",
+      "Non-Penetrating & Chemical Anchor Systems",
+      "Industrial Sky-Light & Ventilation Vents",
+      "Turnkey Engineering & Fabrication Handover",
+    ],
+    projectIds: ["jmi-shankur-auto-tank", "maysha-spining-mill"],
+  },
+
+  // ==========================================
+  // 6. Construction Services
   // ==========================================
   {
     slug: "construction-services",
@@ -77,7 +197,7 @@ export const servicesData: ServiceDetail[] = [
   },
 
   // ==========================================
-  // 3. Architectural Services
+  // 7. Architectural Services
   // ==========================================
   {
     slug: "architectural-services",

@@ -6,14 +6,14 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { completedProjectsData } from "@/data/projects";
 
-// 📋 6 Project Types from client's official site
+// 📋 6 Project Types from client's official site & specialized rooftop engineering
 const projectTypes = [
-  "Industrial Steel Building Projects",
-  "Factory Shed Construction Projects",
-  "Warehouse Steel Building Projects",
+  "Rooftop Steel Structure & Shed Projects",
+  "Rooftop Restaurant & Sky Lounge Enclosures",
+  "Rooftop Garden, Pergola & Canopy Structures",
   "Pre-Engineered Steel Building (PEB) Projects",
-  "Commercial Steel Structure Projects",
-  "Customized Steel Structure Projects",
+  "Industrial Factory Shed & Warehouse Projects",
+  "Commercial High-Rise Steel Structures",
 ];
 
 // 📍 Key Industrial Delivery Zones across Bangladesh
@@ -45,8 +45,8 @@ export default function ProjectsPreview() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="text-center space-y-4 max-w-3xl mx-auto"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E31E24] text-white text-xs font-bold tracking-wider uppercase shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-black inline-block" />
             <span>OUR PROJECT EXPERIENCE</span>
           </div>
 
@@ -86,9 +86,9 @@ export default function ProjectsPreview() {
             {projectTypes.map((type, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-3 p-4 bg-white rounded-sm border border-neutral-200/70 shadow-xs hover:border-neutral-950 transition-colors group"
+                className="flex items-center gap-3 p-4 bg-white rounded-sm border border-neutral-200/70 shadow-xs group"
               >
-                <div className="w-7 h-7 rounded-full bg-[#E31E24]/10 text-[#E31E24] flex items-center justify-center shrink-0 group-hover:bg-[#E31E24] group-hover:text-white transition-colors">
+                <div className="w-7 h-7 rounded-full bg-[#E5A53D]/20 text-neutral-950 flex items-center justify-center shrink-0 group-hover:bg-[#E5A53D] group-hover:text-neutral-950 transition-colors">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
@@ -134,8 +134,15 @@ export default function ProjectsPreview() {
 
             {/* Index Pill in Top Left */}
             <div className="absolute top-4 left-4 z-10 px-2.5 py-1 rounded-sm bg-black/60 backdrop-blur-xs text-white text-[10px] font-bold tracking-wider uppercase border border-white/20">
-              {String(idx + 1).padStart(2, "0")} / 08
+              {String(idx + 1).padStart(2, "0")} / {String(completedProjectsData.length).padStart(2, "0")}
             </div>
+
+            {/* Category Pill in Top Right (Highlights Rooftop Specialties) */}
+            {project.category && (
+              <div className="absolute top-4 right-4 z-10 px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[10px] font-extrabold uppercase tracking-wider shadow-sm">
+                {project.category}
+              </div>
+            )}
 
             {/* Bottom Content: Title & Location (Exact match with reference screenshots) */}
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7 space-y-2 z-10">
@@ -144,7 +151,7 @@ export default function ProjectsPreview() {
               </h3>
               
               <div className="flex items-center gap-1.5 text-xs sm:text-[13px] text-neutral-300 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#E31E24] inline-block" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E5A53D] inline-block" />
                 <span>Location: {project.location}</span>
               </div>
             </div>

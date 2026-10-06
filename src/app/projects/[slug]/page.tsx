@@ -148,7 +148,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             </FadeIn>
             <StaggerContainer className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {project.highlights.map((highlight, idx) => (
-                <StaggerItem key={idx} className="p-5 rounded-sm bg-white border border-neutral-200 space-y-2 hover:border-neutral-900 transition-colors">
+                <StaggerItem key={idx} className="p-5 rounded-sm bg-white border border-neutral-200 space-y-2 shadow-xs transition-colors">
                   <span className="text-base font-black text-[#E5A53D]">0{idx + 1}.</span>
                   <p className="text-xs sm:text-sm text-neutral-700 leading-relaxed font-light">{highlight}</p>
                 </StaggerItem>
