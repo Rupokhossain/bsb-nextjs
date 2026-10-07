@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 import { servicesData, ServiceDetail } from "@/data/services";
 
 export default function ServicesSlider() {
-  const [activeFilter, setActiveFilter] = useState<"all" | "rooftop" | "industrial">("all");
+  const [activeFilter, setActiveFilter] = useState<"all" | "rooftop" | "duplex" | "industrial">("all");
 
   // Get active primary services
   const allActiveServices = servicesData.filter(
@@ -19,6 +19,9 @@ export default function ServicesSlider() {
         "architectural-design",
         "construction-management",
         "custom-home-building",
+        "rooftop-solar-canopies",
+        "architectural-services",
+        "construction-services",
       ].includes(s.slug)
   );
 
@@ -27,8 +30,11 @@ export default function ServicesSlider() {
     if (activeFilter === "rooftop") {
       return s.slug.startsWith("rooftop-");
     }
+    if (activeFilter === "duplex") {
+      return s.slug.includes("duplex") || s.slug.includes("villa");
+    }
     if (activeFilter === "industrial") {
-      return !s.slug.startsWith("rooftop-");
+      return !s.slug.startsWith("rooftop-") && !s.slug.includes("duplex") && !s.slug.includes("villa");
     }
     return true;
   });
@@ -191,7 +197,19 @@ export default function ServicesSlider() {
               : "bg-neutral-100 hover:bg-neutral-200 text-neutral-700"
           }`}
         >
-          All Engineering Services ({allActiveServices.length})
+          All Services ({allActiveServices.length})
+        </button>
+
+        <button
+          onClick={() => setActiveFilter("duplex")}
+          className={`px-4 sm:px-5 py-2 rounded-sm text-xs sm:text-sm font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2 ${
+            activeFilter === "duplex"
+              ? "bg-[#E5A53D] text-neutral-950 shadow-sm"
+              : "bg-neutral-100 hover:bg-neutral-200 text-neutral-700"
+          }`}
+        >
+          <span className="w-2 h-2 rounded-full bg-neutral-950" />
+          <span>Duplex &amp; Residential ({allActiveServices.filter((s) => s.slug.includes("duplex") || s.slug.includes("villa")).length})</span>
         </button>
 
         <button
@@ -203,7 +221,7 @@ export default function ServicesSlider() {
           }`}
         >
           <span className="w-2 h-2 rounded-full bg-[#E5A53D]" />
-          <span>Rooftop Specialties (4)</span>
+          <span>Rooftop Specialties ({allActiveServices.filter((s) => s.slug.startsWith("rooftop-")).length})</span>
         </button>
 
         <button
@@ -214,7 +232,7 @@ export default function ServicesSlider() {
               : "bg-neutral-100 hover:bg-neutral-200 text-neutral-700"
           }`}
         >
-          Industrial & Civil (3)
+          Industrial &amp; Commercial ({allActiveServices.filter((s) => !s.slug.startsWith("rooftop-") && !s.slug.includes("duplex") && !s.slug.includes("villa")).length})
         </button>
       </div>
 
@@ -267,14 +285,18 @@ export default function ServicesSlider() {
                         </span>
                       </div>
 
-                      {/* Department / Rooftop Tag in Top Left */}
-                      {service.slug.startsWith("rooftop-") ? (
+                      {/* Department / Division Tag in Top Left */}
+                      {service.slug.includes("duplex") || service.slug.includes("villa") ? (
                         <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[10px] font-extrabold uppercase tracking-wider shadow-sm">
+                          DUPLEX &amp; RESIDENTIAL
+                        </div>
+                      ) : service.slug.startsWith("rooftop-") ? (
+                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-neutral-900/90 text-[#E5A53D] text-[10px] font-extrabold uppercase tracking-wider border border-[#E5A53D]/40">
                           ROOFTOP SPECIALTY
                         </div>
                       ) : (
                         <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-neutral-950/80 backdrop-blur-xs text-white text-[10px] font-bold uppercase tracking-wider border border-white/20">
-                          CORE DIVISION
+                          COMMERCIAL &amp; PEB
                         </div>
                       )}
 

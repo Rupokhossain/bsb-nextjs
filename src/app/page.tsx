@@ -37,7 +37,7 @@ export default function Home() {
       <ClientsSection />
 
       {/* Testimonials Slider Section */}
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
 
       {/* Projects Showcase with "View All Projects" button */}
 

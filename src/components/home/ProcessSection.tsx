@@ -10,7 +10,7 @@ interface ProcessSectionProps {
 }
 
 export default function ProcessSection({
-  // Timber frame / construction site photo from public
+  // Modern multi-storey architectural complex
   processImageUrl = "/service-6.jpg",
   bannerImageUrl = "/progress-banner.jpg",
 }: ProcessSectionProps) {

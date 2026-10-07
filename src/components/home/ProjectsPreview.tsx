@@ -6,14 +6,16 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { completedProjectsData } from "@/data/projects";
 
-// 📋 6 Project Types from client's official site & specialized rooftop engineering
+// 📋 Project Types from client's official site & specialized engineering
 const projectTypes = [
+  "Steel Structure Duplex Houses & Luxury Villas",
+  "Convention Halls & Commercial Event Centers",
   "Rooftop Steel Structure & Shed Projects",
   "Rooftop Restaurant & Sky Lounge Enclosures",
   "Rooftop Garden, Pergola & Canopy Structures",
   "Pre-Engineered Steel Building (PEB) Projects",
   "Industrial Factory Shed & Warehouse Projects",
-  "Commercial High-Rise Steel Structures",
+  "Commercial Multi-Storey Buildings & Towers",
 ];
 
 // 📍 Key Industrial Delivery Zones across Bangladesh

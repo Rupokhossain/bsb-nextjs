@@ -10,12 +10,55 @@ export interface CompletedProject {
 // ⚠️ No detail pages - pure visual showcase
 export const completedProjectsData: CompletedProject[] = [
   {
-    id: "skyline-rooftop-lounge",
-    title: "Skyline Rooftop Restaurant & Steel Lounge",
-    location: "Gulshan-2, Dhaka.",
-    image: "/restaurant-design-rooftop.webp",
-    category: "Rooftop Restaurant",
+    id: "bespoke-steel-duplex-villa",
+    title: "Bespoke Classical Steel Duplex Villa",
+    location: "Dhanmondi, Dhaka.",
+    image: "/luxury-steel-duplex-villa.jpg",
+    category: "Duplex Villa",
   },
+  {
+    id: "luxury-steel-pool-villa",
+    title: "Luxury Steel Duplex Pool Villa",
+    location: "Gulshan-2, Dhaka.",
+    image: "/service-3.jpg",
+    category: "Duplex Pool Villa",
+  },
+  {
+    id: "pohs-convention-hall",
+    title: "POHS Convention Hall & Event Center",
+    location: "Mirpur DOHS, Dhaka.",
+    image: "/pohs-convention-hall.jpg",
+    category: "Convention Hall",
+  },
+  {
+    id: "pohs-convention-facade",
+    title: "POHS Convention Hall Glass Curtain Facade",
+    location: "Mirpur DOHS, Dhaka.",
+    image: "/pohs-convention-hall-perspective.jpg",
+    category: "Commercial Complex",
+  },
+  {
+    id: "modern-multistorey-complex",
+    title: "Modern 4-Storey Duplex & Residential Complex",
+    location: "Uttara Sector 7, Dhaka.",
+    image: "/modern-multistorey-building.jpg",
+    category: "Duplex & Multi-Storey",
+  },
+  {
+    id: "modern-peb-logistics-facility",
+    title: "Modern Industrial PEB Logistics Facility",
+    location: "Gazipur, Dhaka.",
+    image: "/industrial-peb-warehouse.jpg",
+    category: "Industrial PEB",
+  },
+
+  // {
+  //   id: "skyline-rooftop-lounge",
+  //   title: "Skyline Rooftop Restaurant & Steel Lounge",
+  //   location: "Gulshan-2, Dhaka.",
+  //   image: "/restaurant-design-rooftop.webp",
+  //   category: "Rooftop Restaurant",
+  // },
   {
     id: "jmi-shankur-auto-tank",
     title: "JMI Shankur Auto Tank Limited.",
@@ -78,13 +121,6 @@ export const completedProjectsData: CompletedProject[] = [
     location: "Pabna.",
     image: "/Steel-Building-Projects-3.jpg",
     category: "Cold Storage",
-  },
-  {
-    id: "sa-agro-feed",
-    title: "SA Agro Feed Office building.",
-    location: "Rangpur.",
-    image: "/Steel-Building-Projects-6.jpg",
-    category: "Commercial Office",
   },
   {
     id: "anira-international",

@@ -38,7 +38,7 @@ export default function HeroSection({
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs sm:text-xs font-bold tracking-wider uppercase shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-              <span>CUSTOM DESIGN & BUILDERS</span>
+              <span>NIRMAN BSB • ARCHITECTURAL &amp; ROOFTOP STEEL</span>
             </div>
           </motion.div>
 
@@ -61,7 +61,7 @@ export default function HeroSection({
             transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
             className="max-w-xl text-sm sm:text-base lg:text-lg text-white/95 leading-relaxed font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
           >
-            We are committed to providing excellence in the construction industry. Delivering strong, innovative, and cost-effective structural solutions tailored for industrial facilities, commercial complexes, and bespoke architecture across Bangladesh.
+            Nirman BSB is the premier structural engineering, rooftop architecture, steel duplex, and consultancy wing of Bangladesh Steel Builders Ltd. We engineer precision spaces built for lasting beauty and certified structural safety across Bangladesh.
           </motion.p>
 
           {/* Call to Action Button */}

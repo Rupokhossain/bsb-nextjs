@@ -286,74 +286,31 @@ export default function AboutPage() {
               </div>
 
               {/* Consultation Button & Social Links */}
-              <div className="pt-2 flex flex-wrap items-center gap-5">
-                <a
-                  href="https://wa.me/8801711181860"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-sm bg-[#E5A53D] text-neutral-950 font-bold text-sm px-6 py-3 transition-all active:scale-95 shadow-md"
-                >
-                  <span>Book Consultation With Us</span>
-                </a>
-
-                <div className="flex items-center gap-2.5 text-neutral-500">
-                  <span className="text-xs uppercase tracking-wider font-semibold mr-1">
-                    Follow:
-                  </span>
-                  
-                  {/* Facebook */}
+                <div className="self-start md:self-end">
                   <a
-                    href="#"
+                    href="https://wa.me/8801711181860"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Facebook"
-                    className="w-9 h-9 rounded-sm bg-neutral-100 hover:bg-[#1877F2] hover:text-white text-neutral-600 flex items-center justify-center transition-all shadow-sm border border-neutral-200/80 active:scale-95 group"
+                    className="inline-flex items-center pl-4 sm:pl-5 pr-1.5 py-1.5 rounded-sm bg-[#E5A53D] hover:bg-[#d89830] text-neutral-950 font-bold text-xs sm:text-sm tracking-wide transition-all active:scale-95 shadow-md group"
                   >
-                    <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
-                      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-                    </svg>
-                  </a>
-
-                  {/* Twitter / X */}
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Twitter / X"
-                    className="w-9 h-9 rounded-sm bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-600 flex items-center justify-center transition-all shadow-sm border border-neutral-200/80 active:scale-95 group"
-                  >
-                    <svg className="w-3.5 h-3.5 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
-                  </a>
-
-                  {/* YouTube */}
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="YouTube"
-                    className="w-9 h-9 rounded-sm bg-neutral-100 hover:bg-[#FF0000] hover:text-white text-neutral-600 flex items-center justify-center transition-all shadow-sm border border-neutral-200/80 active:scale-95 group"
-                  >
-                    <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                  </a>
-
-                  {/* LinkedIn */}
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    className="w-9 h-9 rounded-sm bg-neutral-100 hover:bg-[#0A66C2] hover:text-white text-neutral-600 flex items-center justify-center transition-all shadow-sm border border-neutral-200/80 active:scale-95 group"
-                  >
-                    <svg className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
-                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.53 1.53 0 1 0 0-3.06 1.53 1.53 0 0 0 0 3.06m1.39 9.74v-8.37H5.07v8.37h2.78z" />
-                    </svg>
+                    <span>Book a Consultation</span>
+                    <div className="ml-3 sm:ml-4 w-7 h-7 rounded-sm bg-neutral-950 flex items-center justify-center text-[#E5A53D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                      <svg
+                        className="w-3.5 h-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M7 17L17 7M17 7H7M17 7V17"
+                        />
+                      </svg>
+                    </div>
                   </a>
                 </div>
-              </div>
             </FadeIn>
           </div>
         </div>
@@ -422,10 +379,10 @@ export default function AboutPage() {
                   href="https://wa.me/8801711181860"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-sm bg-neutral-950 hover:bg-neutral-800 text-white font-semibold text-sm pl-5 pr-1.5 py-1.5 transition-all group active:scale-95 shadow-sm"
+                  className="inline-flex items-center pl-4 sm:pl-5 pr-1.5 py-1.5 rounded-sm bg-[#E5A53D] hover:bg-[#d89830] text-neutral-950 font-bold text-xs sm:text-sm tracking-wide transition-all active:scale-95 shadow-md group"
                 >
                   <span>Consult an Engineer</span>
-                  <div className="ml-4 w-8 h-8 rounded-sm bg-white flex items-center justify-center text-neutral-950 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                  <div className="ml-4 w-8 h-8 rounded-sm bg-black  text-[#E5A53D] flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
                     <svg
                       className="w-4 h-4"
                       fill="none"
@@ -655,56 +612,7 @@ export default function AboutPage() {
         </div>
       </section> */}
 
-      {/* ============================================================ */}
-      {/* 7. LEADERSHIP TEAM SECTION */}
-      {/* ============================================================ */}
-      <section className="py-16 sm:py-26 bg-[#F9F8F6] border-t border-neutral-200/60">
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16 sm:space-y-20">
-          {/* Header Row */}
-          <FadeIn className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-                <span>EXECUTIVE LEADERSHIP</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-neutral-950 uppercase leading-none">
-                Experienced Engineers
-                <br />
-                Trusted Leadership
-              </h2>
-            </div>
-          </FadeIn>
 
-          {/* Leadership Grid with Staggered Motion */}
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 items-start">
-            {leadershipMembers.map((member, idx) => (
-              <StaggerItem key={idx} className="space-y-3 group">
-                <div className="relative aspect-[4/4.5] w-full rounded-sm overflow-hidden bg-neutral-200 shadow-sm">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                  {/* <div className="absolute bottom-3 left-3 z-10 px-2.5 py-1 rounded-sm bg-neutral-950/85 backdrop-blur-sm text-white text-[11px] font-medium tracking-normal shadow-sm">
-                    {member.specialty}
-                  </div> */}
-                </div>
-
-                <div className="space-y-0.5 pt-0.5">
-                  <h4 className="text-base sm:text-[17px] font-bold text-neutral-950 group-hover:text-[#006837] transition-colors">
-                    {member.name}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-neutral-500 font-normal">
-                    {member.role}
-                  </p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
 
       {/* ============================================================ */}
       {/* 8. OUR CLIENTS & INDUSTRIAL PARTNERS */}

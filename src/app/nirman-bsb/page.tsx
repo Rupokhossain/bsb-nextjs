@@ -24,7 +24,7 @@ const consultancyServices = [
       "Factory operational workflow layout",
       "Regulatory zoning & municipal permissions",
     ],
-    image: "/Steel-Building-Projects.jpg",
+    image: "/curved-roof-steel-shed.jpg",
   },
   {
     id: "structural-review",
@@ -37,7 +37,7 @@ const consultancyServices = [
       "Computerized 3D BIM structural modeling",
       "Steel weight reduction & deflection checks",
     ],
-    image: "/Steel-Building-Projects-8.webp",
+    image: "/pohs-convention-hall-perspective.jpg",
   },
   {
     id: "cost-estimation",
@@ -63,7 +63,7 @@ const consultancyServices = [
       "Bolt torquing & torque-wrench calibration",
       "Site safety & hazard mitigation protocols",
     ],
-    image: "/construction.jpg",
+    image: "/modern-multistorey-building.jpg",
   },
   {
     id: "material-selection",
@@ -76,7 +76,7 @@ const consultancyServices = [
       "Ultrasonic weld flaw & NDT inspection",
       "Anti-rust coating & paint micron audit",
     ],
-    image: "/steel-building.jpg",
+    image: "/industrial-peb-warehouse.jpg",
   },
   {
     id: "project-coordination",
@@ -89,7 +89,7 @@ const consultancyServices = [
       "Contractor milestone sign-off audits",
       "Comprehensive as-built documentation",
     ],
-    image: "/Steel-Building-Projects-1.jpg",
+    image: "/pohs-convention-hall.jpg",
   },
 ];
 

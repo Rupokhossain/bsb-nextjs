@@ -9,7 +9,7 @@ export interface ServiceDetail {
   subHeadline: string;
   subParagraph1: string;
   subParagraph2: string;
-  // 📋 The exact 8 checklist features from BSB website
+  // 📋 The exact 8 checklist features
   features: string[];
   // Foreign key array linking to Project.id in projectsData
   projectIds: string[];
@@ -17,37 +17,127 @@ export interface ServiceDetail {
 
 export const servicesData: ServiceDetail[] = [
   // ==========================================
-  // 1. Steel Building Services
+  // 1. Classical Steel Structure Duplex Building (NIRMAN BSB CORE)
   // ==========================================
   {
-    slug: "steel-building-services",
-    title: "Steel Building Services",
-    tagline: "Custom design, precision fabrication, and certified steel building erection.",
-    shortDesc: "Comprehensive pre-engineered steel building solutions, heavy industrial structural fabrication, installation, and anti-rust protection.",
-    image: "/steel-building.jpg",
-    mainHeadline: "High-Precision Steel Building Solutions Built to Stand for Generations",
+    slug: "steel-duplex-building",
+    title: "Steel Structure Duplex Building",
+    tagline: "Earthquake-resilient steel frame duplex houses, neoclassical luxury villas, and fast-track turnkey residences.",
+    shortDesc: "Turnkey luxury steel structure duplex homes and multi-level modern villas. 50% faster construction, column-free interior flexibility, and superior seismic safety.",
+    image: "/luxury-steel-duplex-villa.jpg",
+    mainHeadline: "Modern Steel Frame Duplex Buildings Engineered for Luxury, Speed & Safety",
     introParagraph:
-      "At Bangladesh Steel Builders Ltd., our Steel Building Services cover the entire lifecycle of industrial and commercial steel infrastructure. From initial custom design and computerized structural analysis to automated factory fabrication, on-site crane erection, and long-lasting anti-corrosion finishing, we deliver certified turnkey solutions.",
-    subHeadline: "Certified Engineering, Certified Materials & Guaranteed Handover",
+      "Nirman BSB pioneers modern residential steel duplex construction across Bangladesh. By replacing heavy, slow concrete columns with certified high-tensile structural steel frames, we build architecturally breathtaking duplex villas that are completed in half the time of traditional RCC construction.",
+    subHeadline: "Column-Free Architectural Freedom & Maximum Earthquake Resilience",
     subParagraph1:
-      "Our pre-engineered buildings (PEB) utilize high-tensile steel designed to reduce foundation load, withstand high wind and seismic stresses, and accelerate project handover by up to 50% compared to traditional concrete.",
+      "Our steel frame duplex engineering allows wide, expansive living and dining areas without bulky supporting pillars. Every joint is precision-bolted and seismically tested according to the latest BNBC standards for ultimate earthquake and cyclone protection.",
     subParagraph2:
-      "Every steel frame is manufactured under stringent BNBC and AISC standards with ultrasonic weld verification and millimeter-precise bolt connections.",
+      "We integrate premium insulated sandwich wall panels, classical front pillars, cantilever steel staircases, panoramic glass facades, and anti-corrosive protective finishes to deliver a home that is whisper-quiet, thermally insulated, and built to last generations.",
     features: [
-      "Custom Steel Building Design",
-      "Pre-engineered Steel Building",
-      "Steel Structure Fabrication",
-      "Steel Building Installation",
-      "Commercial Steel Building Construction",
-      "Residential Steel Building",
-      "Steel Structure Building Construction",
-      "Steel Rust Prevention and Polishing",
+      "Custom 3D BIM Architectural Duplex Plans",
+      "Earthquake & High-Seismic Resistant Steel Frame",
+      "50% Faster Construction Timeline than RCC",
+      "Expansive Column-Free Living & Lounge Spaces",
+      "Neoclassical Pillars & Front Car Porch Design",
+      "Acoustic & Thermal Insulated Sandwich Panels",
+      "Modern Cantilever Balconies & Glass Railings",
+      "Turnkey Design, Fabrication & Site Erection",
     ],
-    projectIds: ["oakhill-residence", "marina-bay-home"],
+    projectIds: ["bespoke-steel-duplex-villa", "oakhill-residence"],
   },
 
   // ==========================================
-  // 2. Rooftop Steel Structure & Sheds (NEW ROOFTOP FOCUS)
+  // 2. Luxury Steel Duplex Pool Villa (NIRMAN BSB CORE)
+  // ==========================================
+  {
+    slug: "luxury-duplex-pool-villa",
+    title: "Luxury Steel Duplex Pool Villa",
+    tagline: "Bespoke steel frame duplex villas with private swimming pools, timber sun decks, and luxury resort living.",
+    shortDesc: "Turnkey luxury steel structure duplex pool villas, cantilever sun decks, outdoor lounge pavilions, and resort-style living spaces built with certified steel durability.",
+    image: "/service-3.jpg",
+    mainHeadline: "Resort-Style Modern Duplex Pool Villas Built with Precision Structural Steel",
+    introParagraph:
+      "Nirman BSB designs and constructs bespoke steel frame duplex villas featuring private swimming pools, timber lounge decks, and expansive outdoor entertainment pavilions. By uniting high-tensile earthquake-resilient steel structures with modern architectural luxury, we bring private resort living right into your personal residence.",
+    subHeadline: "Private Aquatic Sanctuary & Architectural Steel Pavilion Engineering",
+    subParagraph1:
+      "Our duplex pool villas integrate deep-ground moisture proofing, automated swimming pool filtration, and cantilevered steel canopy decks that extend seamlessly over the water with zero structural sagging.",
+    subParagraph2:
+      "Every structural frame is fabricated from high-strength galvanized steel, ensuring lifetime resistance against moisture, humidity, termites, and seismic vibration.",
+    features: [
+      "Custom Steel Frame Duplex Villa Architecture",
+      "Integrated Private Swimming Pool Engineering",
+      "Cantilever Sun Decks & Teak Timber Lounges",
+      "Floor-to-Ceiling Thermal Glass Wall Facades",
+      "Earthquake-Resilient Steel Framing (BNBC)",
+      "Waterproof Pool Deck Drainage & Recirculation",
+      "Concealed LED Sconce & Underwater Illumination",
+      "Turnkey Architectural & Structural Handover",
+    ],
+    projectIds: ["luxury-steel-pool-villa", "oakhill-residence"],
+  },
+
+  // ==========================================
+  // 3. Duplex & Multi-Storey Residential Construction (NIRMAN BSB CORE)
+  // ==========================================
+  {
+    slug: "duplex-multistorey-construction",
+    title: "Duplex & Multi-Storey Residential Construction",
+    tagline: "Architectural design, 3D elevation modeling, and turnkey steel structure construction for multi-level homes.",
+    shortDesc: "Turnkey architectural planning, 3D elevations, and structural steel construction for modern duplex houses, 4-storey residential apartments, and multi-family buildings.",
+    image: "/modern-multistorey-building.jpg",
+    mainHeadline: "Modern Duplex Homes & Multi-Storey Residential Buildings Engineered to Perfection",
+    introParagraph:
+      "From luxury private duplex houses to modern 4-storey residential apartment buildings, Nirman BSB provides complete architectural planning, 3D exterior visualization, and certified structural steel construction. We combine optimal living space planning with high-tensile steel frames that reduce foundation weight and accelerate handover by months.",
+    subHeadline: "Turnkey Design-to-Handover for Multi-Storey Living",
+    subParagraph1:
+      "We take care of the entire development process: architectural drafting, municipal structural approvals, 3D photorealistic elevations, soil testing, foundation piling, steel frame erection, and premium interior/exterior finishing.",
+    subParagraph2:
+      "Our steel-framed multi-storey structures offer superior earthquake safety, column-free interior floor plans, and flexible apartment divisions tailored to your family's needs.",
+    features: [
+      "Custom Duplex & Multi-Storey House Plans",
+      "Photorealistic 3D Exterior Elevation Modeling",
+      "Earthquake & Wind-Resistant Structural Steel",
+      "Space-Optimized Multi-Unit Floor Layouts",
+      "Modern Cantilever Balconies & Glass Railings",
+      "Complete Municipal & RAJUK Approval Drawings",
+      "Turnkey Civil, Steel & Finishing Handover",
+      "Concealed Utility Ducts & Sound Insulation",
+    ],
+    projectIds: ["modern-multistorey-complex", "ridgeline-house"],
+  },
+
+  // ==========================================
+  // 4. Prefabricated Steel Villa & Modern Cottages
+  // ==========================================
+  {
+    slug: "prefabricated-steel-villa",
+    title: "Prefabricated Steel Villa & Cottages",
+    tagline: "Modular eco-friendly steel villas, vacation homes, and resort cottage structures.",
+    shortDesc: "Modular prefabricated steel frame villas and eco-resort cottages. Rapid installation, modern aesthetic finishes, and weather-sealed durability.",
+    image: "/r3.jpg",
+    mainHeadline: "Eco-Friendly Modular Steel Villas & Luxury Resort Cottage Living",
+    introParagraph:
+      "Ideal for vacation retreats, eco-resorts, and rapid-build residential estates, our prefabricated steel villas combine industrial structural precision with modern architectural beauty. Components are precision-manufactured off-site and swiftly assembled on your property with zero environmental disruption.",
+    subHeadline: "Rapid Off-Site Fabrication & Low Foundation Footprint",
+    subParagraph1:
+      "Engineered with lightweight high-strength steel members, these modular structures can be installed on challenging terrain, sloped land, or sensitive waterfronts with minimal foundation disturbance.",
+    subParagraph2:
+      "Equipped with thermal insulated wall and ceiling assemblies, weather-sealed joints, and rot-proof finishes, each villa delivers luxurious living with virtually zero ongoing maintenance.",
+    features: [
+      "Rapid Off-Site Modular Fabrication",
+      "Lightweight Low-Impact Foundation Requirements",
+      "Eco-Friendly Sustainable Building Materials",
+      "Weather-Sealed Thermal Insulation Systems",
+      "Modern Minimalist & Scandinavian Styling",
+      "Termite, Mold, Rot & Rust-Proof Lifetime",
+      "Integrated Verandas & Glass Observation Decks",
+      "Turnkey Complete Interior & Exterior Handover",
+    ],
+    projectIds: ["crestwood-courtyard", "the-haven-penthouse"],
+  },
+
+  // ==========================================
+  // 5. Rooftop Steel Structure & Sheds (ROOFTOP SPECIALTY)
   // ==========================================
   {
     slug: "rooftop-steel-structures",
@@ -77,7 +167,7 @@ export const servicesData: ServiceDetail[] = [
   },
 
   // ==========================================
-  // 3. Rooftop Restaurants & Sky Lounges (NEW ROOFTOP FOCUS)
+  // 6. Rooftop Restaurants & Sky Lounges (ROOFTOP SPECIALTY)
   // ==========================================
   {
     slug: "rooftop-restaurants-lounges",
@@ -107,7 +197,7 @@ export const servicesData: ServiceDetail[] = [
   },
 
   // ==========================================
-  // 4. Rooftop Garden, Pergola & Sky Terraces (NEW ROOFTOP FOCUS)
+  // 7. Rooftop Garden, Pergola & Sky Terraces (ROOFTOP SPECIALTY)
   // ==========================================
   {
     slug: "rooftop-garden-pergola",
@@ -137,104 +227,152 @@ export const servicesData: ServiceDetail[] = [
   },
 
   // ==========================================
-  // 5. Rooftop Solar Canopies & Walkways (NEW ROOFTOP FOCUS)
+  // 8. Commercial & Convention Hall Construction
+  // ==========================================
+  {
+    slug: "convention-hall-services",
+    title: "Commercial & Convention Hall Construction",
+    tagline: "Grand architectural event centers, acoustic glass facades, and large-span column-free convention hall engineering.",
+    shortDesc: "Turnkey structural steel design and general contracting for grand convention centers, commercial community halls, event venues, and modern glass facades.",
+    image: "/pohs-convention-hall.jpg",
+    mainHeadline: "Grand Convention Halls & Commercial Centers Built with Wide-Span Steel Precision",
+    introParagraph:
+      "Nirman BSB and Bangladesh Steel Builders Ltd. deliver specialized design and construction for grand event centers, convention halls, auditoriums, and commercial complexes. By leveraging heavy-gauge pre-engineered steel trusses, we create soaring, column-free event spaces with superior acoustics and contemporary glass facades.",
+    subHeadline: "Wide-Span Column-Free Engineering & Comprehensive Event Infrastructure",
+    subParagraph1:
+      "We engineer clear spans exceeding 100 feet without obstructing columns, maximizing guest capacity, banquet banquet flow, and stage sightlines while ensuring maximum BNBC seismic and wind resistance.",
+    subParagraph2:
+      "From insulated acoustic wall paneling and central HVAC truss mounting to architectural glass curtain walls and grand canopied entrances, we deliver turn-key convention facilities ready for operation.",
+    features: [
+      "Wide-Span Column-Free Hall Engineering",
+      "Modern Architectural Glass Curtain Facades",
+      "Acoustic Wall & Ceiling Structural Frameworks",
+      "Heavy-Load Mezzanines & Stage Foundations",
+      "Central HVAC Ducting & Electrical Truss Racks",
+      "Grand Entrance Porch & Canopy Structures",
+      "BNBC Commercial Code & Fire Safety Compliance",
+      "Turnkey Civil, Steel & Interior Commissioning",
+    ],
+    projectIds: ["pohs-convention-hall", "pohs-convention-facade"],
+  },
+
+  // ==========================================
+  // 9. Pre-Engineered Steel Buildings (PEB) & Warehouses
+  // ==========================================
+  {
+    slug: "steel-building-services",
+    title: "Pre-Engineered Steel Buildings (PEB) & Warehouses",
+    tagline: "Custom design, precision fabrication, and certified heavy industrial steel building erection.",
+    shortDesc: "Comprehensive pre-engineered steel building solutions, heavy industrial factory sheds, logistics warehouses, structural fabrication, and anti-rust protection.",
+    image: "/industrial-peb-warehouse.jpg",
+    mainHeadline: "High-Precision Pre-Engineered Steel Warehouses Built to Stand for Generations",
+    introParagraph:
+      "At Bangladesh Steel Builders Ltd., our Steel Building Services cover the entire lifecycle of industrial and commercial steel infrastructure. From initial custom design and computerized structural analysis to automated factory fabrication, on-site crane erection, and long-lasting anti-corrosion finishing, we deliver certified turnkey solutions.",
+    subHeadline: "Certified Engineering, Certified Materials & Guaranteed Handover",
+    subParagraph1:
+      "Our pre-engineered buildings (PEB) utilize high-tensile steel designed to reduce foundation load, withstand high wind and seismic stresses, and accelerate project handover by up to 50% compared to traditional concrete.",
+    subParagraph2:
+      "Every steel frame is manufactured under stringent BNBC and AISC standards with ultrasonic weld verification and millimeter-precise bolt connections.",
+    features: [
+      "Custom PEB Industrial Warehouse Design",
+      "Pre-Engineered Steel Building Fabrication",
+      "Heavy Industrial Factory Shed Erection",
+      "High-Capacity Crane Runway Girders",
+      "Long-Span Column-Free Logistics Halls",
+      "Anti-Rust Primer & Epoxy Protective Coating",
+      "BNBC & AISC Structural Code Certification",
+      "Turnkey Civil Foundation to Roof Handover",
+    ],
+    projectIds: ["modern-peb-logistics-facility", "jmi-shankur-auto-tank"],
+  },
+
+  // ==========================================
+  // Legacy / Direct Aliases (Ensuring no 404s for any old links)
   // ==========================================
   {
     slug: "rooftop-solar-canopies",
-    title: "Rooftop Solar Canopies & Walkways",
-    tagline: "Heavy-duty elevated solar mounting structures, maintenance walkways, and rooftop extensions.",
-    shortDesc: "Elevated industrial solar mounting steel frameworks, safety railings, inspection walkways, and structural roof slab reinforcements.",
+    title: "Luxury Steel Duplex Pool Villa",
+    tagline: "Bespoke steel frame duplex villas with private swimming pools, timber sun decks, and luxury resort living.",
+    shortDesc: "Turnkey luxury steel structure duplex pool villas, cantilever sun decks, outdoor lounge pavilions, and resort-style living spaces built with certified steel durability.",
     image: "/service-3.jpg",
-    mainHeadline: "High-Elevation Solar Mounting & Industrial Rooftop Access Frameworks",
+    mainHeadline: "Resort-Style Modern Duplex Pool Villas Built with Precision Structural Steel",
     introParagraph:
-      "Maximize renewable solar generation without losing usable rooftop floor area. Bangladesh Steel Builders Ltd. designs and erects elevated rooftop solar canopies that suspend solar arrays high above the roof surface, allowing the space below to remain fully utilized for parking, storage, or leisure.",
-    subHeadline: "Hot-Dip Galvanized Framing Rated for Severe Wind Gusts",
+      "Nirman BSB designs and constructs bespoke steel frame duplex villas featuring private swimming pools, timber lounge decks, and expansive outdoor entertainment pavilions.",
+    subHeadline: "Private Aquatic Sanctuary & Architectural Steel Pavilion Engineering",
     subParagraph1:
-      "Manufactured with premium hot-dip galvanized steel, our solar canopies withstand coastal winds and aggressive industrial atmospheric conditions with a lifespan exceeding 25 years.",
+      "Our duplex pool villas integrate deep-ground moisture proofing, automated swimming pool filtration, and cantilevered steel canopy decks.",
     subParagraph2:
-      "We provide non-penetrating counterweight footing options or certified chemical anchoring, together with anti-slip inspection walkways, lifelines, and safety perimeter balustrades.",
+      "Every structural frame is fabricated from high-strength galvanized steel, ensuring lifetime resistance against moisture, humidity, and seismic vibration.",
     features: [
-      "Elevated Solar Panel Mounting Trusses",
-      "Industrial Roof Walkways & Safety Catwalks",
-      "Galvanized Hot-Dip Structural Framing",
-      "High-Velocity Cyclone Wind Resistance",
-      "Existing Slab Load-Bearing Verification",
-      "Non-Penetrating & Chemical Anchor Systems",
-      "Industrial Sky-Light & Ventilation Vents",
-      "Turnkey Engineering & Fabrication Handover",
+      "Custom Steel Frame Duplex Villa Architecture",
+      "Integrated Private Swimming Pool Engineering",
+      "Cantilever Sun Decks & Teak Timber Lounges",
+      "Floor-to-Ceiling Thermal Glass Wall Facades",
+      "Earthquake-Resilient Steel Framing (BNBC)",
+      "Waterproof Pool Deck Drainage & Recirculation",
+      "Concealed LED Sconce & Underwater Illumination",
+      "Turnkey Architectural & Structural Handover",
     ],
-    projectIds: ["jmi-shankur-auto-tank", "maysha-spining-mill"],
+    projectIds: ["luxury-steel-pool-villa", "oakhill-residence"],
   },
-
-  // ==========================================
-  // 6. Construction Services
-  // ==========================================
-  {
-    slug: "construction-services",
-    title: "Construction Services",
-    tagline: "Turnkey general contracting, high-rise buildings, and civil infrastructure.",
-    shortDesc: "End-to-end construction management for high-rise commercial towers, hospitals, power substations, deep piling, and civil works.",
-    image: "/construction.jpg",
-    mainHeadline: "Turnkey Civil Infrastructure & Large-Scale Construction Management",
-    introParagraph:
-      "Our Construction Services division provides single-point management for commercial high-rises, healthcare facilities, industrial manufacturing complexes, and public infrastructure. We combine engineering excellence, certified equipment, and disciplined site coordination to deliver projects on time and within budget.",
-    subHeadline: "From Deep Groundwork to Structural Topping Out",
-    subParagraph1:
-      "We execute deep cast-in-situ foundation piling, reinforced concrete superstructures, electrical substation frameworks, and road infrastructure engineered for heavy operational loads.",
-    subParagraph2:
-      "With over 17 years of construction leadership in Bangladesh, our site managers enforce rigorous QA/QC inspections and uncompromising safety protocols across every phase.",
-    features: [
-      "High Rise Building Construction",
-      "Residential Building Construction",
-      "Hospital Building Construction",
-      "Roads and Highway Construction",
-      "Bridge & Culvert Construction",
-      "Power Plant Construction",
-      "Sub Station Construction",
-      "Foundation & Piling Service",
-    ],
-    projectIds: ["highgrove-house", "ridgeline-house"],
-  },
-
-  // ==========================================
-  // 7. Architectural Services
-  // ==========================================
   {
     slug: "architectural-services",
-    title: "Architectural Services",
-    tagline: "Functional architectural planning, 3D visualization, and interior modeling.",
-    shortDesc: "Complete building design, 3D photorealistic BIM modeling, sustainable architecture, interior design, and structural analysis.",
-    image: "/Steel-Building-Projects-8.webp",
-    mainHeadline: "Visionary Architectural Aesthetics Grounded in Structural Feasibility",
+    title: "Duplex & Multi-Storey Residential Construction",
+    tagline: "Turnkey architectural design, 3D elevation modeling, and structural steel construction for multi-level homes.",
+    shortDesc: "Turnkey architectural planning, 3D elevations, and structural steel construction for modern duplex houses, 4-storey residential apartments, and multi-family buildings.",
+    image: "/modern-multistorey-building.jpg",
+    mainHeadline: "Modern Duplex Homes & Multi-Storey Residential Buildings Engineered to Perfection",
     introParagraph:
-      "BSB's Architectural Services team bridges the gap between creative design and engineering reality. We produce comprehensive architectural layouts, 3D visualizations, and municipal zoning documentation that optimize space, natural lighting, and long-term functionality.",
-    subHeadline: "Photorealistic 3D Modeling & Sustainable Engineering",
+      "From luxury private duplex houses to modern 4-storey residential apartment buildings, Nirman BSB provides complete architectural planning, 3D exterior visualization, and certified structural steel construction.",
+    subHeadline: "Turnkey Design-to-Handover for Multi-Storey Living",
     subParagraph1:
-      "Through advanced 3D BIM visualization, clients can virtually inspect their industrial factory or commercial facility before fabrication begins, eliminating costly on-site revisions.",
+      "We take care of the entire development process: architectural drafting, municipal structural approvals, 3D photorealistic elevations, soil testing, foundation piling, steel frame erection, and premium finishing.",
     subParagraph2:
-      "Our architects incorporate climate-resilient sustainable design, optimal structural analysis, and interior layout planning to deliver spaces that are both inspiring and efficient.",
+      "Our steel-framed multi-storey structures offer superior earthquake safety, column-free interior floor plans, and flexible apartment divisions.",
     features: [
-      "Interior Design Services",
-      "Building Design & Drafting",
-      "3D Visualization",
-      "Architectural Planning & Zoning",
-      "Landscape Architecture",
-      "Sustainable Building Design",
-      "Renovation & Restoration Design",
-      "Structural Analysis",
+      "Custom Duplex & Multi-Storey House Plans",
+      "Photorealistic 3D Exterior Elevation Modeling",
+      "Earthquake & Wind-Resistant Structural Steel",
+      "Space-Optimized Multi-Unit Floor Layouts",
+      "Modern Cantilever Balconies & Glass Railings",
+      "Complete Municipal & RAJUK Approval Drawings",
+      "Turnkey Civil, Steel & Finishing Handover",
+      "Concealed Utility Ducts & Sound Insulation",
     ],
-    projectIds: ["oakhill-residence", "ridgeline-house"],
+    projectIds: ["modern-multistorey-complex", "ridgeline-house"],
   },
-
-  // ==========================================
-  // Legacy / Direct Aliases (Ensuring no 404s)
-  // ==========================================
+  {
+    slug: "construction-services",
+    title: "Commercial & Convention Hall Construction",
+    tagline: "Grand architectural event centers, acoustic glass facades, and large-span column-free convention hall engineering.",
+    shortDesc: "Turnkey structural steel design and general contracting for grand convention centers, commercial community halls, event venues, and modern glass facades.",
+    image: "/pohs-convention-hall.jpg",
+    mainHeadline: "Grand Convention Halls & Commercial Centers Built with Wide-Span Steel Precision",
+    introParagraph:
+      "Nirman BSB and Bangladesh Steel Builders Ltd. deliver specialized design and construction for grand event centers, convention halls, auditoriums, and commercial complexes.",
+    subHeadline: "Wide-Span Column-Free Engineering & Comprehensive Event Infrastructure",
+    subParagraph1:
+      "We engineer clear spans exceeding 100 feet without obstructing columns, maximizing guest capacity, banquet flow, and stage sightlines.",
+    subParagraph2:
+      "From insulated acoustic wall paneling and central HVAC truss mounting to architectural glass curtain walls and grand canopied entrances, we deliver turn-key facilities.",
+    features: [
+      "Wide-Span Column-Free Hall Engineering",
+      "Modern Architectural Glass Curtain Facades",
+      "Acoustic Wall & Ceiling Structural Frameworks",
+      "Heavy-Load Mezzanines & Stage Foundations",
+      "Central HVAC Ducting & Electrical Truss Racks",
+      "Grand Entrance Porch & Canopy Structures",
+      "BNBC Commercial Code & Fire Safety Compliance",
+      "Turnkey Civil, Steel & Interior Commissioning",
+    ],
+    projectIds: ["pohs-convention-hall", "pohs-convention-facade"],
+  },
   {
     slug: "pre-engineered-steel-buildings",
     title: "Pre-Engineered Steel Buildings (PEB)",
     tagline: "Custom-designed, factory-manufactured steel frameworks.",
     shortDesc: "Turnkey PEB solutions for industrial manufacturing sheds, heavy warehouses, and commercial steel buildings.",
-    image: "/s1.jpg",
+    image: "/industrial-peb-warehouse.jpg",
     mainHeadline: "Pioneering Pre-Engineered Steel Solutions Across Bangladesh",
     introParagraph: "Bangladesh Steel Builders Ltd. designs, fabricates, and erects world-class Pre-Engineered Steel Buildings (PEB).",
     subHeadline: "Engineered for Strength, Speed & Cost Optimization",
@@ -248,14 +386,14 @@ export const servicesData: ServiceDetail[] = [
       "Industrial Factory Sheds & Warehouses",
       "Heavy Load Truss Systems",
     ],
-    projectIds: ["oakhill-residence", "marina-bay-home"],
+    projectIds: ["modern-peb-logistics-facility", "jmi-shankur-auto-tank"],
   },
   {
     slug: "structural-steel-fabrication",
     title: "Structural Steel Fabrication & Installation",
     tagline: "Millimeter-precision steel fabrication and certified erection.",
     shortDesc: "Certified fabrication of heavy industrial steel beams, high-tensile trusses, and precision on-site erection.",
-    image: "/s2.jpg",
+    image: "/curved-roof-steel-shed.jpg",
     mainHeadline: "Heavy Industrial Steel Fabrication Built to Last",
     introParagraph: "We specialize in heavy structural steel fabrication and erection for industrial plants and infrastructure.",
     subHeadline: "Master Craftsmanship & Certified Welding",
@@ -275,7 +413,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Industrial & Commercial Construction",
     tagline: "Turnkey civil engineering and high-rise commercial structures.",
     shortDesc: "Comprehensive construction services for high-rise commercial towers and industrial facilities.",
-    image: "/s3.jpg",
+    image: "/pohs-convention-hall-perspective.jpg",
     mainHeadline: "Turnkey Construction Management from Foundation to Handover",
     introParagraph: "BSB delivers comprehensive general contracting and construction management.",
     subHeadline: "Single Point of Engineering Accountability",
@@ -287,6 +425,6 @@ export const servicesData: ServiceDetail[] = [
       "Hospital Building Construction",
       "Commercial Factory Complexes",
     ],
-    projectIds: ["oakhill-residence", "highgrove-house"],
+    projectIds: ["modern-multistorey-complex", "highgrove-house"],
   },
 ];

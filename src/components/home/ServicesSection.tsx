@@ -7,12 +7,9 @@ import { motion } from "motion/react";
 import { servicesData } from "@/data/services";
 
 export default function ServicesSection() {
-  // 3 Primary Core Services (Future services added to servicesData automatically participate)
+  // Active Primary Services
   const activeServices = servicesData.filter(
     (s) =>
-      s.slug === "steel-building-services" ||
-      s.slug === "construction-services" ||
-      s.slug === "architectural-services" ||
       ![
         "pre-engineered-steel-buildings",
         "structural-steel-fabrication",
@@ -20,6 +17,9 @@ export default function ServicesSection() {
         "architectural-design",
         "construction-management",
         "custom-home-building",
+        "rooftop-solar-canopies",
+        "architectural-services",
+        "construction-services",
       ].includes(s.slug)
   );
 
@@ -274,6 +274,21 @@ export default function ServicesSection() {
                             <span>→</span>
                           </span>
                         </div>
+
+                        {/* Department / Division Tag in Top Left */}
+                        {service.slug.includes("duplex") || service.slug.includes("villa") ? (
+                          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[10px] font-extrabold uppercase tracking-wider shadow-sm">
+                            DUPLEX &amp; RESIDENTIAL
+                          </div>
+                        ) : service.slug.startsWith("rooftop-") ? (
+                          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-neutral-900/90 text-[#E5A53D] text-[10px] font-extrabold uppercase tracking-wider border border-[#E5A53D]/40">
+                            ROOFTOP SPECIALTY
+                          </div>
+                        ) : (
+                          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-neutral-950/80 backdrop-blur-xs text-white text-[10px] font-bold uppercase tracking-wider border border-white/20">
+                            COMMERCIAL &amp; PEB
+                          </div>
+                        )}
 
                         {/* Top-Right Pill indicating Details Available */}
                         <div className="absolute top-3 right-3 px-2.5 py-1 rounded-sm bg-neutral-950/85 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider border border-white/10 group-hover:border-[#E5A53D] transition-colors">

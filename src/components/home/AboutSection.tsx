@@ -10,7 +10,7 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection({
-  bannerImageUrl = "/about-banner.jpg",
+  bannerImageUrl = "/luxury-steel-duplex-villa.jpg",
 }: AboutSectionProps) {
   return (
     <section
@@ -30,13 +30,11 @@ export default function AboutSection({
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-              <span>ABOUT</span>
+              <span>ABOUT NIRMAN BSB</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold tracking-tight text-neutral-950 leading-[1.25]">
-              Bangladesh Steel Builders Ltd. is a pioneer in engineered steel
-              building construction, delivering durable, cost-effective, and
-              bespoke structures nationwide since 2009.
+              Nirman BSB is the specialized architectural, rooftop engineering, and turnkey steel construction wing of Bangladesh Steel Builders Ltd.
             </h2>
 
             <div className="pt-2">

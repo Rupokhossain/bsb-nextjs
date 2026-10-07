@@ -9,9 +9,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "BSB | Luxury Rooftop Living & Custom Swimming Pools",
+  title: "Nirman BSB | Structural Engineering, Rooftop Architecture & Steel Construction",
   description:
-    "We build bespoke rooftop gardens, bioclimatic outdoor lounges, and luxury swimming pools engineered to last.",
+    "Nirman BSB is the specialized structural engineering, modern rooftop architecture, steel duplex villa, and turnkey consultancy wing of Bangladesh Steel Builders Ltd.",
 };
 
 export default function RootLayout({

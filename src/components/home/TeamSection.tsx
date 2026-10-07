@@ -187,51 +187,79 @@ export default function TeamSection({
         </div>
 
         {/* ============================================================ */}
-        {/* 2. BOTTOM PART: 4 LEADERSHIP MEMBERS GRID (From About Page) */}
+        {/* 2. BOTTOM PART: MANAGING DIRECTOR EXECUTIVE SPOTLIGHT (Matching About Page) */}
         {/* ============================================================ */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 items-start">
-          {members.map((member, idx) => (
-            <motion.div
-              key={member.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                duration: 0.6,
-                delay: idx * 0.1,
-                ease: "easeOut",
-              }}
-              className="space-y-3 group"
-            >
-              {/* Member Portrait Card */}
-              <div className="relative aspect-[4/4.5] w-full rounded-sm overflow-hidden bg-neutral-200 shadow-sm">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-neutral-950/0 group-hover:bg-neutral-950/10 transition-colors duration-300" />
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="rounded-sm bg-white border border-neutral-200/90 shadow-md p-6 sm:p-10 lg:p-12 overflow-hidden"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+            {/* Left: Managing Director Portrait Card */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-sm overflow-hidden bg-neutral-950 shadow-xl border border-neutral-200 group">
+                <div className="relative aspect-[4/4.6] w-full overflow-hidden bg-neutral-950">
+                  <Image
+                    src="/founder.jpg"
+                    alt="S.M. Anayet - Founder & Managing Director"
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    priority
+                  />
+                </div>
+
+                {/* Floating Glass Badge */}
+                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-sm bg-neutral-950/92 backdrop-blur-md border border-white/10 text-white space-y-1">
+                  <div className="text-lg sm:text-xl font-extrabold tracking-tight">
+                    S.M. Anayet
+                  </div>
+                  <div className="text-xs text-neutral-300 font-light">
+                    Founder &amp; Managing Director • 17+ Years Industry Leadership
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Managing Director Vision & Metrics */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
+                <span>LEADERSHIP &amp; VISION</span>
               </div>
 
-              {/* Member Details */}
-              <div className="space-y-0.5 pt-0.5">
-                <h3 className="text-base sm:text-[17px] font-bold text-neutral-950 group-hover:text-[#006837] transition-colors">
-                  {member.name}
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-500 font-normal">
-                  {member.role}
-                </p>
-                {member.specialty && (
-                  <p className="text-[11px] text-[#E5A53D] font-semibold tracking-wide uppercase pt-0.5">
-                    {member.specialty}
-                  </p>
-                )}
+              <h3 className="text-2xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-neutral-950 uppercase leading-[1.15]">
+                Engineering With Integrity, <br /> Building With Vision
+              </h3>
+
+              <blockquote className="border-l-2 border-[#E5A53D] pl-5 sm:pl-6 italic text-neutral-700 text-sm sm:text-base lg:text-lg font-light leading-relaxed">
+                &ldquo;Every structural member we fabricate carries our responsibility for life and investment. At Nirman BSB, our focus is delivering certified structural durability, innovative rooftop engineering, and turnkey excellence across Bangladesh.&rdquo;
+              </blockquote>
+
+              <p className="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed">
+                Under the strategic direction of S.M. Anayet, Nirman BSB combines cutting-edge 3D BIM structural modeling with the fabrication power and 15+ years legacy of Bangladesh Steel Builders Ltd.
+              </p>
+
+              {/* 3 Key Track Record Metrics */}
+              <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-5 border-t border-neutral-100">
+                <div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-neutral-950">17+</div>
+                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium">Years Experience</div>
+                </div>
+                <div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-neutral-950">150+</div>
+                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium">Steel Projects</div>
+                </div>
+                <div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-neutral-950">100%</div>
+                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium">Code Compliance</div>
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
