@@ -362,7 +362,7 @@ export default function AboutPage() {
       {/* ============================================================ */}
       {/* 2. WHO WE ARE SECTION */}
       {/* ============================================================ */}
-      <section className="py-24 sm:py-32 bg-white border-t border-neutral-100">
+      <section className="py-16 sm:py-26 bg-white border-t border-neutral-100">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12 sm:space-y-16">
           {/* Header Row: Badge & Large Headline */}
           <FadeIn className="space-y-4 max-w-5xl">
@@ -452,7 +452,7 @@ export default function AboutPage() {
       {/* ============================================================ */}
       {/* 4. VISION & MISSION DUAL CARDS */}
       {/* ============================================================ */}
-      <section className="py-24 sm:py-32 bg-white border-t border-neutral-100">
+      <section className="py-16 sm:py-26 bg-white border-t border-neutral-100">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16">
           <FadeIn className="text-center space-y-4 max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
@@ -586,7 +586,7 @@ export default function AboutPage() {
                 className="space-y-4 p-6 rounded-sm bg-white hover:bg-neutral-50 shadow-sm border border-neutral-200/70 transition-all group"
               >
                 {/* Icon in circle */}
-                <div className="w-12 h-12 rounded-full bg-[#E5A53D]/15 text-[#E5A53D] group-hover:bg-[#E5A53D] group-hover:text-neutral-950 transition-colors flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-[#E5A53D]/15 text-[#E5A53D] group-hover:text-neutral-950 transition-colors flex items-center justify-center">
                   {item.icon}
                 </div>
 
@@ -658,7 +658,7 @@ export default function AboutPage() {
       {/* ============================================================ */}
       {/* 7. LEADERSHIP TEAM SECTION */}
       {/* ============================================================ */}
-      <section className="py-24 sm:py-32 bg-[#F9F8F6] border-t border-neutral-200/60">
+      <section className="py-16 sm:py-26 bg-[#F9F8F6] border-t border-neutral-200/60">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16 sm:space-y-20">
           {/* Header Row */}
           <FadeIn className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">

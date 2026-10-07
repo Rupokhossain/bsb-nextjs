@@ -197,7 +197,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="bg-white text-neutral-900 py-24 sm:py-32 overflow-hidden border-t border-neutral-100"
+      className="bg-white text-neutral-900 py-20 sm:py-26 overflow-hidden border-t border-neutral-100"
     >
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12 sm:space-y-16">
         {/* HEADER: Exactly matching the client's official website text */}

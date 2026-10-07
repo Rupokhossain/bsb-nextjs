@@ -191,7 +191,7 @@ export default function NirmanBSBPage() {
               </a>
               <a
                 href="tel:+8801711181860"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-7 sm:py-3.5 rounded-sm border border-neutral-300 hover:border-neutral-900 text-neutral-900 font-semibold text-xs sm:text-sm transition-all text-center"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-7 sm:py-3.5 rounded-sm border border-neutral-300  text-neutral-900 font-semibold text-xs sm:text-sm transition-all text-center"
               >
                 <svg className="w-4 h-4 text-neutral-700 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
@@ -216,23 +216,23 @@ export default function NirmanBSBPage() {
                   <span>WHO WE ARE</span>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white uppercase leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide text-white uppercase leading-tight">
                   About Nirman BSB
                 </h2>
 
-                <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
+                <p className="text-base text-neutral-300 font-light leading-relaxed">
                   Nirman BSB was established to provide professional steel building consultancy services in Bangladesh, helping clients make informed decisions before and during construction.
                 </p>
 
-                <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed">
-                  Our consultancy services follow the exact same rigorous quality standards, engineering expertise, and construction excellence practiced by our parent company, <span className="text-white font-semibold">Bangladesh Steel Builders Ltd.</span>
+                <p className="text-base text-neutral-300 font-light leading-relaxed">
+                  Our consultancy services follow the exact same rigorous quality standards, engineering expertise, and construction excellence practiced by our parent company, <span className="text-white font-medium">Bangladesh Steel Builders Ltd.</span>
                 </p>
 
                 <div className="p-4 rounded-sm bg-white/5 border border-white/10 space-y-2">
-                  <span className="text-xs font-bold text-[#E5A53D] uppercase tracking-wider block">
+                  <span className="text-sm font-bold text-[#E5A53D] uppercase tracking-wider block">
                     Our Strategic Focus
                   </span>
-                  <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
+                  <p className="text-sm text-neutral-300 font-light leading-relaxed">
                     We focus on providing intelligent, cost-effective, and sustainable steel structural solutions tailored to Bangladesh&apos;s industrial and commercial business needs.
                   </p>
                 </div>
@@ -241,8 +241,8 @@ export default function NirmanBSBPage() {
               {/* Bottom footer bar with responsive layout */}
               <div className="pt-6 sm:pt-8 mt-6 border-t border-neutral-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs text-neutral-400 block font-medium">Independent Advisory</span>
-                  <span className="text-sm font-bold text-white">Turnkey Feasibility & QA</span>
+                  <span className="text-sm text-neutral-400 block font-medium">Independent Advisory</span>
+                  <span className="text-base font-bold text-white">Turnkey Feasibility & QA</span>
                 </div>
                 <a
                   href="https://wa.me/8801711181860"
@@ -267,7 +267,7 @@ export default function NirmanBSBPage() {
                   Sectors We Provide Advisory For
                 </h2>
 
-                <p className="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed">
+                <p className="text-sm text-neutral-600 font-light leading-relaxed">
                   We provide specialized structural consultancy and construction management for:
                 </p>
 
@@ -276,18 +276,18 @@ export default function NirmanBSBPage() {
                   {coreSectors.map((sector) => (
                     <div
                       key={sector.num}
-                      className="p-4 bg-white rounded-sm border border-neutral-200/80 shadow-xs hover:border-neutral-950 transition-colors space-y-2 group"
+                      className="p-4 bg-white rounded-sm border border-neutral-200/80 shadow-xs  transition-colors space-y-2 group"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-black text-neutral-900 group-hover:text-[#E5A53D] transition-colors">
+                        <span className="text-base font-black text-neutral-900 group-hover:text-[#E5A53D] transition-colors">
                           {sector.num}
                         </span>
                         <div className="w-2 h-2 rounded-full bg-neutral-200 group-hover:bg-[#E5A53D] transition-colors" />
                       </div>
-                      <h3 className="text-sm font-bold text-neutral-950 leading-snug">
+                      <h3 className="text-base font-bold text-neutral-950 leading-snug">
                         {sector.title}
                       </h3>
-                      <p className="text-[11px] text-neutral-500 font-light leading-relaxed">
+                      <p className="text-sm text-neutral-500 font-light leading-relaxed">
                         {sector.desc}
                       </p>
                     </div>

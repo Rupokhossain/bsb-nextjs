@@ -68,7 +68,7 @@ export default function TestimonialsSection({
   const current = testimonials[activeIndex] || testimonials[0];
 
   return (
-    <section id="testimonials" className="w-full bg-white text-neutral-900 py-24 sm:py-32 border-t border-neutral-100">
+    <section id="testimonials" className="w-full bg-white text-neutral-900 py-16 sm:py-26 border-t border-neutral-100">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-16 sm:space-y-20">
         
         {/* ============================================================ */}

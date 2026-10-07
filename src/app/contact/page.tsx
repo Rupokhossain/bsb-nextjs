@@ -282,15 +282,18 @@ export default function ContactPage() {
                   sizes="(max-width: 1440px) 100vw, 1440px"
                   priority
                 />
+                {/* Soft, balanced dark gradient: keeps architectural background bright & clear while preserving sharp text readability */}
+                <div className="absolute inset-0 bg-neutral-950/20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/75 via-neutral-950/35 to-transparent md:bg-gradient-to-r md:from-neutral-950/80 md:via-neutral-950/40 md:to-transparent" />
               </div>
 
               {/* Banner Content */}
               <div className="relative z-10 max-w-2xl space-y-6">
-                <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase leading-tight">
+                <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white uppercase leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
                   Ready to Work <br /> With Us?
                 </h2>
 
-                <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed max-w-xl">
+                <p className="text-sm sm:text-base text-white font-medium leading-relaxed max-w-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
                   We believe every client deserves a space engineered with care, precision, and lasting architectural value. Take the next step and start the conversation with our engineering team.
                 </p>
 

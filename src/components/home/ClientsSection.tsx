@@ -117,7 +117,7 @@ export default function ClientsSection() {
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 sm:w-44 lg:w-64 z-20 bg-gradient-to-l from-white via-white/80 to-transparent" />
 
         {/* Single Seamless Infinite Marquee with Spacious Pure Logos */}
-        <div className="flex items-center gap-12 sm:gap-16  animate-marquee py-3">
+        <div className="flex items-center gap-6 sm:gap-12  animate-marquee py-3">
           {[...clientLogos, ...clientLogos].map((client, idx) => (
             <div
               key={`client-${client.id}-${idx}`}
@@ -153,15 +153,15 @@ export default function ClientsSection() {
             </p>
           </div>
 
-          <div className="shrink-0 w-full md:w-auto">
+          <div className="shrink-0 w-full md:w-auto flex justify-center">
             <a
               href="https://wa.me/8801711181860"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-6 py-3 rounded-sm bg-[#E5A53D] hover:bg-[#d6952c] text-neutral-950 font-bold text-xs sm:text-sm uppercase tracking-wider transition-all active:scale-95 shadow-md text-center"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 rounded-sm bg-[#E5A53D] hover:bg-[#d6952c] text-neutral-950 font-bold text-[11px] sm:text-xs md:text-sm uppercase tracking-wide whitespace-nowrap transition-all active:scale-95 shadow-md text-center"
             >
-              <span>Consult Our Senior Engineers</span>
-              <span>→</span>
+              <span className="whitespace-nowrap">Consult Our Senior Engineers</span>
+              <span className="shrink-0">→</span>
             </a>
           </div>
         </div>
