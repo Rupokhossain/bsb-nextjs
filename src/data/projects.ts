@@ -27,16 +27,16 @@ export const completedProjectsData: CompletedProject[] = [
     id: "pohs-convention-hall",
     title: "POHS Convention Hall & Event Center",
     location: "Mirpur DOHS, Dhaka.",
-    image: "/pohs-convention-hall.jpg",
+    image: "/pohs-convention-hall1.webp",
     category: "Convention Hall",
   },
-  {
-    id: "pohs-convention-facade",
-    title: "POHS Convention Hall Glass Curtain Facade",
-    location: "Mirpur DOHS, Dhaka.",
-    image: "/pohs-convention-hall-perspective.jpg",
-    category: "Commercial Complex",
-  },
+  // {
+  //   id: "pohs-convention-facade",
+  //   title: "POHS Convention Hall Glass Curtain Facade",
+  //   location: "Mirpur DOHS, Dhaka.",
+  //   image: "/pohs-convention-hall-perspective.jpg",
+  //   category: "Commercial Complex",
+  // },
   {
     id: "modern-multistorey-complex",
     title: "Modern 4-Storey Duplex & Residential Complex",
@@ -52,13 +52,13 @@ export const completedProjectsData: CompletedProject[] = [
     category: "Industrial PEB",
   },
 
-  // {
-  //   id: "skyline-rooftop-lounge",
-  //   title: "Skyline Rooftop Restaurant & Steel Lounge",
-  //   location: "Gulshan-2, Dhaka.",
-  //   image: "/restaurant-design-rooftop.webp",
-  //   category: "Rooftop Restaurant",
-  // },
+  {
+    id: "skyline-rooftop-lounge",
+    title: "Skyline Rooftop Restaurant & Steel Lounge",
+    location: "Gulshan-2, Dhaka.",
+    image: "/restaurant-design-rooftop.webp",
+    category: "Rooftop Restaurant",
+  },
   {
     id: "jmi-shankur-auto-tank",
     title: "JMI Shankur Auto Tank Limited.",
@@ -110,9 +110,9 @@ export const completedProjectsData: CompletedProject[] = [
   },
   {
     id: "elevated-rooftop-shed",
-    title: "Elevated Rooftop Steel Shed & Walkways",
+    title: "Elevated Rooftop Shed",
     location: "Uttara, Dhaka.",
-    image: "/Slope Roof Replacement.webp",
+    image: "/rooftop.jpg",
     category: "Rooftop Shed",
   },
   {

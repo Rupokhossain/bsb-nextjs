@@ -177,7 +177,6 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                   </div>
                 </StaggerItem>
               ))}

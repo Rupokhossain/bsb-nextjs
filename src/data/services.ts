@@ -234,7 +234,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Commercial & Convention Hall Construction",
     tagline: "Grand architectural event centers, acoustic glass facades, and large-span column-free convention hall engineering.",
     shortDesc: "Turnkey structural steel design and general contracting for grand convention centers, commercial community halls, event venues, and modern glass facades.",
-    image: "/pohs-convention-hall.jpg",
+    image: "/pohs-convention-hall1.webp",
     mainHeadline: "Grand Convention Halls & Commercial Centers Built with Wide-Span Steel Precision",
     introParagraph:
       "Nirman BSB and Bangladesh Steel Builders Ltd. deliver specialized design and construction for grand event centers, convention halls, auditoriums, and commercial complexes. By leveraging heavy-gauge pre-engineered steel trusses, we create soaring, column-free event spaces with superior acoustics and contemporary glass facades.",

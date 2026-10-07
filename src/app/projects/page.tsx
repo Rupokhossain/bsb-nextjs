@@ -124,14 +124,11 @@ export default function ProjectsPage() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
 
-                {/* Cinematic Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent transition-opacity duration-300" />
-
-                {/* Hover Subtle Tint */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300" />
+                {/* Subtle Bottom Gradient (Light & Crisp, only behind text so photos stay bright & natural) */}
+                <div className="absolute inset-x-0 bottom-0 h-40 sm:h-44 bg-gradient-to-t from-black/80 via-black/35 to-transparent pointer-events-none transition-opacity duration-300" />
 
                 {/* Index Pill in Top Left */}
-                <div className="absolute top-4 left-4 z-10 px-2.5 py-1 rounded-sm bg-black/60 backdrop-blur-xs text-white text-[10px] font-bold tracking-wider uppercase border border-white/20">
+                <div className="absolute top-4 left-4 z-10 px-2.5 py-1 rounded-sm bg-neutral-900/50 backdrop-blur-md text-white text-[10px] font-bold tracking-wider uppercase border border-white/20">
                   {String(idx + 1).padStart(2, "0")} / {String(completedProjectsData.length).padStart(2, "0")}
                 </div>
 
