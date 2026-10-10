@@ -77,7 +77,7 @@ const defaultTeamMembers: TeamMember[] = [
 ];
 
 export default function TeamSection({
-  teamMainImageUrl = "/s2.jpg",
+  teamMainImageUrl = "/about1.jpg",
   members = defaultTeamMembers,
 }: TeamSectionProps) {
   return (
@@ -200,12 +200,12 @@ export default function TeamSection({
             {/* Left: Managing Director Portrait Card */}
             <div className="lg:col-span-5">
               <div className="relative rounded-sm overflow-hidden bg-neutral-950 shadow-xl border border-neutral-200 group">
-                <div className="relative aspect-[4/4.6] w-full overflow-hidden bg-neutral-950">
+                <div className="relative aspect-[4/4.3] w-full overflow-hidden bg-neutral-950">
                   <Image
-                    src="/Professional Portrait Behind Laptop.png"
+                    src="/sm-anayet-office.jpg"
                     alt="S.M. Anayet - Founder & Managing Director"
                     fill
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     priority
                   />

@@ -14,7 +14,7 @@ export const metadata = {
 
 // 📸 Banner Image:
 const teamPageImages = {
-  banner: "/team1.jpg",
+  banner: "/about2.jpg",
 };
 
 export default function TeamPage() {

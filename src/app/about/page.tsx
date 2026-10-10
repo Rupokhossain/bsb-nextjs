@@ -22,7 +22,7 @@ export const metadata = {
 const aboutImages = {
   heroBg: "/about-banner.jpg",
   whoWeAre: "/about1.jpg",
-  founder: "/Professional Portrait Behind Laptop.png",
+  founder: "/sm-anayet-office.jpg",
   vision: "/vision.jpg",
   mission: "/mission.jpg",
   journeySite: "/about2.jpg",
@@ -214,7 +214,7 @@ export default function AboutPage() {
             {/* Left: Founder Portrait Card */}
             <FadeIn className="lg:col-span-5">
               <div className="relative rounded-sm overflow-hidden bg-neutral-900 shadow-xl border border-neutral-200/80 group">
-                <div className="relative aspect-[4/4.5] w-full overflow-hidden bg-neutral-950">
+                <div className="relative aspect-[4/4.3] w-full overflow-hidden bg-neutral-950">
                   <Image
                     src={aboutImages.founder}
                     alt="S.M. Anayet - Founder of Bangladesh Steel Builders Ltd."

@@ -81,11 +81,11 @@ export const completedProjectsData: CompletedProject[] = [
     category: "Factory Shed",
   },
   {
-    id: "cantilever-sky-terrace",
-    title: "Cantilever Sky Terrace & Glass Pavilion",
-    location: "Tejgaon I/A, Dhaka.",
-    image: "/r2.jpg",
-    category: "Sky Lounge",
+    id: "curved-roof-steel-shed",
+    title: "Curved-Roof Industrial Steel Shed Structure",
+    location: "Savar EPZ, Dhaka.",
+    image: "/curved-roof-steel-shed.jpg",
+    category: "Steel Structure",
   },
   {
     id: "maysha-spining-mill",
@@ -162,12 +162,12 @@ export const projectsData: Project[] = [
     // 📸 Apnar chobi boshanor jonno image path change kore din
     image: "/p1.jpg",
     galleryImages: ["/service-5.jpg", "/about-banner.jpg"],
-    description: "A contemporary multi-level architectural villa with integrated reflection pools and cedarwood cladding.",
-    vision: "To blend raw concrete geometry with warm vertical timber elements, blurring indoor living with outdoor water features.",
+    description: "A contemporary multi-level architectural villa with integrated reflection pools and architectural steel finish.",
+    vision: "To blend modern structural steel geometry with panoramic glass elements, blurring indoor living with outdoor water features.",
     engineeringHighlight: "Engineered with floating cantilever slabs and 5-layer moisture barrier protection beneath all soil beds.",
     highlights: [
       "Custom sunken fire lounge with perimeter water reflection",
-      "Marine-grade concealed cedar wood cladding",
+      "Marine-grade concealed architectural composite cladding",
       "Automated architectural wall sconce night illumination",
     ],
   },
@@ -185,12 +185,12 @@ export const projectsData: Project[] = [
     year: "2025",
     image: "/p2.jpg",
     galleryImages: ["/service-4.jpg", "/service-1.jpg"],
-    description: "An architectural infinity edge pool looking onto a teak relaxation patio and glass pavilion.",
+    description: "An architectural infinity edge pool looking onto a luxury relaxation patio and glass pavilion.",
     vision: "Creating a resort-grade private aquatic sanctuary with whisper-quiet filtration and acoustic water walls.",
     engineeringHighlight: "Dual-circuit variable speed pumps coupled with underwater acoustic damping and zero-overflow gutters.",
     highlights: [
       "Full perimeter knife-edge infinity water spillway",
-      "Low-maintenance composite teak pool decking",
+      "Low-maintenance composite pool decking",
       "Color-adaptive underwater LED lighting presets",
     ],
   },
@@ -207,7 +207,7 @@ export const projectsData: Project[] = [
     duration: "35 Days",
     year: "2024",
     image: "/p3.jpg",
-    galleryImages: ["/service-7.jpg", "/service-6.jpg"],
+    galleryImages: ["/service-7.jpg", "/rooftop.jpg"],
     description: "A private penthouse sky terrace featuring bioclimatic motorized pergola, BBQ counter, and lush tropical flora.",
     vision: "Transforming an underutilized rooftop slab into a vibrant, heat-deflecting sky garden.",
     engineeringHighlight: "Lightweight perlite-engineered soil mix keeping roof slab weight well below structural limits.",
@@ -254,9 +254,9 @@ export const projectsData: Project[] = [
     year: "2024",
     image: "/p5.jpg",
     galleryImages: ["/service-3.jpg", "/about-banner.jpg"],
-    description: "An open-air cedar entertainment pavilion overlooking a custom inground heated plunge pool.",
+    description: "An open-air steel frame entertainment pavilion overlooking a custom inground heated plunge pool.",
     vision: "Seamless luxury entertainment zone connecting outdoor barbecue dining with hydrotherapy pool.",
-    engineeringHighlight: "All-weather timber joinery with concealed stainless steel brackets and anti-slip travertine pavers.",
+    engineeringHighlight: "All-weather architectural steel joinery with concealed stainless steel brackets and anti-slip travertine pavers.",
     highlights: [
       "Heated hydrotherapy plunge pool with jacuzzi jets",
       "Integrated audio speakers concealed in landscaping",
@@ -300,7 +300,7 @@ export const projectsData: Project[] = [
     year: "2025",
     // 📸 Apnar chobi public folder e rekhe eikhane boshiye diben
     image: "/p-7.jpg",
-    galleryImages: ["/s2.jpg", "/s3.jpg"],
+    galleryImages: ["/about2.jpg", "/s3.jpg"],
     description: "A private multi-tiered sky terrace integrating a modern glass pavilion, Japanese dry garden, and cantilevered viewing deck.",
     vision: "Crafting an elevated botanical haven above the urban skyline with shaded outdoor living lounges and drought-tolerant greenery.",
     engineeringHighlight: "Lightweight aerated concrete substrates and dual-membrane elastomeric waterproofing rated for high hydrostatic pressure.",
@@ -349,7 +349,7 @@ export const projectsData: Project[] = [
     // 📸 Apnar chobi public folder e rekhe eikhane boshiye diben
     image: "/p-9.jpg",
     galleryImages: ["/service-3.jpg", "/service-4.jpg"],
-    description: "A dramatic infinity pool perched on rolling hills, featuring zero-edge perimeter overflow and an adjacent open-air cedar cabana.",
+    description: "A dramatic infinity pool perched on rolling hills, featuring zero-edge perimeter overflow and an adjacent open-air steel cabana.",
     vision: "Merging hillside landscape architecture with crystalline water reflections and resort-grade lounging zones.",
     engineeringHighlight: "Retaining wall micro-pile reinforcement and computer-balanced hydraulic surge tanks for silent water recirculation.",
     highlights: [
@@ -373,23 +373,23 @@ export const projectsData: Project[] = [
     // 📸 Apnar chobi public folder e rekhe eikhane boshiye diben
     image: "/p-10.jpg",
     galleryImages: ["/about2.jpg", "/about-bottom.jpg"],
-    description: "A comprehensive penthouse transformation incorporating double-height living areas, smoked oak joinery, and private rooftop plunge pool.",
+    description: "A comprehensive penthouse transformation incorporating double-height living areas, bespoke architectural joinery, and private rooftop plunge pool.",
     vision: "Reinventing an older penthouse into a contemporary, light-filled architectural masterpiece with tactile finishes.",
     engineeringHighlight: "Precision structural beam reinforcement allowing column-free open plan living and high ceiling clearance.",
     highlights: [
       "Bookmatched Calacatta marble fireplace centerpiece",
-      "Custom architectural staircase with floating oak treads and glass balustrades",
+      "Custom architectural staircase with floating architectural treads and glass balustrades",
       "Heated rooftop stainless steel plunge pool with skyline panoramas",
     ],
   },
 
   // ==========================================
-  // 11. Cedar Ridge Retreat
+  // 11. Steel Ridge Retreat
   // ==========================================
   {
-    id: "cedar-ridge-retreat",
-    title: "Cedar Ridge Retreat",
-    category: "Outdoor Living & Pergola",
+    id: "steel-ridge-retreat",
+    title: "Steel Ridge Retreat",
+    category: "Outdoor Living & Steel Pergola",
     location: "Gazipur",
     area: "3,600 sq.ft",
     duration: "45 Days",
@@ -397,9 +397,9 @@ export const projectsData: Project[] = [
     // 📸 Apnar chobi public folder e rekhe eikhane boshiye diben
     image: "/p-11.jpg",
     galleryImages: ["/service-7.jpg", "/service-1.jpg"],
-    description: "An outdoor culinary pavilion and fire lounge nestled in forested landscape with integrated wood-fired pizza oven and dining terrace.",
-    vision: "Creating an authentic farm-to-table outdoor entertaining sanctuary celebrating raw timber and artisanal stonework.",
-    engineeringHighlight: "Kiln-dried western red cedar framing treated with marine grade UV-resistant micro-sealer and concealed seismic anchors.",
+    description: "An outdoor culinary pavilion and fire lounge nestled in forested landscape with integrated outdoor pizza oven and dining terrace.",
+    vision: "Creating an authentic farm-to-table outdoor entertaining sanctuary celebrating structural steel framing and artisanal stonework.",
+    engineeringHighlight: "High-grade structural steel framing treated with marine grade UV-resistant protective coating and concealed seismic anchors.",
     highlights: [
       "Wood-fired artisan refractory brick pizza oven and built-in smoker",
       "Hand-chiseled slate paving stones with permeable grass joints",

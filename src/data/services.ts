@@ -52,12 +52,12 @@ export const servicesData: ServiceDetail[] = [
   {
     slug: "luxury-duplex-pool-villa",
     title: "Luxury Steel Duplex Pool Villa",
-    tagline: "Bespoke steel frame duplex villas with private swimming pools, timber sun decks, and luxury resort living.",
+    tagline: "Bespoke steel frame duplex villas with private swimming pools, composite sun decks, and luxury resort living.",
     shortDesc: "Turnkey luxury steel structure duplex pool villas, cantilever sun decks, outdoor lounge pavilions, and resort-style living spaces built with certified steel durability.",
     image: "/service-3.jpg",
     mainHeadline: "Resort-Style Modern Duplex Pool Villas Built with Precision Structural Steel",
     introParagraph:
-      "Nirman BSB designs and constructs bespoke steel frame duplex villas featuring private swimming pools, timber lounge decks, and expansive outdoor entertainment pavilions. By uniting high-tensile earthquake-resilient steel structures with modern architectural luxury, we bring private resort living right into your personal residence.",
+      "Nirman BSB designs and constructs bespoke steel frame duplex villas featuring private swimming pools, cantilever lounge decks, and expansive outdoor entertainment pavilions. By uniting high-tensile earthquake-resilient steel structures with modern architectural luxury, we bring private resort living right into your personal residence.",
     subHeadline: "Private Aquatic Sanctuary & Architectural Steel Pavilion Engineering",
     subParagraph1:
       "Our duplex pool villas integrate deep-ground moisture proofing, automated swimming pool filtration, and cantilevered steel canopy decks that extend seamlessly over the water with zero structural sagging.",
@@ -66,7 +66,7 @@ export const servicesData: ServiceDetail[] = [
     features: [
       "Custom Steel Frame Duplex Villa Architecture",
       "Integrated Private Swimming Pool Engineering",
-      "Cantilever Sun Decks & Teak Timber Lounges",
+      "Cantilever Sun Decks & Panoramic Lounges",
       "Floor-to-Ceiling Thermal Glass Wall Facades",
       "Earthquake-Resilient Steel Framing (BNBC)",
       "Waterproof Pool Deck Drainage & Recirculation",
@@ -107,31 +107,31 @@ export const servicesData: ServiceDetail[] = [
   },
 
   // ==========================================
-  // 4. Prefabricated Steel Villa & Modern Cottages
+  // 4. Prefabricated Steel Villa & Modern Residences
   // ==========================================
   {
     slug: "prefabricated-steel-villa",
-    title: "Prefabricated Steel Villa & Cottages",
-    tagline: "Modular eco-friendly steel villas, vacation homes, and resort cottage structures.",
-    shortDesc: "Modular prefabricated steel frame villas and eco-resort cottages. Rapid installation, modern aesthetic finishes, and weather-sealed durability.",
-    image: "/r3.jpg",
-    mainHeadline: "Eco-Friendly Modular Steel Villas & Luxury Resort Cottage Living",
+    title: "Prefabricated Steel Villa & Modern Residences",
+    tagline: "High-tensile steel frame luxury villas, fast-track turnkey residences, and modern modular architecture.",
+    shortDesc: "Turnkey prefabricated structural steel villas and modern residential frameworks. 50% faster construction, maximum earthquake resilience, and certified architectural steel durability.",
+    image: "/steel-building.jpg",
+    mainHeadline: "High-Precision Steel Frame Residential Villas Engineered for Luxury, Speed & Resilience",
     introParagraph:
-      "Ideal for vacation retreats, eco-resorts, and rapid-build residential estates, our prefabricated steel villas combine industrial structural precision with modern architectural beauty. Components are precision-manufactured off-site and swiftly assembled on your property with zero environmental disruption.",
-    subHeadline: "Rapid Off-Site Fabrication & Low Foundation Footprint",
+      "Nirman BSB engineers turnkey prefabricated steel structure villas and modern residential complexes. By utilizing precision-fabricated high-tensile steel framing, we deliver architecturally breathtaking residences with zero termite risk, superior seismic safety, and 50% faster completion than traditional masonry.",
+    subHeadline: "Rapid Steel Frame Assembly & Maximum Structural Safety",
     subParagraph1:
-      "Engineered with lightweight high-strength steel members, these modular structures can be installed on challenging terrain, sloped land, or sensitive waterfronts with minimal foundation disturbance.",
+      "Every steel frame component is fabricated under strict BNBC standards with ultrasonic weld verification and computerized millimeter precision, ensuring flawless on-site bolting with minimal disruption.",
     subParagraph2:
-      "Equipped with thermal insulated wall and ceiling assemblies, weather-sealed joints, and rot-proof finishes, each villa delivers luxurious living with virtually zero ongoing maintenance.",
+      "Equipped with insulated sandwich wall panels, high-grade anti-corrosive primer coating, and expansive column-free living layouts, each steel villa delivers lifetime peace of mind with virtually zero maintenance.",
     features: [
-      "Rapid Off-Site Modular Fabrication",
-      "Lightweight Low-Impact Foundation Requirements",
-      "Eco-Friendly Sustainable Building Materials",
-      "Weather-Sealed Thermal Insulation Systems",
-      "Modern Minimalist & Scandinavian Styling",
-      "Termite, Mold, Rot & Rust-Proof Lifetime",
-      "Integrated Verandas & Glass Observation Decks",
-      "Turnkey Complete Interior & Exterior Handover",
+      "High-Tensile Certified Steel Framing (BNBC)",
+      "50% Faster Completion than Traditional RCC",
+      "Maximum Earthquake & Cyclone Resilience",
+      "Expansive Column-Free Interior Floor Plans",
+      "Thermal & Acoustic Insulated Wall Assemblies",
+      "100% Termite, Rot, Mold & Fire-Retardant",
+      "Modern Cantilever Terraces & Panoramic Glass",
+      "Turnkey Design, Fabrication & Site Erection",
     ],
     projectIds: ["crestwood-courtyard", "the-haven-penthouse"],
   },
@@ -144,7 +144,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Rooftop Steel Structure & Sheds",
     tagline: "High-tensile lightweight roof frameworks, weather-sealed sheds, and architectural trusses.",
     shortDesc: "Turnkey rooftop steel shed fabrication, cantilever trusses, heat-reflective corrugated roofing, and weatherproofing for residential and industrial roofs.",
-    image: "/service-6.jpg",
+    image: "/rooftop.jpg",
     mainHeadline: "Engineered Rooftop Steel Structures Designed for Maximum Safety and Space Utilization",
     introParagraph:
       "Transform underutilized building rooftops into functional, cyclone-resistant, and high-value covered spaces. Bangladesh Steel Builders Ltd. specializes in lightweight, high-tensile steel rooftop structures engineered to distribute weight safely across existing concrete slabs without compromising building foundations.",
@@ -292,12 +292,12 @@ export const servicesData: ServiceDetail[] = [
   {
     slug: "rooftop-solar-canopies",
     title: "Luxury Steel Duplex Pool Villa",
-    tagline: "Bespoke steel frame duplex villas with private swimming pools, timber sun decks, and luxury resort living.",
+    tagline: "Bespoke steel frame duplex villas with private swimming pools, composite sun decks, and luxury resort living.",
     shortDesc: "Turnkey luxury steel structure duplex pool villas, cantilever sun decks, outdoor lounge pavilions, and resort-style living spaces built with certified steel durability.",
     image: "/service-3.jpg",
     mainHeadline: "Resort-Style Modern Duplex Pool Villas Built with Precision Structural Steel",
     introParagraph:
-      "Nirman BSB designs and constructs bespoke steel frame duplex villas featuring private swimming pools, timber lounge decks, and expansive outdoor entertainment pavilions.",
+      "Nirman BSB designs and constructs bespoke steel frame duplex villas featuring private swimming pools, cantilever lounge decks, and expansive outdoor entertainment pavilions.",
     subHeadline: "Private Aquatic Sanctuary & Architectural Steel Pavilion Engineering",
     subParagraph1:
       "Our duplex pool villas integrate deep-ground moisture proofing, automated swimming pool filtration, and cantilevered steel canopy decks.",
@@ -306,7 +306,7 @@ export const servicesData: ServiceDetail[] = [
     features: [
       "Custom Steel Frame Duplex Villa Architecture",
       "Integrated Private Swimming Pool Engineering",
-      "Cantilever Sun Decks & Teak Timber Lounges",
+      "Cantilever Sun Decks & Panoramic Lounges",
       "Floor-to-Ceiling Thermal Glass Wall Facades",
       "Earthquake-Resilient Steel Framing (BNBC)",
       "Waterproof Pool Deck Drainage & Recirculation",
