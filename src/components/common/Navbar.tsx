@@ -18,11 +18,11 @@ const navItems = [
   { name: "Contact Us", href: "/contact" },
 ];
 
-export default function Navbar({ theme = "dark" }: NavbarProps) {
+export default function Navbar({ theme = "light" }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const isLight = theme === "light";
+  const isLight = true; // Always clean white header for crisp logo contrast and clarity
 
   // Sticky scroll detection
   useEffect(() => {
@@ -41,17 +41,15 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
     return pathname.startsWith(href);
   };
 
-  // When scrolled OR when on light-themed pages, show the clean white background with dark text
-  const isScrolledOrLight = isLight || scrolled;
+  // Always show clean white background with dark text for maximum legibility
+  const isScrolledOrLight = true;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 px-6 sm:px-10 lg:px-16 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 px-6 sm:px-10 lg:px-16 transition-all duration-300 bg-white ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-neutral-200/80 shadow-sm py-4"
-          : isLight
-          ? "bg-white/90 backdrop-blur-sm border-b border-neutral-100 py-6"
-          : "bg-transparent py-6"
+          ? "border-b border-neutral-200/80 shadow-xs py-3.5 sm:py-4"
+          : "border-b border-neutral-100 shadow-xs py-4 sm:py-5"
       }`}
     >
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
@@ -72,11 +70,11 @@ export default function Navbar({ theme = "dark" }: NavbarProps) {
             {/* Secondary / Parent Logo: Bangladesh Steel Builders Ltd */}
             <div className="transition-transform duration-300 group-hover:scale-105">
               <Image
-                src="/bsb-logo.png"
+                src="/test-bsb.png"
                 alt="Bangladesh Steel Builders Ltd."
                 width={356}
                 height={258}
-                className="h-9 sm:h-11 lg:h-[46px] w-auto object-contain"
+                className="h-10 sm:h-12 lg:h-[50px] w-auto object-contain"
                 priority
               />
             </div>

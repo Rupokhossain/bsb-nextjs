@@ -12,7 +12,7 @@ interface ProcessSectionProps {
 export default function ProcessSection({
   // Modern multi-storey architectural complex
   processImageUrl = "/steel-building.jpg",
-  bannerImageUrl = "/progress-banner.jpg",
+  bannerImageUrl = "/Sunset Concrete Construction Skyline.png",
 }: ProcessSectionProps) {
   return (
     <section id="process" className="w-full bg-white text-neutral-900 pt-16 sm:pt-26 border-t border-neutral-100">
@@ -68,9 +68,6 @@ export default function ProcessSection({
             {/* Right 3 Connected Timeline Steps (Upgraded to modern structured cards for mobile & desktop) */}
             <div className="lg:col-span-8">
               <div className="relative">
-                {/* Horizontal Dashed Timeline Line (Desktop only) */}
-                <div className="hidden md:block absolute top-[28px] left-[40px] right-[40px] border-t border-dashed border-[#E5A53D]/50 z-0" />
-
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 relative z-10">
                   {[
                     {
@@ -121,9 +118,6 @@ export default function ProcessSection({
                           </p>
                         </div>
                       </div>
-
-                      {/* Bottom Gold Progress Accent */}
-                      <div className="w-8 h-0.5 bg-[#E5A53D] mt-4 group-hover:w-16 transition-all duration-300" />
                     </motion.div>
                   ))}
                 </div>
@@ -146,7 +140,8 @@ export default function ProcessSection({
               sizes="100vw"
               priority
             />
-            <div className="absolute inset-0 bg-black/35" />
+            {/* Balanced dark overlay - subtle darkening for crisp text contrast */}
+            <div className="absolute inset-0 bg-black/52" />
           </div>
         )}
 
@@ -165,14 +160,15 @@ export default function ProcessSection({
           </div>
 
           {/* Large Grotesque Uppercase Headline */}
-          <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white uppercase leading-[1.15] drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)]">
-            EVERY DETAIL DESIGNED AND BUILT <br className="hidden sm:inline" />
-            BY ONE DEDICATED TEAM
+          <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-white uppercase leading-[1.15] drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]">
+            EVERY DETAIL DESIGNED AND <br />
+            BUILT BY <br />
+            ONE DEDICATED TEAM
           </h2>
 
           {/* Subtitle */}
-          <p className="text-sm sm:text-base text-white/90 font-normal max-w-xl mx-auto leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.7)]">
-            From the first sketch to the final finish, your home is delivered by the same hands — no handoffs, no surprises.
+          <p className="text-sm sm:text-base text-white font-medium max-w-xl mx-auto leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+            From the first sketch to the final finish, your home is delivered by the same hands, no handoffs, no surprises.
           </p>
         </motion.div>
       </div>

@@ -13,7 +13,7 @@ export default function Footer() {
               href="/"
               className="inline-flex items-center gap-2.5 sm:gap-3 group py-1"
             >
-              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              <div className="bg-white px-3 py-1.5 rounded-sm flex items-center gap-2 shrink-0 shadow-xs border border-white/20">
                 {/* Primary Logo: Nirman BSB */}
                 <div className="transition-transform duration-300 group-hover:scale-105">
                   <Image
@@ -36,7 +36,7 @@ export default function Footer() {
                 </div>
               </div>
 
-              <div className="flex flex-col justify-center">
+              {/* <div className="flex flex-col justify-center">
                 <span className="text-[15px] font-black uppercase tracking-wider leading-tight text-white whitespace-nowrap">
                   <span>NIRMAN </span>
                   <span className="text-[#E5A53D]">BSB</span>
@@ -44,7 +44,7 @@ export default function Footer() {
                 <span className="text-[9.5px] font-bold uppercase tracking-[0.14em] leading-tight text-neutral-400 whitespace-nowrap">
                   A Concern of BSB Ltd.
                 </span>
-              </div>
+              </div> */}
             </Link>
 
             <p className="text-sm text-neutral-400 leading-relaxed font-light">

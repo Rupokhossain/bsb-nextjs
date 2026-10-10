@@ -202,7 +202,7 @@ export default function TeamSection({
               <div className="relative rounded-sm overflow-hidden bg-neutral-950 shadow-xl border border-neutral-200 group">
                 <div className="relative aspect-[4/4.6] w-full overflow-hidden bg-neutral-950">
                   <Image
-                    src="/founder.jpg"
+                    src="/Professional Portrait Behind Laptop.png"
                     alt="S.M. Anayet - Founder & Managing Director"
                     fill
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"

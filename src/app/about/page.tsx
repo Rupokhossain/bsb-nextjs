@@ -15,14 +15,14 @@ import ClientsSection from "@/components/home/ClientsSection";
 export const metadata = {
   title: "About Us | Bangladesh Steel Builders Ltd. (BSB)",
   description:
-    "Discover Bangladesh Steel Builders Ltd. (BSB) — pioneering pre-engineered steel buildings, industrial factories, and custom structures across Bangladesh since 2009.",
+    "Discover Bangladesh Steel Builders Ltd. (BSB), pioneering pre-engineered steel buildings, industrial factories, and custom structures across Bangladesh since 2009.",
 };
 
 // 📸 Image Configuration:
 const aboutImages = {
   heroBg: "/about-banner.jpg",
   whoWeAre: "/about1.jpg",
-  founder: "/S.M-Anayet.webp",
+  founder: "/Professional Portrait Behind Laptop.png",
   vision: "/vision.jpg",
   mission: "/mission.jpg",
   journeySite: "/about2.jpg",
@@ -165,8 +165,8 @@ const clientLogos = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col">
-      {/* Sticky Navbar (Dark theme at top with white text & transparent hero header) */}
-      <Navbar theme="dark" />
+      {/* Clean White Sticky Navbar */}
+      <Navbar theme="light" />
 
       {/* ============================================================ */}
       {/* 1. HERO BANNER */}
@@ -277,11 +277,11 @@ export default function AboutPage() {
                 <p className="text-sm sm:text-base font-medium text-neutral-900 italic leading-snug">
                   “Our reputation for excellence is founded on a devotion to
                   creative designs, certified craftsmanship, and on-time project
-                  completion — making us the dependable partner for nationwide
+                  completion, making us the dependable partner for nationwide
                   industries.”
                 </p>
                 <span className="block text-xs font-bold text-neutral-500 uppercase tracking-wider">
-                  — S.M. Anayet, Founder
+                  S.M. Anayet, Founder
                 </span>
               </div>
 

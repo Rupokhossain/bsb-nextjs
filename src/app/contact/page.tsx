@@ -129,7 +129,7 @@ export default function ContactPage() {
                   CONVERSATION
                 </h1>
                 <p className="text-sm sm:text-base text-neutral-600 font-light leading-relaxed max-w-xl">
-                  Whether you&apos;re planning a new build, a renovation, or just exploring ideas — our team is ready to help you take the first step.
+                  Whether you&apos;re planning a new build, a renovation, or just exploring ideas, our team is ready to help you take the first step.
                 </p>
               </div>
 

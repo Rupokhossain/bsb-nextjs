@@ -147,8 +147,6 @@ export default function ServicesPage() {
                         {item.desc}
                       </p>
                     </div>
-
-                    <div className="w-6 h-0.5 bg-[#E5A53D] group-hover:w-12 transition-all duration-300" />
                   </div>
                 </StaggerItem>
               ))}
