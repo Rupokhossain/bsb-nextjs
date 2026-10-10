@@ -16,7 +16,7 @@ export const metadata = {
 
 // 📸 Banner image:
 const servicesPageImages = {
-  banner: "/about-bottom.jpg",
+  banner: "/Steel-Building-Projects-8.webp",
 };
 
 // 🌟 Why Choose Us data (Derived from client's official website)

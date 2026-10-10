@@ -10,7 +10,7 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection({
-  bannerImageUrl = "/luxury-steel-duplex-villa.jpg",
+  bannerImageUrl = "/hero-bg-1.jpeg",
 }: AboutSectionProps) {
   return (
     <section

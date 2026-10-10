@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -188,7 +189,7 @@ export default function ServicesSlider() {
   return (
     <div className="space-y-8">
       {/* Category Filter Pills */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+      {/* <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
         <button
           onClick={() => setActiveFilter("all")}
           className={`px-4 sm:px-5 py-2 rounded-sm text-xs sm:text-sm font-bold uppercase tracking-wider transition-all cursor-pointer ${
@@ -234,7 +235,7 @@ export default function ServicesSlider() {
         >
           Industrial &amp; Commercial ({allActiveServices.filter((s) => !s.slug.startsWith("rooftop-") && !s.slug.includes("duplex") && !s.slug.includes("villa")).length})
         </button>
-      </div>
+      </div> */}
 
       {/* CONTINUOUS AUTO-LOOP 3-CARD CAROUSEL */}
       <div
@@ -285,24 +286,28 @@ export default function ServicesSlider() {
                         </span>
                       </div>
 
-                      {/* Department / Division Tag in Top Left */}
-                      {service.slug.includes("duplex") || service.slug.includes("villa") ? (
-                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[10px] font-extrabold uppercase tracking-wider shadow-sm">
-                          DUPLEX &amp; RESIDENTIAL
-                        </div>
-                      ) : service.slug.startsWith("rooftop-") ? (
-                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-neutral-900/90 text-[#E5A53D] text-[10px] font-extrabold uppercase tracking-wider border border-[#E5A53D]/40">
-                          ROOFTOP SPECIALTY
-                        </div>
-                      ) : (
-                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-neutral-950/80 backdrop-blur-xs text-white text-[10px] font-bold uppercase tracking-wider border border-white/20">
-                          COMMERCIAL &amp; PEB
-                        </div>
-                      )}
+                      {/* Top Badges: Responsive Flex Container (Never Collides or Overlaps) */}
+                      <div className="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
+                        {/* Department / Division Tag */}
+                        {service.slug.includes("duplex") || service.slug.includes("villa") ? (
+                          <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[9.5px] sm:text-[10px] font-extrabold uppercase tracking-wider shadow-sm truncate">
+                            DUPLEX &amp; RESIDENTIAL
+                          </div>
+                        ) : service.slug.startsWith("rooftop-") ? (
+                          <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-neutral-900/90 text-[#E5A53D] text-[9.5px] sm:text-[10px] font-extrabold uppercase tracking-wider border border-[#E5A53D]/40 truncate">
+                            ROOFTOP SPECIALTY
+                          </div>
+                        ) : (
+                          <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-neutral-950/80 backdrop-blur-xs text-white text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider border border-white/20 truncate">
+                            COMMERCIAL &amp; PEB
+                          </div>
+                        )}
 
-                      {/* Top-Right Pill */}
-                      <div className="absolute top-3 right-3 px-2.5 py-1 rounded-sm bg-neutral-950/85 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider border border-white/10 group-hover:border-[#E5A53D] transition-colors">
-                        Details Available ↗
+                        {/* Top-Right Pill (Compact on Mobile, Never Collides) */}
+                        <div className="shrink-0 px-2 sm:px-2.5 py-1 rounded-sm bg-neutral-950/85 backdrop-blur-sm text-white text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider border border-white/10 group-hover:border-[#E5A53D] transition-colors flex items-center gap-1 shadow-xs">
+                          <span className="hidden sm:inline">Details</span>
+                          <span>↗</span>
+                        </div>
                       </div>
                     </div>
 

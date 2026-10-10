@@ -211,32 +211,34 @@ export default function AboutPage() {
       <section className="py-24 sm:py-32 bg-[#FBFBFA] border-t border-neutral-200/70">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left: Founder Portrait Card */}
+            {/* Left: Founder Office Desk Card (Full table 100% visible, no overlay blocking desk) */}
             <FadeIn className="lg:col-span-5">
-              <div className="relative rounded-sm overflow-hidden bg-neutral-900 shadow-xl border border-neutral-200/80 group">
-                <div className="relative aspect-[4/4.3] w-full overflow-hidden bg-neutral-950">
+              <div className="rounded-sm overflow-hidden bg-neutral-950 shadow-xl border border-neutral-200/90 group">
+                {/* 100% Full Desk Photo: Zero Cropping, Zero Floating Overlay */}
+                <div className="relative aspect-[4/3.15] sm:aspect-[4/3] w-full overflow-hidden bg-neutral-950">
                   <Image
                     src={aboutImages.founder}
-                    alt="S.M. Anayet - Founder of Bangladesh Steel Builders Ltd."
+                    alt="S.M. Anayet - Founder & Managing Director of Bangladesh Steel Builders Ltd."
                     fill
-                    className="object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                    className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                     sizes="(max-width: 1024px) 100vw, 42vw"
                     priority
                   />
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" /> */}
                 </div>
 
-                {/* Floating Badge */}
-                <div className="absolute bottom-5 left-5 right-5 p-4 rounded-sm bg-neutral-950/90 backdrop-blur-md border border-white/10 text-white space-y-1">
-                  {/* <div className="text-xs uppercase tracking-widest text-[#E5A53D] font-bold">
-                    Leadership & Vision
-                  </div> */}
-                  <div className="text-xl font-extrabold tracking-tight">
-                    S.M. Anayet
+                {/* Info Bar BELOW the photo: 100% of the table, helmet, laptop & documents remain visible! */}
+                <div className="p-4 sm:p-5 bg-neutral-950 text-white border-t border-neutral-800 space-y-1">
+                  <div className="flex items-center justify-between gap-3">
+                    <h4 className="text-lg sm:text-xl font-extrabold tracking-tight text-white">
+                      S.M. Anayet
+                    </h4>
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-[#E5A53D]/15 text-[#E5A53D] text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-[#E5A53D]/30">
+                      17+ Years
+                    </span>
                   </div>
-                  <div className="text-xs text-neutral-300 font-light">
-                    Founder & Managing Director • 17+ Years Industry Experience
-                  </div>
+                  <p className="text-xs text-neutral-300 font-light">
+                    Founder &amp; Managing Director • Industry Experience
+                  </p>
                 </div>
               </div>
             </FadeIn>

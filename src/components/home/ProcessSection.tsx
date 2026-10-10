@@ -10,8 +10,8 @@ interface ProcessSectionProps {
 }
 
 export default function ProcessSection({
-  // Modern multi-storey architectural complex
-  processImageUrl = "/steel-building.jpg",
+  // Construction in progress site photo
+  processImageUrl = "/progress2.jpg",
   bannerImageUrl = "/Sunset Concrete Construction Skyline.png",
 }: ProcessSectionProps) {
   return (

@@ -77,7 +77,7 @@ const defaultTeamMembers: TeamMember[] = [
 ];
 
 export default function TeamSection({
-  teamMainImageUrl = "/about1.jpg",
+  teamMainImageUrl = "/construction.jpg",
   members = defaultTeamMembers,
 }: TeamSectionProps) {
   return (
@@ -197,28 +197,34 @@ export default function TeamSection({
           className="rounded-sm bg-white border border-neutral-200/90 shadow-md p-6 sm:p-10 lg:p-12 overflow-hidden"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-            {/* Left: Managing Director Portrait Card */}
+            {/* Left: Managing Director Portrait Card (Full table 100% visible, no overlay blocking desk) */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-sm overflow-hidden bg-neutral-950 shadow-xl border border-neutral-200 group">
-                <div className="relative aspect-[4/4.3] w-full overflow-hidden bg-neutral-950">
+              <div className="rounded-sm overflow-hidden bg-neutral-950 shadow-xl border border-neutral-200/90 group">
+                {/* 100% Full Desk Photo: Zero Cropping, Zero Floating Overlay */}
+                <div className="relative aspect-[4/3.15] sm:aspect-[4/3] w-full overflow-hidden bg-neutral-950">
                   <Image
                     src="/sm-anayet-office.jpg"
-                    alt="S.M. Anayet - Founder & Managing Director"
+                    alt="S.M. Anayet - Founder & Managing Director at Nirman BSB"
                     fill
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
                     priority
                   />
                 </div>
 
-                {/* Floating Glass Badge */}
-                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-sm bg-neutral-950/92 backdrop-blur-md border border-white/10 text-white space-y-1">
-                  <div className="text-lg sm:text-xl font-extrabold tracking-tight">
-                    S.M. Anayet
+                {/* Info Bar BELOW the photo: 100% of the table, helmet, laptop & documents remain visible! */}
+                <div className="p-4 sm:p-5 bg-neutral-950 text-white border-t border-neutral-800 space-y-1">
+                  <div className="flex items-center justify-between gap-3">
+                    <h4 className="text-lg sm:text-xl font-extrabold tracking-tight text-white">
+                      S.M. Anayet
+                    </h4>
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-[#E5A53D]/15 text-[#E5A53D] text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-[#E5A53D]/30">
+                      17+ Years
+                    </span>
                   </div>
-                  <div className="text-xs text-neutral-300 font-light">
-                    Founder &amp; Managing Director • 17+ Years Industry Leadership
-                  </div>
+                  <p className="text-xs text-neutral-300 font-light">
+                    Founder &amp; Managing Director • Industry Leadership
+                  </p>
                 </div>
               </div>
             </div>

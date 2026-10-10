@@ -275,24 +275,28 @@ export default function ServicesSection() {
                           </span>
                         </div>
 
-                        {/* Department / Division Tag in Top Left */}
-                        {service.slug.includes("duplex") || service.slug.includes("villa") ? (
-                          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[10px] font-extrabold uppercase tracking-wider shadow-sm">
-                            DUPLEX &amp; RESIDENTIAL
-                          </div>
-                        ) : service.slug.startsWith("rooftop-") ? (
-                          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-neutral-900/90 text-[#E5A53D] text-[10px] font-extrabold uppercase tracking-wider border border-[#E5A53D]/40">
-                            ROOFTOP SPECIALTY
-                          </div>
-                        ) : (
-                          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-sm bg-neutral-950/80 backdrop-blur-xs text-white text-[10px] font-bold uppercase tracking-wider border border-white/20">
-                            COMMERCIAL &amp; PEB
-                          </div>
-                        )}
+                        {/* Top Badges: Responsive Flex Container (Never Collides or Overlaps) */}
+                        <div className="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
+                          {/* Department / Division Tag */}
+                          {service.slug.includes("duplex") || service.slug.includes("villa") ? (
+                            <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[9.5px] sm:text-[10px] font-extrabold uppercase tracking-wider shadow-sm truncate">
+                              DUPLEX &amp; RESIDENTIAL
+                            </div>
+                          ) : service.slug.startsWith("rooftop-") ? (
+                            <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-neutral-900/90 text-[#E5A53D] text-[9.5px] sm:text-[10px] font-extrabold uppercase tracking-wider border border-[#E5A53D]/40 truncate">
+                              ROOFTOP SPECIALTY
+                            </div>
+                          ) : (
+                            <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-neutral-950/80 backdrop-blur-xs text-white text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider border border-white/20 truncate">
+                              COMMERCIAL &amp; PEB
+                            </div>
+                          )}
 
-                        {/* Top-Right Pill indicating Details Available */}
-                        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-sm bg-neutral-950/85 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider border border-white/10 group-hover:border-[#E5A53D] transition-colors">
-                          Details Available ↗
+                          {/* Top-Right Pill (Compact on Mobile, Never Collides) */}
+                          <div className="shrink-0 px-2 sm:px-2.5 py-1 rounded-sm bg-neutral-950/85 backdrop-blur-sm text-white text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider border border-white/10 group-hover:border-[#E5A53D] transition-colors flex items-center gap-1 shadow-xs">
+                            <span className="hidden sm:inline">Details</span>
+                            <span>↗</span>
+                          </div>
                         </div>
                       </div>
 
