@@ -528,7 +528,7 @@ export default function AboutPage() {
               <div>
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-2 text-sm font-bold text-[#006837] hover:text-[#00502a] transition-colors underline underline-offset-4"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#006837] hover:text-[#00502a] transition-colors "
                 >
                   <span>Explore Our Steel Services</span>
                   <span>→</span>

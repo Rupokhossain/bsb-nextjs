@@ -139,28 +139,28 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
-                  href="/services/steel-building-services"
+                  href="/services/structure-duplex-building"
                   className="hover:text-[#E5A53D] transition-colors"
                 >
-                  Steel Building Services
+                  Structure Duplex Building
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/services/rooftop-steel-structures"
+                  href="/services/rooftop-structures-sheds"
                   className="hover:text-[#E5A53D] transition-colors"
                 >
-                  Rooftop Steel &amp; Sky Lounges
+                  Rooftop Structures Sheds
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/services/steel-duplex-building"
                   className="hover:text-[#E5A53D] transition-colors"
                 >
                   Steel Duplex Buildings
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="/services/luxury-duplex-pool-villa"
@@ -179,10 +179,10 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/rooftop-steel-structures"
+                  href="/services/rooftop-restaurants-lounges"
                   className="hover:text-[#E5A53D] transition-colors"
                 >
-                  Rooftop Steel &amp; Sky Lounges
+                  Rooftop Restaurants Lounges
                 </Link>
               </li>
               <li>

@@ -79,32 +79,32 @@ export const servicesData: ServiceDetail[] = [
   // ==========================================
   // 3. Duplex & Multi-Storey Residential Construction (NIRMAN BSB CORE)
   // ==========================================
-  // {
-  //   slug: "duplex-multistorey-construction",
-  //   title: "Duplex & Multi-Storey Residential Construction",
-  //   tagline: "Architectural design, 3D elevation modeling, and turnkey steel structure construction for multi-level homes.",
-  //   shortDesc: "Turnkey architectural planning, 3D elevations, and structural steel construction for modern duplex houses, 4-storey residential apartments, and multi-family buildings.",
-  //   image: "/modern-multistorey-building.jpg",
-  //   mainHeadline: "Modern Duplex Homes & Multi-Storey Residential Buildings Engineered to Perfection",
-  //   introParagraph:
-  //     "From luxury private duplex houses to modern 4-storey residential apartment buildings, Nirman BSB provides complete architectural planning, 3D exterior visualization, and certified structural steel construction. We combine optimal living space planning with high-tensile steel frames that reduce foundation weight and accelerate handover by months.",
-  //   subHeadline: "Turnkey Design-to-Handover for Multi-Storey Living",
-  //   subParagraph1:
-  //     "We take care of the entire development process: architectural drafting, municipal structural approvals, 3D photorealistic elevations, soil testing, foundation piling, steel frame erection, and premium interior/exterior finishing.",
-  //   subParagraph2:
-  //     "Our steel-framed multi-storey structures offer superior earthquake safety, column-free interior floor plans, and flexible apartment divisions tailored to your family's needs.",
-  //   features: [
-  //     "Custom Duplex & Multi-Storey House Plans",
-  //     "Photorealistic 3D Exterior Elevation Modeling",
-  //     "Earthquake & Wind-Resistant Structural Steel",
-  //     "Space-Optimized Multi-Unit Floor Layouts",
-  //     "Modern Cantilever Balconies & Glass Railings",
-  //     "Complete Municipal & RAJUK Approval Drawings",
-  //     "Turnkey Civil, Steel & Finishing Handover",
-  //     "Concealed Utility Ducts & Sound Insulation",
-  //   ],
-  //   projectIds: ["modern-multistorey-complex", "ridgeline-house"],
-  // },
+  {
+    slug: "duplex-multistorey-construction",
+    title: "Duplex & Multi-Storey Residential Construction",
+    tagline: "Architectural design, 3D elevation modeling, and turnkey steel structure construction for multi-level homes.",
+    shortDesc: "Turnkey architectural planning, 3D elevations, and structural steel construction for modern duplex houses, 4-storey residential apartments, and multi-family buildings.",
+    image: "/d3.jpg",
+    mainHeadline: "Modern Duplex Homes & Multi-Storey Residential Buildings Engineered to Perfection",
+    introParagraph:
+      "From luxury private duplex houses to modern 4-storey residential apartment buildings, Nirman BSB provides complete architectural planning, 3D exterior visualization, and certified structural steel construction. We combine optimal living space planning with high-tensile steel frames that reduce foundation weight and accelerate handover by months.",
+    subHeadline: "Turnkey Design-to-Handover for Multi-Storey Living",
+    subParagraph1:
+      "We take care of the entire development process: architectural drafting, municipal structural approvals, 3D photorealistic elevations, soil testing, foundation piling, steel frame erection, and premium interior/exterior finishing.",
+    subParagraph2:
+      "Our steel-framed multi-storey structures offer superior earthquake safety, column-free interior floor plans, and flexible apartment divisions tailored to your family's needs.",
+    features: [
+      "Custom Duplex & Multi-Storey House Plans",
+      "Photorealistic 3D Exterior Elevation Modeling",
+      "Earthquake & Wind-Resistant Structural Steel",
+      "Space-Optimized Multi-Unit Floor Layouts",
+      "Modern Cantilever Balconies & Glass Railings",
+      "Complete Municipal & RAJUK Approval Drawings",
+      "Turnkey Civil, Steel & Finishing Handover",
+      "Concealed Utility Ducts & Sound Insulation",
+    ],
+    projectIds: ["modern-multistorey-complex", "ridgeline-house"],
+  },
 
   // ==========================================
   // 4. Prefabricated Steel Villa & Modern Residences
@@ -174,7 +174,7 @@ export const servicesData: ServiceDetail[] = [
     title: "Rooftop Restaurant & Sky Lounges",
     tagline: "Panoramic glass pavilions, luxury open-air dining decks, and commercial hospitality structures.",
     shortDesc: "Specialized structural steel frameworks for high-end rooftop restaurants, cafes, acoustic enclosures, panoramic glass pavilions, and open-air decks.",
-    image: "/r1.jpg",
+    image: "/roof.jpg",
     mainHeadline: "Bespoke Rooftop Hospitality Structures Engineered for Luxury & Ambiance",
     introParagraph:
       "Rooftop dining and hospitality venues require specialized engineering that balances dramatic aesthetics with heavy commercial kitchen loads, fire safety regulations, and weather resilience. BSB designs and fabricates turnkey rooftop restaurant frameworks across Dhaka and major commercial centers.",
