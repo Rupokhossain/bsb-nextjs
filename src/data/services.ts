@@ -76,6 +76,33 @@ export const servicesData: ServiceDetail[] = [
     projectIds: ["luxury-steel-pool-villa", "oakhill-residence"],
   },
 
+  {
+    slug: "peb-steel-buildings-warehouses",
+    title: "Pre-Engineered Steel Buildings (PEB) & Warehouses",
+    tagline: "Custom design, precision factory fabrication, and certified heavy industrial steel building & warehouse erection.",
+    shortDesc: "Turnkey pre-engineered steel buildings (PEB), industrial factory sheds, large-span warehouses, and heavy-duty structural steel frameworks.",
+    image: "/st1.png",
+    mainHeadline: "High-Precision Pre-Engineered Steel Buildings & Industrial Warehouses Built to Last",
+    introParagraph:
+      "Bangladesh Steel Builders Ltd. delivers certified turnkey Pre-Engineered Steel Buildings (PEB) and industrial warehouses across Bangladesh. From structural drafting and automated factory fabrication to fast-track on-site crane erection, we build column-free steel facilities that reduce foundation weight and accelerate completion by 50%.",
+    subHeadline: "Long-Span Column-Free Interior Space & Maximum Cyclone Resilience",
+    subParagraph1:
+      "Our pre-engineered steel structures utilize certified high-tensile steel frames designed to withstand severe cyclone winds and seismic loads in strict compliance with BNBC and AISC engineering standards.",
+    subParagraph2:
+      "Equipped with insulated sandwich wall panels, weather-tight roofing sheets, anti-corrosive epoxy primer, and heavy vehicle loading canopies, each building delivers lifetime durability with minimal maintenance.",
+    features: [
+      "Custom Pre-Engineered Building (PEB) Design",
+      "Large-Span Column-Free Industrial Warehouses",
+      "Heavy Industrial Factory Shed Fabrication",
+      "High-Tensile BNBC Certified Structural Steel",
+      "Thermal & Acoustic Insulated Sandwich Panels",
+      "Anti-Rust Epoxy Primer & Weather Coating",
+      "Heavy Vehicle Loading Bays & Canopies",
+      "Turnkey Design, Fabrication & Rapid Erection",
+    ],
+    projectIds: ["modern-peb-logistics-facility", "curved-roof-steel-shed"],
+  },
+
   // ==========================================
   // 3. Duplex & Multi-Storey Residential Construction (NIRMAN BSB CORE)
   // ==========================================
@@ -109,32 +136,32 @@ export const servicesData: ServiceDetail[] = [
   // ==========================================
   // 4. Prefabricated Steel Villa & Modern Residences
   // ==========================================
-  // {
-  //   slug: "prefabricated-steel-villa",
-  //   title: "Prefabricated Steel Villa & Modern Residences",
-  //   tagline: "High-tensile steel frame luxury villas, fast-track turnkey residences, and modern modular architecture.",
-  //   shortDesc: "Turnkey prefabricated structural steel villas and modern residential frameworks. 50% faster construction, maximum earthquake resilience, and certified architectural steel durability.",
-  //   image: "/steel-building.jpg",
-  //   mainHeadline: "High-Precision Steel Frame Residential Villas Engineered for Luxury, Speed & Resilience",
-  //   introParagraph:
-  //     "Nirman BSB engineers turnkey prefabricated steel structure villas and modern residential complexes. By utilizing precision-fabricated high-tensile steel framing, we deliver architecturally breathtaking residences with zero termite risk, superior seismic safety, and 50% faster completion than traditional masonry.",
-  //   subHeadline: "Rapid Steel Frame Assembly & Maximum Structural Safety",
-  //   subParagraph1:
-  //     "Every steel frame component is fabricated under strict BNBC standards with ultrasonic weld verification and computerized millimeter precision, ensuring flawless on-site bolting with minimal disruption.",
-  //   subParagraph2:
-  //     "Equipped with insulated sandwich wall panels, high-grade anti-corrosive primer coating, and expansive column-free living layouts, each steel villa delivers lifetime peace of mind with virtually zero maintenance.",
-  //   features: [
-  //     "High-Tensile Certified Steel Framing (BNBC)",
-  //     "50% Faster Completion than Traditional RCC",
-  //     "Maximum Earthquake & Cyclone Resilience",
-  //     "Expansive Column-Free Interior Floor Plans",
-  //     "Thermal & Acoustic Insulated Wall Assemblies",
-  //     "100% Termite, Rot, Mold & Fire-Retardant",
-  //     "Modern Cantilever Terraces & Panoramic Glass",
-  //     "Turnkey Design, Fabrication & Site Erection",
-  //   ],
-  //   projectIds: ["crestwood-courtyard", "the-haven-penthouse"],
-  // },
+{
+    slug: "multistorey-peb-building",
+    title: "2-Storey Commercial & Multi-Level Steel Buildings",
+    tagline: "Modern 2-storey pre-engineered steel buildings, corporate factory offices, and multi-level industrial complexes.",
+    shortDesc: "Turnkey 1st & 2nd floor pre-engineered steel buildings combining ground-level production or storage with upper-level corporate offices and executive suites.",
+    image: "/st2.png",
+    mainHeadline: "Engineered 2-Storey Pre-Engineered Buildings Combining Industrial Power & Corporate Elegance",
+    introParagraph:
+      "Why build separate offices and production sheds when you can integrate both into a sleek multi-level steel building? Nirman BSB specializes in 2-storey commercial steel buildings that house industrial workshops or showrooms on the ground floor with executive offices on the 1st and 2nd floors.",
+    subHeadline: "Multi-Storey Steel Framing with Composite Metal Deck Slabs",
+    subParagraph1:
+      "By combining rigid steel columns with high-strength composite metal deck flooring, our multi-level buildings deliver whisper-quiet office environments with zero structural vibration from lower production levels.",
+    subParagraph2:
+      "Featuring contemporary insulated exterior panels, large thermal-break glass windows, and grand entry portals, each 2-storey building delivers corporate prestige with 50% faster construction.",
+    features: [
+      "Integrated 1st Floor & 2nd Floor Structural Steel Layouts",
+      "Ground-Floor Production & Upper-Floor Corporate Offices",
+      "High-Strength Composite Metal Deck Intermediate Slabs",
+      "Thermally Efficient Sandwich Panels & Aluminum Windows",
+      "BNBC Earthquake & High-Velocity Wind Resistant Frame",
+      "Expansive Column-Free Interior Floor Configuration",
+      "Low-Maintenance Fire-Retardant Structural Finish",
+      "50% Faster Construction Timeline than RCC Buildings",
+    ],
+    projectIds: ["modern-multistorey-complex", "sa-paribahan-building"],
+  },
 
   // ==========================================
   // 5. Rooftop Steel Structure & Sheds (ROOFTOP SPECIALTY)
@@ -164,6 +191,34 @@ export const servicesData: ServiceDetail[] = [
       "Electrostatic Anti-Corrosion Paint & Coating",
     ],
     projectIds: ["highgrove-house", "the-haven-penthouse"],
+  },
+
+
+  {
+    slug: "steel-roof-shed-truss",
+    title: "1st & 2nd Floor Rooftop Steel Sheds & Truss Erection",
+    tagline: "Certified high-tensile steel trusses, rooftop weather sheds, and cyclone-resistant roof frameworks for 1st & 2nd floor buildings.",
+    shortDesc: "Turnkey steel structure rooftop sheds for 1st floor, 2nd floor, and multi-storey buildings. 100% leak-proof, zero foundation overload, and superior monsoon protection.",
+    image: "/st3.png",
+    mainHeadline: "Precision Rooftop Steel Truss Fabrication & Erection for 1st Floor & 2nd Floor Buildings",
+    introParagraph:
+      "Whether installing a weather-protective shed on a 1st floor residence or adding a cyclone-proof truss framework on a 2nd floor roof, Bangladesh Steel Builders Ltd. provides certified structural erection. We manufacture and bolt-assemble high-tensile steel trusses that distribute weight safely across host buildings.",
+    subHeadline: "High-Tensile Truss Engineering & 100% Leak-Proof Monsoon Protection",
+    subParagraph1:
+      "Every truss framework is engineered using computer-modeled load analysis to resist extreme cyclone winds while eliminating vertical pressure on existing concrete foundations.",
+    subParagraph2:
+      "From residential clothes-drying and garden sheds to industrial factory roof restorations, our crews install heavy-gauge purlins and heat-reflective sheets that eliminate roof leakage permanently.",
+    features: [
+      "1st & 2nd Floor Custom Rooftop Steel Truss Fabrication",
+      "Precision On-Site Erection with Zero Structural Cracks",
+      "Lightweight Engineering with Zero Foundation Overload",
+      "100% Monsoon Leak-Proof Gutter & Flashing Systems",
+      "Heat-Reflective Corrugated & Sandwich Roof Panels",
+      "High Wind & Cyclone Load Certified Anchor Fasteners",
+      "Electrostatic Anti-Rust Primer & Protective Paint",
+      "Rapid 7 to 14 Days Erection & Turnkey Handover",
+    ],
+    projectIds: ["elevated-rooftop-shed", "bioclimatic-rooftop-pergola"],
   },
 
   // ==========================================
@@ -224,6 +279,34 @@ export const servicesData: ServiceDetail[] = [
       "Wind-Resistant Glass Balustrades & Railings",
     ],
     projectIds: ["highgrove-house", "verdant-terrace"],
+  },
+
+
+   {
+    slug: "industrial-factory-sheds",
+    title: "Heavy Industrial Factory Sheds & Manufacturing Plants",
+    tagline: "Wide-span structural steel portal frames, overhead crane runways, and daylight-optimized industrial manufacturing plants.",
+    shortDesc: "Heavy-gauge structural steel factory sheds engineered for production plants, textile mills, and fabrication workshops with integrated crane systems.",
+    image: "/st4.png",
+    mainHeadline: "Heavy-Duty Structural Steel Factory Sheds Engineered for Continuous Manufacturing",
+    introParagraph:
+      "Industrial manufacturing demands robust portal frames that support heavy machinery, overhead cranes, and high thermal loads. Bangladesh Steel Builders Ltd. designs, fabricates, and erects certified industrial factory sheds optimized for textile mills, manufacturing plants, and heavy engineering facilities.",
+    subHeadline: "Integrated Crane Runway Girders & Daylight-Optimized Insulated Roofing",
+    subParagraph1:
+      "Our factory frames feature high-grade hot-rolled and built-up steel portal rafters capable of carrying 5-ton to 25-ton overhead traveling cranes (EOT) with zero lateral deflection.",
+    subParagraph2:
+      "Equipped with UV-stabilized polycarbonate skylights and natural roof monitors, our sheds flood the production floor with daylight, cutting daytime electricity costs by up to 35%.",
+    features: [
+      "Heavy-Duty Rigid Steel Portal Frame Engineering",
+      "Integrated Overhead EOT Crane Runway Girders",
+      "Daylight-Optimized Polycarbonate Skylight Roof Strips",
+      "Acoustic & Thermal Fiberglass Roof Blanket Insulation",
+      "BNBC Heavy Industrial Seismic & Vibration Compliance",
+      "High-Velocity Ridge Roof Ventilators & Air Louvers",
+      "Fire-Resistant Structural Primer & Epoxy Coating",
+      "Certified Turnkey Civil, Structural & Mechanical Erection",
+    ],
+    projectIds: ["akij-biri-factory", "maysha-spining-mill"],
   },
 
   // ==========================================
