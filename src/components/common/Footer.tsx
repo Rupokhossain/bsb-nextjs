@@ -293,6 +293,10 @@ export default function Footer() {
             <a href="#" className="hover:text-neutral-300">
               Terms of Service
             </a>
+            <Link href="/admin" className="text-neutral-500 hover:text-[#E5A53D] transition-colors flex items-center gap-1">
+              <span>Admin Portal</span>
+              <span>🔒</span>
+            </Link>
           </div>
         </div>
       </div>

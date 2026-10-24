@@ -129,13 +129,22 @@ export default function Navbar({ theme = "light" }: NavbarProps) {
           })}
         </nav>
 
-        {/* Right CTA Button -> WhatsApp Book a Consult */}
-        <div className="hidden md:flex items-center">
+        {/* Right CTA Button -> Portal Login + WhatsApp Book a Consult */}
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            href="/admin/login"
+            className="px-3.5 py-2 rounded-sm text-xs font-bold text-neutral-800 hover:text-neutral-950 hover:bg-neutral-100 transition-colors border border-neutral-300 flex items-center gap-1.5 shadow-2xs"
+            title="Admin Dashboard Login"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#E5A53D]" />
+            <span>Admin Portal</span>
+          </Link>
+
           <a
             href="https://wa.me/8801711181860"
             target="_blank"
             rel="noopener noreferrer"
-            className={`px-6 py-2.5 rounded-sm font-semibold text-sm transition-all active:scale-95 shadow-sm ${
+            className={`px-5 py-2.5 rounded-sm font-semibold text-sm transition-all active:scale-95 shadow-sm ${
               isScrolledOrLight
                 ? "bg-neutral-950 text-white hover:bg-neutral-800"
                 : "bg-white text-neutral-900 hover:bg-neutral-100"
@@ -188,7 +197,19 @@ export default function Navbar({ theme = "light" }: NavbarProps) {
               </Link>
             );
           })}
-          <div className="pt-2 border-t border-white/10">
+          <div className="pt-2 border-t border-white/10 space-y-2">
+            <Link
+              href="/admin/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between text-sm px-3.5 py-2.5 rounded-sm bg-white/10 text-white font-semibold hover:bg-white/15"
+            >
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#E5A53D]" />
+                Admin Portal Login
+              </span>
+              <span>🔒 ↗</span>
+            </Link>
+
             <a
               href="https://wa.me/8801711181860"
               target="_blank"
