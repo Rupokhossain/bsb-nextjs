@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projectsData } from "@/data/projects";
+import { projectsApi } from "@/lib/api";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import { HeroMotion, FadeIn, StaggerContainer, StaggerItem } from "@/components/common/MotionWrapper";
@@ -13,27 +14,47 @@ interface ProjectPageProps {
   }>;
 }
 
-export async function generateStaticParams() {
-  return projectsData.map((project) => ({
-    slug: project.id,
-  }));
-}
+export const dynamic = "force-dynamic";
 
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const projectIndex = projectsData.findIndex((p) => p.id === slug);
+  let projectIndex = projectsData.findIndex((p) => p.id === slug);
+  let project: any = projectIndex !== -1 ? projectsData[projectIndex] : null;
 
-  if (projectIndex === -1) {
+  if (!project) {
+    try {
+      const dbProject = await projectsApi.getById(slug);
+      if (dbProject) {
+        project = {
+          id: dbProject.slug || dbProject.id,
+          title: dbProject.title,
+          category: dbProject.category,
+          location: dbProject.location,
+          image: dbProject.image,
+          description: dbProject.description || `${dbProject.title} engineered by Nirman BSB. Precision-fabricated structural steel solutions built to highest BNBC safety standards.`,
+          year: dbProject.year || "2025",
+          client: dbProject.client || "BSB Engineering Client",
+          area: dbProject.area || "Custom Steel Space",
+          features: ["Precision Structural Steel", "BNBC Certified Frame", "Turnkey Fabrication"],
+          gallery: Array.isArray(dbProject.gallery) && dbProject.gallery.length > 0 ? dbProject.gallery : [dbProject.image],
+        };
+      }
+    } catch (err) {
+      console.warn("Could not load project detail from API:", err);
+    }
+  }
+
+  if (!project) {
     notFound();
   }
 
-  const project = projectsData[projectIndex];
-
   // Prev & Next project
   const prevProject =
-    projectIndex > 0 ? projectsData[projectIndex - 1] : projectsData[projectsData.length - 1];
+    projectIndex > 0 ? projectsData[projectIndex - 1] : projectsData[projectsData.length - 1] || project;
   const nextProject =
-    projectIndex < projectsData.length - 1 ? projectsData[projectIndex + 1] : projectsData[0];
+    projectIndex < projectsData.length - 1 && projectIndex !== -1
+      ? projectsData[projectIndex + 1]
+      : projectsData[0] || project;
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col">
@@ -147,7 +168,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <h3 className="text-lg font-bold text-neutral-950 tracking-tight">Key Project Deliverables</h3>
             </FadeIn>
             <StaggerContainer className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {project.highlights.map((highlight, idx) => (
+              {(project.highlights || ["Precision Structural Fabrication", "High-Seismic Bolted Joints", "Turnkey On-Site Erection"]).map((highlight: string, idx: number) => (
                 <StaggerItem key={idx} className="p-5 rounded-sm bg-white border border-neutral-200 space-y-2 shadow-xs transition-colors">
                   <span className="text-base font-black text-[#E5A53D]">0{idx + 1}.</span>
                   <p className="text-xs sm:text-sm text-neutral-700 leading-relaxed font-light">{highlight}</p>
@@ -158,7 +179,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         </section>
 
         {/* 5. TWO-IMAGE DETAIL GALLERY */}
-        {project.galleryImages && project.galleryImages.length > 0 && (
+        {(project.galleryImages || project.gallery) && (project.galleryImages || project.gallery).length > 0 && (
           <section className="max-w-5xl mx-auto px-6 sm:px-8 space-y-6">
             <FadeIn className="text-center">
               <h3 className="text-xl sm:text-2xl font-bold text-neutral-950">
@@ -167,7 +188,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             </FadeIn>
 
             <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-              {project.galleryImages.map((img, i) => (
+              {(project.galleryImages || project.gallery || []).map((img: string, i: number) => (
                 <StaggerItem key={i}>
                   <div className="relative h-[280px] sm:h-[360px] rounded-sm overflow-hidden bg-neutral-100 shadow-sm group">
                     <Image

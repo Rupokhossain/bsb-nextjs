@@ -2,7 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { servicesData } from "@/data/services";
+import { servicesData, ServiceDetail } from "@/data/services";
+import { servicesApi } from "@/lib/api";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import { HeroMotion, FadeIn, StaggerContainer, StaggerItem } from "@/components/common/MotionWrapper";
@@ -13,6 +14,8 @@ interface ServicePageProps {
   }>;
 }
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   return servicesData.map((service) => ({
     slug: service.slug,
@@ -21,13 +24,24 @@ export async function generateStaticParams() {
 
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
-  const serviceIndex = servicesData.findIndex((s) => s.slug === slug);
+  let service: ServiceDetail | undefined = servicesData.find((s) => s.slug === slug);
+  let serviceIndex = servicesData.findIndex((s) => s.slug === slug);
 
-  if (serviceIndex === -1) {
-    notFound();
+  if (!service) {
+    try {
+      const live = await servicesApi.getBySlug(slug);
+      if (live && live.title) {
+        service = live as ServiceDetail;
+        serviceIndex = 99;
+      }
+    } catch {
+      // not found
+    }
   }
 
-  const service = servicesData[serviceIndex];
+  if (!service) {
+    notFound();
+  }
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col">
@@ -77,6 +91,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 src={service.image}
                 alt={service.title}
                 fill
+                unoptimized={service.image.startsWith("http") || service.image.startsWith("blob:")}
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 sizes="(max-width: 1200px) 100vw, 1024px"
                 priority
@@ -115,41 +130,51 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </section>
 
         {/* 4.5. SERVICE SCOPE & SPECIALIZED CAPABILITIES */}
-        {service.features && service.features.length > 0 && (
-          <section className="max-w-4xl mx-auto px-6 sm:px-8">
-            <FadeIn>
-              <div className="bg-[#FAF9F6] p-8 sm:p-10 rounded-sm border border-neutral-200/90 shadow-sm space-y-6">
-                <div className="space-y-1">
-                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[11px] font-bold tracking-wider uppercase">
-                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-                    <span>SERVICE SCOPE</span>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-neutral-950 pt-2">
-                    Included Capabilities & Specialized Solutions
-                  </h3>
-                </div>
+        {(() => {
+          const featuresList = Array.isArray(service.features)
+            ? service.features
+            : typeof service.features === "string"
+            ? JSON.parse(service.features || "[]")
+            : [];
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
-                  {service.features.map((feature, fIdx) => (
-                    <div
-                      key={fIdx}
-                      className="flex items-center gap-3 p-3.5 bg-white rounded-sm border border-neutral-200/70 shadow-xs"
-                    >
-                      <div className="w-6 h-6 rounded-full bg-[#E5A53D] text-black flex items-center justify-center shrink-0 shadow-xs">
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-sm sm:text-[15px] font-bold text-neutral-900 tracking-tight">
-                        {feature}
-                      </span>
+          if (featuresList.length === 0) return null;
+
+          return (
+            <section className="max-w-4xl mx-auto px-6 sm:px-8">
+              <FadeIn>
+                <div className="bg-[#FAF9F6] p-8 sm:p-10 rounded-sm border border-neutral-200/90 shadow-sm space-y-6">
+                  <div className="space-y-1">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[11px] font-bold tracking-wider uppercase">
+                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
+                      <span>SERVICE SCOPE</span>
                     </div>
-                  ))}
+                    <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-neutral-950 pt-2">
+                      Included Capabilities &amp; Specialized Solutions
+                    </h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
+                    {featuresList.map((feature: string, fIdx: number) => (
+                      <div
+                        key={fIdx}
+                        className="flex items-center gap-3 p-3.5 bg-white rounded-sm border border-neutral-200/70 shadow-xs"
+                      >
+                        <div className="w-6 h-6 rounded-full bg-[#E5A53D] text-black flex items-center justify-center shrink-0 shadow-xs">
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <span className="text-sm sm:text-[15px] font-bold text-neutral-900 tracking-tight">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </FadeIn>
-          </section>
-        )}
+              </FadeIn>
+            </section>
+          );
+        })()}
 
         {/* 5. METHODOLOGY / CAPABILITIES GRID */}
         <section className="max-w-5xl mx-auto px-6 sm:px-8 space-y-8">

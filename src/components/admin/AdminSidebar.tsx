@@ -1,21 +1,24 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
   Layers,
   Briefcase,
   MessageSquare,
   Settings,
-  ExternalLink,
   LogOut,
   Building2,
   X,
   FileText,
   ShieldCheck,
+  User,
 } from "lucide-react";
+import { useToast } from "@/components/admin/ToastContext";
+import { authApi, dashboardApi, settingsApi } from "@/lib/api";
 
 interface AdminSidebarProps {
   mobileOpen: boolean;
@@ -24,6 +27,92 @@ interface AdminSidebarProps {
 
 export default function AdminSidebar({ mobileOpen, setMobileOpen }: AdminSidebarProps) {
   const pathname = usePathname();
+  const router = useRouter();
+  const { confirmModal, toast } = useToast();
+
+  const [newLeadsCount, setNewLeadsCount] = useState<number | null>(null);
+  const [adminProfile, setAdminProfile] = useState({
+    name: "Engr. S.M. Anayet Hossain",
+    title: "Founder & Managing Director",
+    avatar: "/sm-anayet-office.jpg",
+  });
+
+  useEffect(() => {
+    const loadProfile = () => {
+      authApi
+        .getProfile()
+        .then((user) => {
+          if (user && user.name) {
+            setAdminProfile((prev) => ({
+              ...prev,
+              name: user.name,
+              avatar: user.avatar || prev.avatar,
+            }));
+          }
+        })
+        .catch(() => {});
+
+      settingsApi
+        .get()
+        .then((data) => {
+          if (data) {
+            setAdminProfile((prev) => ({
+              ...prev,
+              name: data.founderName || prev.name,
+              title: data.founderTitle || prev.title,
+              avatar: data.founderPhoto || prev.avatar,
+            }));
+          }
+        })
+        .catch(() => {});
+    };
+
+    loadProfile();
+
+    const onProfileUpdated = (e: any) => {
+      if (e?.detail) {
+        setAdminProfile((prev) => ({
+          ...prev,
+          name: e.detail.name || prev.name,
+          title: e.detail.title || prev.title,
+          avatar: e.detail.avatar || prev.avatar,
+        }));
+      } else {
+        loadProfile();
+      }
+    };
+
+    window.addEventListener("adminProfileUpdated", onProfileUpdated);
+
+    dashboardApi
+      .getStats()
+      .then((data) => {
+        if (data?.metrics?.newLeads !== undefined) {
+          setNewLeadsCount(data.metrics.newLeads);
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      window.removeEventListener("adminProfileUpdated", onProfileUpdated);
+    };
+  }, []);
+
+  const handleLogout = async () => {
+    const confirmed = await confirmModal({
+      title: "Sign Out of Admin Portal",
+      message: "Are you sure you want to sign out from the Nirman BSB Admin Console?",
+      confirmText: "Yes, Sign Out",
+      cancelText: "Stay Logged In",
+      isDestructive: true,
+    });
+
+    if (confirmed) {
+      authApi.logout();
+      toast.info("Signed out successfully.");
+      router.push("/admin/login");
+    }
+  };
 
   const navigation = [
     {
@@ -48,21 +137,22 @@ export default function AdminSidebar({ mobileOpen, setMobileOpen }: AdminSidebar
       name: "Leads & Quotes",
       href: "/admin/leads",
       icon: MessageSquare,
-      badge: "4 New",
+      badge: newLeadsCount && newLeadsCount > 0 ? `${newLeadsCount} New` : null,
       badgeColor: "bg-[#E5A53D] text-slate-950 font-bold",
     },
     {
-      name: "Site Content CMS",
+      name: "Website Content (CMS)",
       href: "/admin/content",
       icon: FileText,
-      badge: "Edit All",
+      badge: "Pages",
       badgeColor: "bg-blue-100 text-blue-700 font-bold",
     },
     {
-      name: "Site Settings",
+      name: "Company Info & Contacts",
       href: "/admin/settings",
-      icon: Settings,
-      badge: null,
+      icon: Building2,
+      badge: "Official",
+      badgeColor: "bg-amber-100 text-amber-800 font-bold",
     },
   ];
 
@@ -135,24 +225,24 @@ export default function AdminSidebar({ mobileOpen, setMobileOpen }: AdminSidebar
                   key={item.name}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-bold transition-all duration-150 group ${
+                  className={`flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-lg text-sm font-bold transition-all duration-150 group ${
                     active
                       ? "bg-[#E5A53D]/15 text-slate-950 border-l-[3.5px] border-[#E5A53D]"
                       : "text-slate-700 hover:text-slate-950 hover:bg-slate-100"
                   }`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5 min-w-0">
                     <Icon
                       className={`w-4 h-4 transition-colors shrink-0 ${
                         active ? "text-[#E5A53D]" : "text-slate-500 group-hover:text-slate-900"
                       }`}
                     />
-                    <span>{item.name}</span>
+                    <span className="truncate">{item.name}</span>
                   </div>
 
                   {item.badge && (
                     <span
-                      className={`text-xs px-2 py-0.5 rounded-full ${
+                      className={`text-[11px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap leading-tight ${
                         item.badgeColor
                           ? item.badgeColor
                           : active
@@ -166,62 +256,55 @@ export default function AdminSidebar({ mobileOpen, setMobileOpen }: AdminSidebar
                 </Link>
               );
             })}
-
-            {/* Quick Live Site Link */}
-            <div className="pt-3 mt-2 border-t border-slate-200">
-              <div className="px-3 pb-1 text-xs font-bold uppercase tracking-wider text-slate-400">
-                Front-End Website
-              </div>
-              <Link
-                href="/"
-                target="_blank"
-                className="flex items-center justify-between px-3.5 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition-colors border border-dashed border-slate-300"
-              >
-                <div className="flex items-center gap-2.5">
-                  <ExternalLink className="w-4 h-4 text-[#E5A53D]" />
-                  <span>View Live Website</span>
-                </div>
-                <span className="text-xs text-slate-500">Public ↗</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* System Online Status Badge */}
-          <div className="p-3 mx-2.5 mb-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs space-y-1">
-            <div className="flex items-center gap-2 text-emerald-700 font-bold">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>System Online &amp; Active</span>
-            </div>
-            <p className="text-xs text-slate-600 leading-normal font-medium">
-              Next.js Client Mode. All changes reflect in real time across the portal.
-            </p>
           </div>
         </div>
 
-        {/* Bottom User Profile */}
-        <div className="p-3 border-t border-slate-200 bg-slate-50/90 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-full bg-[#E5A53D] flex items-center justify-center text-slate-950 font-black text-xs uppercase shadow-2xs">
-              AH
-            </div>
-            <div className="truncate">
-              <div className="text-sm font-black text-slate-950 truncate flex items-center gap-1">
-                S.M. Anayet
-                <ShieldCheck className="w-3.5 h-3.5 text-[#E5A53D]" />
-              </div>
-              <div className="text-xs text-slate-500 truncate font-medium">
-                Managing Director
-              </div>
-            </div>
-          </div>
-
+        {/* Bottom User Profile & Sign Out Bar */}
+        <div className="p-3 border-t border-slate-200 bg-slate-50/90 space-y-2">
           <Link
-            href="/admin/login"
-            title="Log Out"
-            className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-200 transition-colors"
+            href="/admin/settings?tab=profile"
+            onClick={() => setMobileOpen(false)}
+            title="Edit My Profile & Credentials"
+            className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-200/70 transition-colors group"
           >
-            <LogOut className="w-4 h-4" />
+            <div className="flex items-center gap-2.5 truncate">
+              <div className="relative w-9 h-9 rounded-full overflow-hidden bg-[#E5A53D] flex items-center justify-center text-slate-950 font-black text-xs uppercase shadow-xs shrink-0 border border-slate-300">
+                {adminProfile.avatar ? (
+                  <Image
+                    src={adminProfile.avatar}
+                    alt={adminProfile.name}
+                    fill
+                    unoptimized
+                    className="object-cover"
+                  />
+                ) : (
+                  <span>AH</span>
+                )}
+              </div>
+              <div className="truncate">
+                <div className="text-xs sm:text-sm font-black text-slate-950 truncate flex items-center gap-1">
+                  <span className="truncate">{adminProfile.name}</span>
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#E5A53D] shrink-0" />
+                </div>
+                <div className="text-[11px] text-slate-500 truncate font-medium">
+                  {adminProfile.title}
+                </div>
+              </div>
+            </div>
+
+            <span className="text-[10px] font-bold text-slate-400 group-hover:text-slate-900 px-1.5 py-0.5 rounded-md bg-white border border-slate-200 shrink-0">
+              Edit
+            </span>
           </Link>
+
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-white border border-slate-200 hover:border-rose-300 hover:bg-rose-50 text-slate-700 hover:text-rose-600 text-xs font-bold transition-all shadow-2xs cursor-pointer active:scale-98"
+          >
+            <LogOut className="w-3.5 h-3.5 text-rose-500" />
+            <span>Sign Out / Log Out</span>
+          </button>
         </div>
       </aside>
     </>

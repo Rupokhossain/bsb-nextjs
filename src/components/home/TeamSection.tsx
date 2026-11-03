@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import { siteContentApi, settingsApi } from "@/lib/api";
 
 export interface TeamMember {
   id: string;
@@ -18,6 +19,8 @@ interface TeamSectionProps {
   teamMainImageUrl?: string;
   // Team members
   members?: TeamMember[];
+  // Initial server data
+  initialData?: any;
 }
 
 const defaultSpecialties = [
@@ -79,7 +82,78 @@ const defaultTeamMembers: TeamMember[] = [
 export default function TeamSection({
   teamMainImageUrl = "/construction.jpg",
   members = defaultTeamMembers,
+  initialData,
 }: TeamSectionProps) {
+  const [leadership, setLeadership] = useState(() => ({
+    badge: initialData?.homeLeadershipBadge || "LEADERSHIP & VISION",
+    headline:
+      initialData?.homeLeadershipHeadline ||
+      "Engineering With Integrity, \nBuilding With Vision",
+    quote:
+      initialData?.homeLeadershipQuote ||
+      "Every structural member we fabricate carries our responsibility for life and investment. At Nirman BSB, our focus is delivering certified structural durability, innovative rooftop engineering, and turnkey excellence across Bangladesh.",
+    desc:
+      initialData?.homeLeadershipDesc ||
+      "Under the strategic direction of S.M. Anayet, Nirman BSB combines cutting-edge 3D BIM structural modeling with the fabrication power and 15+ years legacy of Bangladesh Steel Builders Ltd.",
+    expBadge: initialData?.homeLeadershipExpBadge || "17+ Years",
+    name: initialData?.homeLeadershipName || "S.M. Anayet",
+    title:
+      initialData?.homeLeadershipTitle ||
+      "Founder & Managing Director • Industry Leadership",
+    photo: initialData?.homeLeadershipPhoto || "/sm-anayet-office.jpg",
+    metric1Val: initialData?.homeLeadershipMetric1Val || "17+",
+    metric1Label: initialData?.homeLeadershipMetric1Label || "Years Experience",
+    metric2Val: initialData?.homeLeadershipMetric2Val || "150+",
+    metric2Label: initialData?.homeLeadershipMetric2Label || "Steel Projects",
+    metric3Val: initialData?.homeLeadershipMetric3Val || "100%",
+    metric3Label: initialData?.homeLeadershipMetric3Label || "Code Compliance",
+  }));
+
+  useEffect(() => {
+    Promise.allSettled([siteContentApi.getAll(), settingsApi.get()]).then(
+      ([contentRes, settingsRes]) => {
+        const homeData =
+          contentRes.status === "fulfilled"
+            ? contentRes.value?.dictionary?.home
+            : null;
+        const settings =
+          settingsRes.status === "fulfilled" ? settingsRes.value : null;
+
+        if (homeData || settings) {
+          setLeadership((prev) => ({
+            ...prev,
+            badge: homeData?.homeLeadershipBadge || prev.badge,
+            headline: homeData?.homeLeadershipHeadline || prev.headline,
+            quote: homeData?.homeLeadershipQuote || prev.quote,
+            desc: homeData?.homeLeadershipDesc || prev.desc,
+            expBadge: homeData?.homeLeadershipExpBadge || prev.expBadge,
+            name:
+              homeData?.homeLeadershipName ||
+              settings?.founderName ||
+              prev.name,
+            title:
+              homeData?.homeLeadershipTitle ||
+              (settings?.founderTitle
+                ? `${settings.founderTitle} • Industry Leadership`
+                : prev.title),
+            photo:
+              homeData?.homeLeadershipPhoto ||
+              settings?.founderPhoto ||
+              prev.photo,
+            metric1Val: homeData?.homeLeadershipMetric1Val || prev.metric1Val,
+            metric1Label:
+              homeData?.homeLeadershipMetric1Label || prev.metric1Label,
+            metric2Val: homeData?.homeLeadershipMetric2Val || prev.metric2Val,
+            metric2Label:
+              homeData?.homeLeadershipMetric2Label || prev.metric2Label,
+            metric3Val: homeData?.homeLeadershipMetric3Val || prev.metric3Val,
+            metric3Label:
+              homeData?.homeLeadershipMetric3Label || prev.metric3Label,
+          }));
+        }
+      }
+    );
+  }, []);
   return (
     <section
       id="team"
@@ -203,9 +277,10 @@ export default function TeamSection({
                 {/* 100% Full Desk Photo: Zero Cropping, Zero Floating Overlay */}
                 <div className="relative aspect-[4/3.15] sm:aspect-[4/3] w-full overflow-hidden bg-neutral-950">
                   <Image
-                    src="/sm-anayet-office.jpg"
-                    alt="S.M. Anayet - Founder & Managing Director at Nirman BSB"
+                    src={leadership.photo || "/sm-anayet-office.jpg"}
+                    alt={`${leadership.name} - ${leadership.title}`}
                     fill
+                    unoptimized
                     className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                     sizes="(max-width: 1024px) 100vw, 42vw"
                     priority
@@ -216,14 +291,14 @@ export default function TeamSection({
                 <div className="p-4 sm:p-5 bg-neutral-950 text-white border-t border-neutral-800 space-y-1">
                   <div className="flex items-center justify-between gap-3">
                     <h4 className="text-lg sm:text-xl font-extrabold tracking-tight text-white">
-                      S.M. Anayet
+                      {leadership.name}
                     </h4>
                     <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-[#E5A53D]/15 text-[#E5A53D] text-[10px] sm:text-xs font-bold uppercase tracking-wider border border-[#E5A53D]/30">
-                      17+ Years
+                      {leadership.expBadge}
                     </span>
                   </div>
                   <p className="text-xs text-neutral-300 font-light">
-                    Founder &amp; Managing Director • Industry Leadership
+                    {leadership.title}
                   </p>
                 </div>
               </div>
@@ -233,34 +308,34 @@ export default function TeamSection({
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-                <span>LEADERSHIP &amp; VISION</span>
+                <span>{leadership.badge}</span>
               </div>
 
-              <h3 className="text-2xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-neutral-950 uppercase leading-[1.15]">
-                Engineering With Integrity, <br /> Building With Vision
+              <h3 className="text-2xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-neutral-950 uppercase leading-[1.15] whitespace-pre-line">
+                {leadership.headline}
               </h3>
 
               <blockquote className="border-l-2 border-[#E5A53D] pl-5 sm:pl-6 italic text-neutral-700 text-sm sm:text-base lg:text-lg font-light leading-relaxed">
-                &ldquo;Every structural member we fabricate carries our responsibility for life and investment. At Nirman BSB, our focus is delivering certified structural durability, innovative rooftop engineering, and turnkey excellence across Bangladesh.&rdquo;
+                &ldquo;{leadership.quote}&rdquo;
               </blockquote>
 
               <p className="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed">
-                Under the strategic direction of S.M. Anayet, Nirman BSB combines cutting-edge 3D BIM structural modeling with the fabrication power and 15+ years legacy of Bangladesh Steel Builders Ltd.
+                {leadership.desc}
               </p>
 
               {/* 3 Key Track Record Metrics */}
               <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-5 border-t border-neutral-100">
                 <div>
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-neutral-950">17+</div>
-                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium">Years Experience</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-neutral-950">{leadership.metric1Val}</div>
+                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium">{leadership.metric1Label}</div>
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-neutral-950">150+</div>
-                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium">Steel Projects</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-neutral-950">{leadership.metric2Val}</div>
+                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium">{leadership.metric2Label}</div>
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-neutral-950">100%</div>
-                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium">Code Compliance</div>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-neutral-950">{leadership.metric3Val}</div>
+                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium">{leadership.metric3Label}</div>
                 </div>
               </div>
             </div>

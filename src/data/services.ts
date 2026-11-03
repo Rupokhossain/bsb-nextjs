@@ -2,6 +2,7 @@ export interface ServiceDetail {
   slug: string;
   title: string;
   tagline: string;
+  category?: "DUPLEX" | "ROOFTOP" | "PEB" | string;
   shortDesc: string;
   image: string;
   mainHeadline: string;
@@ -13,6 +14,8 @@ export interface ServiceDetail {
   features: string[];
   // Foreign key array linking to Project.id in projectsData
   projectIds: string[];
+  id?: string;
+  isPublished?: boolean;
 }
 
 export const servicesData: ServiceDetail[] = [

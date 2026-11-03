@@ -17,7 +17,34 @@ const teamPageImages = {
   banner: "/p-banner.jpg",
 };
 
-export default function TeamPage() {
+async function getSettings() {
+  const urls = [
+    "http://127.0.0.1:5000/api/v1/settings",
+    "http://localhost:5000/api/v1/settings",
+  ];
+
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, {
+        cache: "no-store",
+        headers: { "Cache-Control": "no-cache, no-store, must-revalidate" },
+      });
+      if (res.ok) {
+        const json = await res.json();
+        return json?.data || null;
+      }
+    } catch {
+      // try next
+    }
+  }
+  return null;
+}
+
+export default async function TeamPage() {
+  const settings = await getSettings();
+  const whatsappUrl = settings?.whatsapp
+    ? `https://wa.me/${settings.whatsapp.replace(/[^0-9]/g, "")}`
+    : "https://wa.me/8801711181860";
   return (
     <div className="min-h-screen bg-white text-neutral-900 flex flex-col">
       {/* Sticky Navbar (Light theme on white background) */}
@@ -118,7 +145,7 @@ export default function TeamPage() {
                 {/* Right Column: Signature Gold CTA Button with black arrow square */}
                 <div className="self-start md:self-end">
                   <a
-                    href="https://wa.me/8801711181860"
+                    href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center pl-4 sm:pl-5 pr-1.5 py-1.5 rounded-sm bg-[#E5A53D] hover:bg-[#d89830] text-neutral-950 font-bold text-xs sm:text-sm tracking-wide transition-all active:scale-95 shadow-md group"

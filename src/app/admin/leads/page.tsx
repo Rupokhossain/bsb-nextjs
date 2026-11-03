@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MessageSquare,
   Search,
@@ -14,9 +14,12 @@ import {
   Mail,
   Calendar,
 } from "lucide-react";
+import { leadsApi } from "@/lib/api";
+import { useToast } from "@/components/admin/ToastContext";
 
 interface Lead {
   id: string;
+  dbId?: string;
   name: string;
   phone: string;
   email: string;
@@ -29,80 +32,9 @@ interface Lead {
 }
 
 export default function AdminLeadsPage() {
-  const [leads, setLeads] = useState<Lead[]>([
-    {
-      id: "LEAD-1042",
-      name: "Tariqul Islam",
-      phone: "+880 1711-234567",
-      email: "tariqul.islam@gmail.com",
-      projectType: "Steel Structure Duplex Villa",
-      location: "Gulshan-2, Dhaka",
-      budget: "৳ 1.2 - 1.5 Crore",
-      message: "Looking for an earthquake-resilient 3,500 sq.ft duplex villa on 5 katha land. Need 3D elevations and turnkey quotation.",
-      status: "New",
-      date: "Today, 10:45 AM",
-    },
-    {
-      id: "LEAD-1041",
-      name: "Al-Amin Spinning Mills (Director)",
-      phone: "+880 1819-987654",
-      email: "procurement@alaminspinning.com",
-      projectType: "Industrial PEB Warehouse",
-      location: "Gazipur Industrial Belt",
-      budget: "৳ 2.8 - 3.2 Crore",
-      message: "Need 18,000 sq.ft clear-span PEB factory shed with overhead crane runway girders. Soil test completed.",
-      status: "In Discussion",
-      date: "Yesterday, 3:15 PM",
-    },
-    {
-      id: "LEAD-1040",
-      name: "Dr. Rafiqul Hasan",
-      phone: "+880 1912-345678",
-      email: "dr.rafiq@yahoo.com",
-      projectType: "Rooftop Bioclimatic Pergola & Garden",
-      location: "Banani, Dhaka",
-      budget: "৳ 18 - 25 Lakh",
-      message: "Want motorized louvered pergola with waterproof drainage and tempered glass railings on 6th-floor roof.",
-      status: "Quotation Sent",
-      date: "Oct 22, 2026",
-    },
-    {
-      id: "LEAD-1039",
-      name: "Shahrier Chowdhury",
-      phone: "+880 1611-889900",
-      email: "shahrier.chowdhury@outlook.com",
-      projectType: "2-Storey Commercial Steel Building",
-      location: "Uttara Sector 11",
-      budget: "৳ 85 Lakh",
-      message: "Commercial display showroom on ground floor and offices on 1st/2nd floor with insulated sandwich panels.",
-      status: "New",
-      date: "Oct 21, 2026",
-    },
-    {
-      id: "LEAD-1038",
-      name: "Bashundhara Residence Owner",
-      phone: "+880 1722-334455",
-      email: "bashundhara.owner@gmail.com",
-      projectType: "1st & 2nd Floor Rooftop Shed",
-      location: "Block I, Bashundhara R/A",
-      budget: "৳ 14 Lakh",
-      message: "Need a durable steel truss shed over our 2-storey house roof to stop heavy rain leaks and heat.",
-      status: "Won / Deal Closed",
-      date: "Oct 20, 2026",
-    },
-    {
-      id: "LEAD-1037",
-      name: "M/S Green Textile Logistics",
-      phone: "+880 1715-443322",
-      email: "logistics@greentextile.bd",
-      projectType: "Pre-Engineered Steel Building (PEB)",
-      location: "Savar EPZ Area",
-      budget: "৳ 1.8 Crore",
-      message: "Warehouse facility for finished garments export with heavy vehicle loading dock canopies.",
-      status: "Quotation Sent",
-      date: "Oct 18, 2026",
-    },
-  ]);
+  const { toast, confirmModal } = useToast();
+  const [leads, setLeads] = useState<Lead[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const [selectedStatus, setSelectedStatus] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -121,16 +53,104 @@ export default function AdminLeadsPage() {
     return matchesSearch && lead.status === selectedStatus;
   });
 
-  const handleStatusChange = (id: string, newStatus: Lead["status"]) => {
-    setLeads((prev) =>
-      prev.map((l) => (l.id === id ? { ...l, status: newStatus } : l))
-    );
+  const mapFromBackend = (item: any): Lead => {
+    const statusMap: Record<string, Lead["status"]> = {
+      NEW: "New",
+      IN_DISCUSSION: "In Discussion",
+      QUOTATION_SENT: "Quotation Sent",
+      WON: "Won / Deal Closed",
+      ARCHIVED: "Archived",
+    };
+    return {
+      id: item.leadNumber || item.id.slice(0, 8),
+      dbId: item.id,
+      name: item.name,
+      phone: item.phone,
+      email: item.email || "N/A",
+      projectType: item.projectType,
+      location: item.location,
+      budget: item.budget || "Custom",
+      message: item.message,
+      status: statusMap[item.status] || "New",
+      date: new Date(item.createdAt).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    };
   };
 
-  const handleDelete = (id: string) => {
-    if (confirm("Are you sure you want to delete this lead record?")) {
-      setLeads((prev) => prev.filter((l) => l.id !== id));
-      if (activeLeadModal?.id === id) setActiveLeadModal(null);
+  const fetchLeads = async () => {
+    setLoading(true);
+    try {
+      const res = await leadsApi.getAll({ limit: 100 });
+      if (res?.data && Array.isArray(res.data)) {
+        setLeads(res.data.map(mapFromBackend));
+      } else {
+        setLeads([]);
+      }
+    } catch (err) {
+      console.warn("Could not load leads from backend:", err);
+      setLeads([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLeads();
+  }, []);
+
+  const handleStatusChange = async (id: string, newStatus: Lead["status"]) => {
+    const lead = leads.find((l) => l.id === id || l.dbId === id);
+    const targetId = lead?.dbId || lead?.id || id;
+
+    setLeads((prev) =>
+      prev.map((l) => (l.id === id || l.dbId === id ? { ...l, status: newStatus } : l))
+    );
+
+    const reverseMap: Record<string, string> = {
+      New: "NEW",
+      "In Discussion": "IN_DISCUSSION",
+      "Quotation Sent": "QUOTATION_SENT",
+      "Won / Deal Closed": "WON",
+      Archived: "ARCHIVED",
+    };
+
+    try {
+      await leadsApi.update(targetId, { status: reverseMap[newStatus] || "NEW" });
+      toast.success(`Status updated to "${newStatus}"`, lead?.name || "Client Lead");
+    } catch (err: any) {
+      console.warn("Failed to update status in backend:", err);
+      toast.error("Failed to sync status with server.");
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    const lead = leads.find((l) => l.id === id || l.dbId === id);
+    const confirmed = await confirmModal({
+      title: "Delete Lead Record",
+      message: `Are you sure you want to delete inquiry for "${lead?.name || id}"? This action cannot be undone.`,
+      confirmText: "Yes, Delete Record",
+      cancelText: "Cancel",
+      isDestructive: true,
+    });
+
+    if (confirmed) {
+      const targetId = lead?.dbId || lead?.id || id;
+      try {
+        await leadsApi.delete(targetId);
+        toast.success("Lead record has been removed successfully.");
+        await fetchLeads();
+      } catch (err: any) {
+        console.warn("Backend lead delete error:", err);
+        toast.error(err.message || "Failed to delete lead from database.");
+      }
+
+      if (activeLeadModal?.id === id || activeLeadModal?.dbId === id) {
+        setActiveLeadModal(null);
+      }
     }
   };
 
@@ -150,6 +170,7 @@ export default function AdminLeadsPage() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    toast.success("Leads exported to CSV file successfully.");
   };
 
   return (
@@ -205,244 +226,281 @@ export default function AdminLeadsPage() {
         </div>
       </div>
 
-      {/* A) MOBILE-FIRST LEAD CARDS (Optimized for Smartphone Users) */}
-      <div className="md:hidden space-y-3">
-        {filteredLeads.map((lead) => {
-          const cleanPhone = lead.phone.replace(/[^0-9]/g, "");
-
-          return (
-            <div
-              key={lead.id}
-              className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3"
+      {/* Content Area: Loading, Empty, or Data */}
+      {loading ? (
+        <div className="py-20 flex flex-col items-center justify-center gap-3 bg-white rounded-2xl border border-slate-200 shadow-2xs">
+          <div className="w-8 h-8 rounded-full border-3 border-slate-200 border-t-[#E5A53D] animate-spin" />
+          <p className="text-xs sm:text-sm font-bold text-slate-600">Loading client inquiries from database...</p>
+        </div>
+      ) : filteredLeads.length === 0 ? (
+        <div className="py-16 px-4 text-center rounded-2xl bg-white border border-dashed border-slate-300 shadow-2xs space-y-3">
+          <div className="w-14 h-14 rounded-2xl bg-[#E5A53D]/10 text-[#E5A53D] flex items-center justify-center mx-auto">
+            <MessageSquare className="w-7 h-7" />
+          </div>
+          <div className="space-y-1">
+            <h3 className="text-base sm:text-lg font-black text-slate-900">
+              {searchQuery || selectedStatus !== "All" ? "No Matching Queries Found" : "No Client Inquiries Found"}
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">
+              {searchQuery || selectedStatus !== "All"
+                ? "No client inquiries match your selected filters. Try clearing your search query or status filter."
+                : "Real-time client inquiries submitted through the website (Contact Us, Consultation, and Get a Quote forms) will appear here."}
+            </p>
+          </div>
+          {(searchQuery || selectedStatus !== "All") && (
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setSelectedStatus("All");
+              }}
+              className="px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition-colors cursor-pointer"
             >
-              {/* Card Header: Client Name, ID & Status */}
-              <div className="flex items-start justify-between gap-2">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-[#E5A53D]/15 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 border border-[#E5A53D]/30">
-                    {lead.name.slice(0, 2).toUpperCase()}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="font-black text-slate-950 text-base">{lead.name}</span>
-                      {lead.status === "New" && (
-                        <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                      )}
-                    </div>
-                    <span className="text-[11px] text-slate-400 font-mono">
-                      {lead.id} • {lead.date}
-                    </span>
-                  </div>
-                </div>
+              Clear Filters
+            </button>
+          )}
+        </div>
+      ) : (
+        <>
+          {/* A) MOBILE-FIRST LEAD CARDS (Optimized for Smartphone Users) */}
+          <div className="md:hidden space-y-3">
+            {filteredLeads.map((lead) => {
+              const cleanPhone = lead.phone.replace(/[^0-9]/g, "");
 
-                {/* Status Dropdown */}
-                <select
-                  value={lead.status}
-                  onChange={(e) =>
-                    handleStatusChange(lead.id, e.target.value as Lead["status"])
-                  }
-                  className={`text-[11px] font-bold uppercase rounded-lg px-2 py-1 border transition-colors cursor-pointer focus:outline-hidden ${
-                    lead.status === "New"
-                      ? "bg-blue-50 text-blue-800 border-blue-200"
-                      : lead.status === "In Discussion"
-                      ? "bg-[#E5A53D]/20 text-slate-950 border-[#E5A53D]/50 font-black"
-                      : lead.status === "Quotation Sent"
-                      ? "bg-purple-50 text-purple-800 border-purple-200"
-                      : lead.status === "Won / Deal Closed"
-                      ? "bg-emerald-50 text-emerald-800 border-emerald-200"
-                      : "bg-slate-100 text-slate-600 border-slate-300"
-                  }`}
+              return (
+                <div
+                  key={lead.id}
+                  className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3"
                 >
-                  <option value="New">New</option>
-                  <option value="In Discussion">Discussion</option>
-                  <option value="Quotation Sent">Quote Sent</option>
-                  <option value="Won / Deal Closed">Won</option>
-                  <option value="Archived">Archived</option>
-                </select>
-              </div>
-
-              {/* Card Body: Project, Budget & Requirement preview */}
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
-                <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-900">
-                  <span className="truncate">{lead.projectType}</span>
-                  <span className="text-[#E5A53D] font-black shrink-0 ml-2">{lead.budget}</span>
-                </div>
-                <div className="text-xs text-slate-500 font-medium flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#E5A53D] shrink-0" />
-                  <span className="truncate">{lead.location}</span>
-                </div>
-                <p className="text-xs text-slate-600 font-normal line-clamp-2 pt-1 border-t border-slate-200/60">
-                  &ldquo;{lead.message}&rdquo;
-                </p>
-              </div>
-
-              {/* Card Footer: 1-Tap Connect Actions */}
-              <div className="flex items-center gap-2 pt-1">
-                <a
-                  href={`https://wa.me/${cleanPhone}?text=Assalamu%20Alaikum%20${encodeURIComponent(
-                    lead.name
-                  )},%20thank%20you%20for%20contacting%20Bangladesh%20Steel%20Builders%20Ltd.%20Regarding%20your%20${encodeURIComponent(
-                    lead.projectType
-                  )}...`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-2xs active:scale-98"
-                >
-                  <span>WhatsApp Chat</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-
-                <a
-                  href={`tel:${lead.phone}`}
-                  className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs border border-slate-200 active:scale-98"
-                >
-                  <Phone className="w-3.5 h-3.5 text-slate-600" />
-                  <span>Call</span>
-                </a>
-
-                <button
-                  onClick={() => setActiveLeadModal(lead)}
-                  title="View In-Depth Message"
-                  className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 active:scale-98"
-                >
-                  <Eye className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={() => handleDelete(lead.id)}
-                  title="Delete Lead"
-                  className="p-2.5 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 active:scale-98"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* B) DESKTOP CRM TABLE (Visible on Tablet/Laptop/Desktop) */}
-      <div className="hidden md:block rounded-xl bg-white border border-slate-200 overflow-hidden shadow-2xs">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left min-w-[700px]">
-            <thead className="bg-slate-50 text-slate-700 uppercase text-xs font-black tracking-wider border-b border-slate-200">
-              <tr>
-                <th className="py-2.5 px-3.5">Client Name &amp; Contact</th>
-                <th className="py-2.5 px-3.5">Project &amp; Location</th>
-                <th className="py-2.5 px-3.5">Estimated Budget</th>
-                <th className="py-2.5 px-3.5">Lead Status</th>
-                <th className="py-2.5 px-3.5">Date</th>
-                <th className="py-2.5 px-3.5 text-right">Connect</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 text-slate-800">
-              {filteredLeads.map((lead) => {
-                const cleanPhone = lead.phone.replace(/[^0-9]/g, "");
-
-                return (
-                  <tr key={lead.id} className="hover:bg-slate-50/70 transition-colors">
-                    {/* Name & Contact */}
-                    <td className="py-2.5 px-3.5">
-                      <div className="flex items-center gap-1.5">
-                        <span className="font-bold text-slate-950 text-sm sm:text-base">{lead.name}</span>
-                        {lead.status === "New" && (
-                          <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
-                        )}
+                  {/* Card Header: Client Name, ID & Status */}
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-10 h-10 rounded-xl bg-[#E5A53D]/15 text-slate-950 flex items-center justify-center font-black text-sm shrink-0 border border-[#E5A53D]/30">
+                        {lead.name.slice(0, 2).toUpperCase()}
                       </div>
-                      <div className="text-xs sm:text-sm text-slate-500 font-medium flex items-center gap-2 mt-0.5">
-                        <span className="flex items-center gap-1">
-                          <Phone className="w-3 h-3 text-slate-400" />
-                          {lead.phone}
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-black text-slate-950 text-base">{lead.name}</span>
+                          {lead.status === "New" && (
+                            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                          )}
+                        </div>
+                        <span className="text-[11px] text-slate-400 font-mono">
+                          {lead.id} • {lead.date}
                         </span>
                       </div>
-                    </td>
-
-                    {/* Project & Location */}
-                    <td className="py-2.5 px-3.5">
-                      <div className="font-bold text-slate-900 text-sm">{lead.projectType}</div>
-                      <div className="text-xs sm:text-sm text-slate-500 font-medium flex items-center gap-1 mt-0.5">
-                        <MapPin className="w-3.5 h-3.5 text-[#E5A53D] shrink-0" />
-                        {lead.location}
-                      </div>
-                    </td>
-
-                    {/* Budget */}
-                    <td className="py-2.5 px-3.5 font-black text-slate-950 text-sm whitespace-nowrap">
-                      {lead.budget}
-                    </td>
+                    </div>
 
                     {/* Status Dropdown */}
-                    <td className="py-2.5 px-3.5 whitespace-nowrap">
-                      <select
-                        value={lead.status}
-                        onChange={(e) =>
-                          handleStatusChange(lead.id, e.target.value as Lead["status"])
-                        }
-                        className={`text-xs sm:text-sm font-bold uppercase rounded-md px-2.5 py-1 border transition-colors cursor-pointer focus:outline-hidden ${
-                          lead.status === "New"
-                            ? "bg-blue-50 text-blue-800 border-blue-200"
-                            : lead.status === "In Discussion"
-                            ? "bg-[#E5A53D]/20 text-slate-950 border-[#E5A53D]/50 font-black"
-                            : lead.status === "Quotation Sent"
-                            ? "bg-purple-50 text-purple-800 border-purple-200"
-                            : lead.status === "Won / Deal Closed"
-                            ? "bg-emerald-50 text-emerald-800 border-emerald-200"
-                            : "bg-slate-100 text-slate-600 border-slate-300"
-                        }`}
-                      >
-                        <option value="New">New Lead</option>
-                        <option value="In Discussion">In Discussion</option>
-                        <option value="Quotation Sent">Quotation Sent</option>
-                        <option value="Won / Deal Closed">Won / Deal Closed</option>
-                        <option value="Archived">Archived</option>
-                      </select>
-                    </td>
+                    <select
+                      value={lead.status}
+                      onChange={(e) =>
+                        handleStatusChange(lead.id, e.target.value as Lead["status"])
+                      }
+                      className={`text-[11px] font-bold uppercase rounded-lg px-2 py-1 border transition-colors cursor-pointer focus:outline-hidden ${
+                        lead.status === "New"
+                          ? "bg-blue-50 text-blue-800 border-blue-200"
+                          : lead.status === "In Discussion"
+                          ? "bg-[#E5A53D]/20 text-slate-950 border-[#E5A53D]/50 font-black"
+                          : lead.status === "Quotation Sent"
+                          ? "bg-purple-50 text-purple-800 border-purple-200"
+                          : lead.status === "Won / Deal Closed"
+                          ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                          : "bg-slate-100 text-slate-600 border-slate-300"
+                      }`}
+                    >
+                      <option value="New">New</option>
+                      <option value="In Discussion">Discussion</option>
+                      <option value="Quotation Sent">Quote Sent</option>
+                      <option value="Won / Deal Closed">Won</option>
+                      <option value="Archived">Archived</option>
+                    </select>
+                  </div>
 
-                    {/* Date */}
-                    <td className="py-2.5 px-3.5 text-xs sm:text-sm text-slate-500 font-medium whitespace-nowrap">
-                      {lead.date}
-                    </td>
+                  {/* Card Body: Project, Budget & Requirement preview */}
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+                    <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-900">
+                      <span className="truncate">{lead.projectType}</span>
+                      <span className="text-[#E5A53D] font-black shrink-0 ml-2">{lead.budget}</span>
+                    </div>
+                    <div className="text-xs text-slate-500 font-medium flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-[#E5A53D] shrink-0" />
+                      <span className="truncate">{lead.location}</span>
+                    </div>
+                    <p className="text-xs text-slate-600 font-normal line-clamp-2 pt-1 border-t border-slate-200/60">
+                      &ldquo;{lead.message}&rdquo;
+                    </p>
+                  </div>
 
-                    {/* Connect Actions */}
-                    <td className="py-2.5 px-3.5 text-right whitespace-nowrap">
-                      <div className="inline-flex items-center gap-1.5">
-                        <button
-                          onClick={() => setActiveLeadModal(lead)}
-                          title="View In-Depth Message"
-                          className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 transition-colors cursor-pointer"
-                        >
-                          <Eye className="w-4 h-4" />
-                        </button>
+                  {/* Card Footer: 1-Tap Connect Actions */}
+                  <div className="flex items-center gap-2 pt-1">
+                    <a
+                      href={`https://wa.me/${cleanPhone}?text=Assalamu%20Alaikum%20${encodeURIComponent(
+                        lead.name
+                      )},%20thank%20you%20for%20contacting%20Bangladesh%20Steel%20Builders%20Ltd.%20Regarding%20your%20${encodeURIComponent(
+                        lead.projectType
+                      )}...`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-2xs active:scale-98"
+                    >
+                      <span>WhatsApp Chat</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
 
-                        <a
-                          href={`https://wa.me/${cleanPhone}?text=Assalamu%20Alaikum%20${encodeURIComponent(
-                            lead.name
-                          )},%20thank%20you%20for%20contacting%20Bangladesh%20Steel%20Builders%20Ltd.%20Regarding%20your%20${encodeURIComponent(
-                            lead.projectType
-                          )}...`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-colors shadow-2xs"
-                        >
-                          <span>WhatsApp</span>
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </a>
+                    <a
+                      href={`tel:${lead.phone}`}
+                      className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs border border-slate-200 active:scale-98"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-slate-600" />
+                      <span>Call</span>
+                    </a>
 
-                        <button
-                          onClick={() => handleDelete(lead.id)}
-                          title="Delete Lead"
-                          className="p-1.5 rounded-lg bg-slate-100 hover:bg-rose-500 text-slate-600 hover:text-white transition-colors cursor-pointer"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </td>
+                    <button
+                      onClick={() => setActiveLeadModal(lead)}
+                      title="View In-Depth Message"
+                      className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 active:scale-98 cursor-pointer"
+                    >
+                      <Eye className="w-4 h-4" />
+                    </button>
+
+                    <button
+                      onClick={() => handleDelete(lead.id)}
+                      title="Delete Lead"
+                      className="p-2.5 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 active:scale-98 cursor-pointer"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* B) DESKTOP CRM TABLE (Visible on Tablet/Laptop/Desktop) */}
+          <div className="hidden md:block rounded-xl bg-white border border-slate-200 overflow-hidden shadow-2xs">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left min-w-[700px]">
+                <thead className="bg-slate-50 text-slate-700 uppercase text-xs font-black tracking-wider border-b border-slate-200">
+                  <tr>
+                    <th className="py-2.5 px-3.5">Client Name &amp; Contact</th>
+                    <th className="py-2.5 px-3.5">Project &amp; Location</th>
+                    <th className="py-2.5 px-3.5">Estimated Budget</th>
+                    <th className="py-2.5 px-3.5">Lead Status</th>
+                    <th className="py-2.5 px-3.5">Date</th>
+                    <th className="py-2.5 px-3.5 text-right">Connect</th>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
+                </thead>
+                <tbody className="divide-y divide-slate-100 text-slate-800">
+                  {filteredLeads.map((lead) => {
+                    const cleanPhone = lead.phone.replace(/[^0-9]/g, "");
+
+                    return (
+                      <tr key={lead.id} className="hover:bg-slate-50/70 transition-colors">
+                        {/* Name & Contact */}
+                        <td className="py-2.5 px-3.5">
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-bold text-slate-950 text-sm sm:text-base">{lead.name}</span>
+                            {lead.status === "New" && (
+                              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0" />
+                            )}
+                          </div>
+                          <div className="text-xs sm:text-sm text-slate-500 font-medium flex items-center gap-2 mt-0.5">
+                            <span className="flex items-center gap-1">
+                              <Phone className="w-3 h-3 text-slate-400" />
+                              {lead.phone}
+                            </span>
+                          </div>
+                        </td>
+
+                        {/* Project & Location */}
+                        <td className="py-2.5 px-3.5">
+                          <div className="font-bold text-slate-900 text-sm">{lead.projectType}</div>
+                          <div className="text-xs sm:text-sm text-slate-500 font-medium flex items-center gap-1 mt-0.5">
+                            <MapPin className="w-3.5 h-3.5 text-[#E5A53D] shrink-0" />
+                            {lead.location}
+                          </div>
+                        </td>
+
+                        {/* Budget */}
+                        <td className="py-2.5 px-3.5 font-black text-slate-950 text-sm whitespace-nowrap">
+                          {lead.budget}
+                        </td>
+
+                        {/* Status Dropdown */}
+                        <td className="py-2.5 px-3.5 whitespace-nowrap">
+                          <select
+                            value={lead.status}
+                            onChange={(e) =>
+                              handleStatusChange(lead.id, e.target.value as Lead["status"])
+                            }
+                            className={`text-xs sm:text-sm font-bold uppercase rounded-md px-2.5 py-1 border transition-colors cursor-pointer focus:outline-hidden ${
+                              lead.status === "New"
+                                ? "bg-blue-50 text-blue-800 border-blue-200"
+                                : lead.status === "In Discussion"
+                                ? "bg-[#E5A53D]/20 text-slate-950 border-[#E5A53D]/50 font-black"
+                                : lead.status === "Quotation Sent"
+                                ? "bg-purple-50 text-purple-800 border-purple-200"
+                                : lead.status === "Won / Deal Closed"
+                                ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                                : "bg-slate-100 text-slate-600 border-slate-300"
+                            }`}
+                          >
+                            <option value="New">New Lead</option>
+                            <option value="In Discussion">In Discussion</option>
+                            <option value="Quotation Sent">Quotation Sent</option>
+                            <option value="Won / Deal Closed">Won / Deal Closed</option>
+                            <option value="Archived">Archived</option>
+                          </select>
+                        </td>
+
+                        {/* Date */}
+                        <td className="py-2.5 px-3.5 text-xs sm:text-sm text-slate-500 font-medium whitespace-nowrap">
+                          {lead.date}
+                        </td>
+
+                        {/* Connect Actions */}
+                        <td className="py-2.5 px-3.5 text-right whitespace-nowrap">
+                          <div className="inline-flex items-center gap-1.5">
+                            <button
+                              onClick={() => setActiveLeadModal(lead)}
+                              title="View In-Depth Message"
+                              className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 transition-colors cursor-pointer"
+                            >
+                              <Eye className="w-4 h-4" />
+                            </button>
+
+                            <a
+                              href={`https://wa.me/${cleanPhone}?text=Assalamu%20Alaikum%20${encodeURIComponent(
+                                lead.name
+                              )},%20thank%20you%20for%20contacting%20Bangladesh%20Steel%20Builders%20Ltd.%20Regarding%20your%20${encodeURIComponent(
+                                lead.projectType
+                              )}...`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-colors shadow-2xs"
+                            >
+                              <span>WhatsApp</span>
+                              <ArrowUpRight className="w-3.5 h-3.5" />
+                            </a>
+
+                            <button
+                              onClick={() => handleDelete(lead.id)}
+                              title="Delete Lead"
+                              className="p-1.5 rounded-lg bg-slate-100 hover:bg-rose-500 text-slate-600 hover:text-white transition-colors cursor-pointer"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* LEAD DETAILS & MESSAGE MODAL */}
       {activeLeadModal && (

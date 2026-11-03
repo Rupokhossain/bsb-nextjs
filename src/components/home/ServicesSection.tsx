@@ -4,11 +4,36 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { servicesData } from "@/data/services";
+import { servicesData, ServiceDetail } from "@/data/services";
+import { servicesApi } from "@/lib/api";
 
 export default function ServicesSection() {
+  const [allServices, setAllServices] = useState<ServiceDetail[]>(servicesData);
+
+  // Fetch live services directly from the database API
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadLiveServices = async () => {
+      try {
+        const live = await servicesApi.getAll();
+        if (isMounted && Array.isArray(live) && live.length > 0) {
+          setAllServices(live as ServiceDetail[]);
+        }
+      } catch (err) {
+        console.warn("Could not load services from backend:", err);
+      }
+    };
+
+    loadLiveServices();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   // Active Primary Services
-  const activeServices = servicesData.filter(
+  const activeServices = allServices.filter(
     (s) =>
       ![
         "pre-engineered-steel-buildings",
@@ -20,10 +45,10 @@ export default function ServicesSection() {
         "rooftop-solar-canopies",
         "architectural-services",
         "construction-services",
-      ].includes(s.slug)
+      ].includes(s.slug) && (s as any).isPublished !== false
   );
 
-  const serviceCount = activeServices.length;
+  const serviceCount = Math.max(activeServices.length, 1);
 
   // 5-set buffer (15 items) so forward and backward slides always have rendered cards visible
   const displayServices = [
@@ -39,6 +64,11 @@ export default function ServicesSection() {
 
   // Start in the center buffer set
   const [currentIndex, setCurrentIndex] = useState(baseOffset);
+
+  // When serviceCount changes, update currentIndex safely so the newest service is immediately displayed
+  useEffect(() => {
+    setCurrentIndex(serviceCount * 2);
+  }, [serviceCount]);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [itemsPerView, setItemsPerView] = useState(3);
   const [isHovered, setIsHovered] = useState(false);
@@ -263,6 +293,7 @@ export default function ServicesSection() {
                           src={service.image}
                           alt={service.title}
                           fill
+                          unoptimized={service.image.startsWith("http") || service.image.startsWith("blob:")}
                           className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
@@ -278,17 +309,21 @@ export default function ServicesSection() {
                         {/* Top Badges: Responsive Flex Container (Never Collides or Overlaps) */}
                         <div className="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
                           {/* Department / Division Tag */}
-                          {service.slug.includes("duplex") || service.slug.includes("villa") ? (
+                          {service.category === "DUPLEX" || service.slug.includes("duplex") || service.slug.includes("villa") ? (
                             <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[9.5px] sm:text-[10px] font-extrabold uppercase tracking-wider shadow-sm truncate">
                               DUPLEX &amp; RESIDENTIAL
                             </div>
-                          ) : service.slug.startsWith("rooftop-") ? (
+                          ) : service.category === "ROOFTOP" || service.slug.startsWith("rooftop-") ? (
                             <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-neutral-900/90 text-[#E5A53D] text-[9.5px] sm:text-[10px] font-extrabold uppercase tracking-wider border border-[#E5A53D]/40 truncate">
                               ROOFTOP SPECIALTY
                             </div>
-                          ) : (
-                            <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-neutral-950/80 backdrop-blur-xs text-white text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider border border-white/20 truncate">
+                          ) : service.category === "PEB" || service.slug.includes("peb") || service.slug.includes("industrial") ? (
+                            <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-[#006837] text-white text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider border border-emerald-500/40 truncate">
                               COMMERCIAL &amp; PEB
+                            </div>
+                          ) : (
+                            <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-slate-900 text-amber-400 text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider border border-amber-400/40 truncate">
+                              {service.category}
                             </div>
                           )}
 
@@ -310,32 +345,42 @@ export default function ServicesSection() {
                         </p>
                       </div>
 
-                      {/* Service Capabilities Checklist Preview (Red checkmarks like reference image) */}
-                      {service.features && (
-                        <div className="space-y-2 pt-1 border-t border-neutral-200/60">
-                          <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400 block">
-                            Key Capabilities:
-                          </span>
-                          <ul className="space-y-1.5">
-                            {service.features.slice(0, 4).map((feat, fIdx) => (
-                              <li
-                                key={fIdx}
-                                className="flex items-center gap-2.5 text-xs text-neutral-700 font-medium"
-                              >
-                                <span className="w-4 h-4 rounded-full bg-[#E5A53D] text-neutral-950 flex items-center justify-center shrink-0 text-[9px] font-black shadow-xs">
-                                  ✓
-                                </span>
-                                <span className="truncate">{feat}</span>
-                              </li>
-                            ))}
-                          </ul>
-                          {service.features.length > 4 && (
-                            <span className="text-[11px] font-semibold text-neutral-600 block pt-1">
-                              + {service.features.length - 4} more specialized services
+                      {/* Service Capabilities Checklist Preview */}
+                      {(() => {
+                        const featuresList = Array.isArray(service.features)
+                          ? service.features
+                          : typeof service.features === "string"
+                          ? JSON.parse(service.features || "[]")
+                          : [];
+
+                        if (featuresList.length === 0) return null;
+
+                        return (
+                          <div className="space-y-2 pt-1 border-t border-neutral-200/60">
+                            <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400 block">
+                              Key Capabilities:
                             </span>
-                          )}
-                        </div>
-                      )}
+                            <ul className="space-y-1.5">
+                              {featuresList.slice(0, 4).map((feat: string, fIdx: number) => (
+                                <li
+                                  key={fIdx}
+                                  className="flex items-center gap-2.5 text-xs text-neutral-700 font-medium"
+                                >
+                                  <span className="w-4 h-4 rounded-full bg-[#E5A53D] text-neutral-950 flex items-center justify-center shrink-0 text-[9px] font-black shadow-xs">
+                                    ✓
+                                  </span>
+                                  <span className="truncate">{feat}</span>
+                                </li>
+                              ))}
+                            </ul>
+                            {featuresList.length > 4 && (
+                              <span className="text-[11px] font-semibold text-neutral-600 block pt-1">
+                                + {featuresList.length - 4} more specialized services
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })()}
                     </div>
 
                     {/* Prominent Bottom Action Bar */}

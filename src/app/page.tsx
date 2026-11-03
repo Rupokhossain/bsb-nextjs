@@ -9,32 +9,58 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import ProjectsPreview from "@/components/home/ProjectsPreview";
 import Footer from "@/components/common/Footer";
 
-export default function Home() {
+async function getSiteContent() {
+  const urls = [
+    "http://127.0.0.1:5000/api/v1/site-content",
+    "http://localhost:5000/api/v1/site-content",
+  ];
+
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, {
+        cache: "no-store",
+        headers: { "Cache-Control": "no-cache, no-store, must-revalidate" },
+      });
+      if (res.ok) {
+        const json = await res.json();
+        if (json?.data?.dictionary) {
+          return json.data.dictionary;
+        }
+      }
+    } catch {
+      // try next url
+    }
+  }
+  return null;
+}
+
+export default async function Home() {
+  const content = await getSiteContent();
+
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
       {/* Top Navbar */}
       <Navbar />
 
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection initialData={content?.home} />
 
       {/* About Section */}
-      <AboutSection />
+      <AboutSection initialData={content?.home} />
 
       {/* Services Slider Section */}
       <ServicesSection />
 
       {/* How We Work Process Section & Built With Intent Full-width Banner */}
-      <ProcessSection />
+      <ProcessSection initialData={content?.home} />
 
       <ProjectsPreview />
 
-
       {/* The Team Behind Every Home & Team Grid */}
-      <TeamSection />
+      <TeamSection initialData={content?.home} />
 
       {/* Our Happy Clients & Industrial Partners */}
-      <ClientsSection />
+      <ClientsSection initialData={content?.clients} />
 
       {/* Testimonials Slider Section */}
       {/* <TestimonialsSection /> */}

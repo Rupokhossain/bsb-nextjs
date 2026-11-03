@@ -6,12 +6,36 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { servicesData, ServiceDetail } from "@/data/services";
+import { servicesApi } from "@/lib/api";
 
 export default function ServicesSlider() {
   const [activeFilter, setActiveFilter] = useState<"all" | "rooftop" | "duplex" | "industrial">("all");
 
+  const [allServices, setAllServices] = useState<ServiceDetail[]>(servicesData);
+
+  // Load services directly from backend database API
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadLiveServices = async () => {
+      try {
+        const live = await servicesApi.getAll();
+        if (isMounted && Array.isArray(live) && live.length > 0) {
+          setAllServices(live as ServiceDetail[]);
+        }
+      } catch (err) {
+        console.warn("Could not load services from backend:", err);
+      }
+    };
+    loadLiveServices();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   // Get active primary services
-  const allActiveServices = servicesData.filter(
+  const allActiveServices = allServices.filter(
     (s) =>
       ![
         "pre-engineered-steel-buildings",
@@ -23,20 +47,18 @@ export default function ServicesSlider() {
         "rooftop-solar-canopies",
         "architectural-services",
         "construction-services",
-      ].includes(s.slug)
+      ].includes(s.slug) && (s as any).isPublished !== false
   );
 
   // Filter based on selected category
   const filteredServices = allActiveServices.filter((s) => {
-    if (activeFilter === "rooftop") {
-      return s.slug.startsWith("rooftop-");
-    }
-    if (activeFilter === "duplex") {
-      return s.slug.includes("duplex") || s.slug.includes("villa");
-    }
-    if (activeFilter === "industrial") {
-      return !s.slug.startsWith("rooftop-") && !s.slug.includes("duplex") && !s.slug.includes("villa");
-    }
+    const isRooftop = s.category === "ROOFTOP" || s.slug.startsWith("rooftop-");
+    const isDuplex = s.category === "DUPLEX" || s.slug.includes("duplex") || s.slug.includes("villa");
+    const isIndustrial = s.category === "PEB" || (!isRooftop && !isDuplex);
+
+    if (activeFilter === "rooftop") return isRooftop;
+    if (activeFilter === "duplex") return isDuplex;
+    if (activeFilter === "industrial") return isIndustrial;
     return true;
   });
 
@@ -274,6 +296,7 @@ export default function ServicesSlider() {
                         src={service.image}
                         alt={service.title}
                         fill
+                        unoptimized={service.image.startsWith("http") || service.image.startsWith("blob:")}
                         className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
@@ -289,11 +312,11 @@ export default function ServicesSlider() {
                       {/* Top Badges: Responsive Flex Container (Never Collides or Overlaps) */}
                       <div className="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
                         {/* Department / Division Tag */}
-                        {service.slug.includes("duplex") || service.slug.includes("villa") ? (
+                        {service.category === "DUPLEX" || service.slug.includes("duplex") || service.slug.includes("villa") ? (
                           <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-[#E5A53D] text-neutral-950 text-[9.5px] sm:text-[10px] font-extrabold uppercase tracking-wider shadow-sm truncate">
                             DUPLEX &amp; RESIDENTIAL
                           </div>
-                        ) : service.slug.startsWith("rooftop-") ? (
+                        ) : service.category === "ROOFTOP" || service.slug.startsWith("rooftop-") ? (
                           <div className="px-2 sm:px-2.5 py-1 rounded-sm bg-neutral-900/90 text-[#E5A53D] text-[9.5px] sm:text-[10px] font-extrabold uppercase tracking-wider border border-[#E5A53D]/40 truncate">
                             ROOFTOP SPECIALTY
                           </div>
@@ -322,31 +345,41 @@ export default function ServicesSlider() {
                     </div>
 
                     {/* Service Capabilities Checklist Preview */}
-                    {service.features && (
-                      <div className="space-y-2 pt-1 border-t border-neutral-200/60">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400 block">
-                          Key Capabilities:
-                        </span>
-                        <ul className="space-y-1.5">
-                          {service.features.slice(0, 4).map((feat, fIdx) => (
-                            <li
-                              key={fIdx}
-                              className="flex items-center gap-2.5 text-xs text-neutral-700 font-medium"
-                            >
-                              <span className="w-4 h-4 rounded-full bg-[#E5A53D] text-neutral-950 flex items-center justify-center shrink-0 text-[9px] font-black shadow-xs">
-                                ✓
-                              </span>
-                              <span className="truncate">{feat}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        {service.features.length > 4 && (
-                          <span className="text-[11px] font-semibold text-neutral-600 block pt-1">
-                            + {service.features.length - 4} more specialized capabilities
+                    {(() => {
+                      const featuresList = Array.isArray(service.features)
+                        ? service.features
+                        : typeof service.features === "string"
+                        ? JSON.parse(service.features || "[]")
+                        : [];
+
+                      if (featuresList.length === 0) return null;
+
+                      return (
+                        <div className="space-y-2 pt-1 border-t border-neutral-200/60">
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400 block">
+                            Key Capabilities:
                           </span>
-                        )}
-                      </div>
-                    )}
+                          <ul className="space-y-1.5">
+                            {featuresList.slice(0, 4).map((feat: string, fIdx: number) => (
+                              <li
+                                key={fIdx}
+                                className="flex items-center gap-2.5 text-xs text-neutral-700 font-medium"
+                              >
+                                <span className="w-4 h-4 rounded-full bg-[#E5A53D] text-neutral-950 flex items-center justify-center shrink-0 text-[9px] font-black shadow-xs">
+                                  ✓
+                                </span>
+                                <span className="truncate">{feat}</span>
+                              </li>
+                            ))}
+                          </ul>
+                          {featuresList.length > 4 && (
+                            <span className="text-[11px] font-semibold text-neutral-600 block pt-1">
+                              + {featuresList.length - 4} more specialized capabilities
+                            </span>
+                          )}
+                        </div>
+                      );
+                    })()}
                   </div>
 
                   {/* Prominent Bottom Action Bar */}

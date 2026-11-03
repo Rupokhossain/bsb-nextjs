@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { settingsApi } from "@/lib/api";
 
 interface NavbarProps {
   theme?: "dark" | "light";
@@ -21,8 +22,21 @@ const navItems = [
 export default function Navbar({ theme = "light" }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState("https://wa.me/8801711181860");
   const pathname = usePathname();
   const isLight = true; // Always clean white header for crisp logo contrast and clarity
+
+  // Fetch live WhatsApp number from settings
+  useEffect(() => {
+    settingsApi
+      .get()
+      .then((data) => {
+        if (data?.whatsapp) {
+          setWhatsappUrl(`https://wa.me/${data.whatsapp.replace(/[^0-9]/g, "")}`);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   // Sticky scroll detection
   useEffect(() => {
@@ -141,7 +155,7 @@ export default function Navbar({ theme = "light" }: NavbarProps) {
           </Link>
 
           <a
-            href="https://wa.me/8801711181860"
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={`px-5 py-2.5 rounded-sm font-semibold text-sm transition-all active:scale-95 shadow-sm ${
@@ -211,7 +225,7 @@ export default function Navbar({ theme = "light" }: NavbarProps) {
             </Link>
 
             <a
-              href="https://wa.me/8801711181860"
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}

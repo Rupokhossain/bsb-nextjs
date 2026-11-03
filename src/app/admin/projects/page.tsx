@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -13,10 +13,14 @@ import {
   X,
   Upload,
   FileImage,
+  CheckCircle2,
 } from "lucide-react";
 import { completedProjectsData, CompletedProject } from "@/data/projects";
+import { projectsApi, uploadApi } from "@/lib/api";
+import { useToast } from "@/components/admin/ToastContext";
 
 export default function AdminProjectsPage() {
+  const { toast, confirmModal } = useToast();
   const [projects, setProjects] = useState<CompletedProject[]>(completedProjectsData);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -38,12 +42,37 @@ export default function AdminProjectsPage() {
     category: "Duplex Villa",
   });
 
+  // Dynamic Categories state
+  const [categoryList, setCategoryList] = useState<string[]>([
+    "Duplex Villa",
+    "Duplex Pool Villa",
+    "Rooftop Structure",
+    "Rooftop Restaurant",
+    "Rooftop Garden",
+    "Industrial PEB",
+    "Convention Hall",
+    "Factory Shed",
+  ]);
+
+  const [showNewCategoryInput, setShowNewCategoryInput] = useState(false);
+  const [newCategoryName, setNewCategoryName] = useState("");
+
+  const handleAddCustomCategory = () => {
+    const trimmed = newCategoryName.trim();
+    if (!trimmed) return;
+
+    if (!categoryList.includes(trimmed)) {
+      setCategoryList((prev) => [...prev, trimmed]);
+    }
+    setFormData((prev) => ({ ...prev, category: trimmed }));
+    setNewCategoryName("");
+    setShowNewCategoryInput(false);
+    toast.success(`Category "${trimmed}" created & selected!`);
+  };
+
   const categories = [
     { id: "all", label: "All Projects" },
-    { id: "Duplex Villa", label: "Duplex Villas" },
-    { id: "Rooftop Structure", label: "Rooftop Structures" },
-    { id: "Industrial PEB", label: "Industrial PEB" },
-    { id: "Convention Hall", label: "Convention Halls" },
+    ...categoryList.map((cat) => ({ id: cat, label: cat })),
   ];
 
   const filteredProjects = projects.filter((project) => {
@@ -56,19 +85,58 @@ export default function AdminProjectsPage() {
     return matchesSearch && project.category === selectedCategory;
   });
 
+  const fetchProjects = async () => {
+    try {
+      const res = await projectsApi.getAll({ limit: 100 });
+      if (res?.data && Array.isArray(res.data) && res.data.length > 0) {
+        const loadedProjects = res.data.map((p: any) => ({
+          id: p.slug || p.id,
+          dbId: p.id,
+          title: p.title,
+          location: p.location,
+          image: p.image,
+          category: p.category,
+        }));
+        setProjects(loadedProjects);
+
+        const projectCats = loadedProjects
+          .map((p: any) => p.category)
+          .filter(Boolean);
+        setCategoryList((prev) => Array.from(new Set([...prev, ...projectCats])));
+      }
+    } catch (err) {
+      console.warn("Could not fetch projects from backend:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
   // Handle File Upload from Computer / Phone
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      const previewUrl = URL.createObjectURL(file);
-      setImagePreview(previewUrl);
-      setFormData((prev) => ({ ...prev, image: previewUrl }));
+      try {
+        const uploadRes = await uploadApi.uploadImage(file);
+        setImagePreview(uploadRes.url);
+        setFormData((prev) => ({ ...prev, image: uploadRes.url }));
+        toast.success("Cover photo uploaded successfully!");
+      } catch (err) {
+        console.error("Upload error, using local preview:", err);
+        const previewUrl = URL.createObjectURL(file);
+        setImagePreview(previewUrl);
+        setFormData((prev) => ({ ...prev, image: previewUrl }));
+        toast.warning("Preview loaded from device.");
+      }
     }
   };
 
   const handleEdit = (project: CompletedProject) => {
     setEditingProject(project);
     setImagePreview(project.image);
+    setShowNewCategoryInput(false);
+    setNewCategoryName("");
     setFormData({
       id: project.id,
       title: project.title,
@@ -82,6 +150,8 @@ export default function AdminProjectsPage() {
   const handleAddNew = () => {
     setEditingProject(null);
     setImagePreview("/d1.jpg");
+    setShowNewCategoryInput(false);
+    setNewCategoryName("");
     setFormData({
       id: "",
       title: "",
@@ -92,27 +162,52 @@ export default function AdminProjectsPage() {
     setIsModalOpen(true);
   };
 
-  const handleSave = (e: React.FormEvent) => {
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (editingProject) {
-      setProjects((prev) =>
-        prev.map((p) =>
-          p.id === editingProject.id ? { ...p, ...formData } : p
-        )
-      );
-    } else {
-      const newProject: CompletedProject = {
-        ...formData,
-        id: formData.id || formData.title.toLowerCase().replace(/\s+/g, "-"),
-      };
-      setProjects((prev) => [newProject, ...prev]);
+    try {
+      if (editingProject) {
+        const dbId = (editingProject as any).dbId || editingProject.id;
+        await projectsApi.update(dbId, formData);
+        toast.success("Project updated in database successfully!");
+      } else {
+        const newSlug = formData.id || formData.title.toLowerCase().replace(/\s+/g, "-");
+        await projectsApi.create({
+          slug: newSlug,
+          title: formData.title,
+          category: formData.category || "Duplex Villa",
+          location: formData.location,
+          image: formData.image,
+        });
+        toast.success("New project created in database successfully!");
+      }
+      await fetchProjects();
+    } catch (err: any) {
+      toast.error(err.message || "Failed to save project.");
+      console.warn("Backend project save error:", err);
     }
     setIsModalOpen(false);
   };
 
-  const handleDelete = (id: string) => {
-    if (confirm("Are you sure you want to remove this project from the portfolio?")) {
-      setProjects((prev) => prev.filter((p) => p.id !== id));
+  const handleDelete = async (id: string) => {
+    const toDelete = projects.find((p) => p.id === id);
+    const confirmed = await confirmModal({
+      title: "Remove Project",
+      message: `Are you sure you want to remove "${toDelete?.title || id}" from the portfolio? This action cannot be undone.`,
+      confirmText: "Yes, Remove Project",
+      cancelText: "Cancel",
+      isDestructive: true,
+    });
+
+    if (confirmed) {
+      const dbId = (toDelete as any)?.dbId || id;
+      try {
+        await projectsApi.delete(dbId);
+        toast.success("Project removed from database.");
+        await fetchProjects();
+      } catch (err: any) {
+        toast.error(err.message || "Failed to delete project.");
+        console.warn("Backend project delete error:", err);
+      }
     }
   };
 
@@ -182,6 +277,7 @@ export default function AdminProjectsPage() {
                   src={project.image}
                   alt={project.title}
                   fill
+                  unoptimized
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
                 <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-slate-950/85 backdrop-blur-xs text-[#E5A53D] font-bold text-xs uppercase tracking-wider">
@@ -261,26 +357,79 @@ export default function AdminProjectsPage() {
                 />
               </div>
 
-              <div className="space-y-1">
-                <label className="text-sm font-bold text-slate-800 uppercase">
-                  Project Category
-                </label>
-                <select
-                  value={formData.category}
-                  onChange={(e) =>
-                    setFormData({ ...formData, category: e.target.value })
-                  }
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm font-medium focus:outline-hidden focus:border-[#E5A53D] focus:bg-white"
-                >
-                  <option value="Duplex Villa">Duplex Villa</option>
-                  <option value="Duplex Pool Villa">Duplex Pool Villa</option>
-                  <option value="Rooftop Structure">Rooftop Structure</option>
-                  <option value="Rooftop Restaurant">Rooftop Restaurant</option>
-                  <option value="Rooftop Garden">Rooftop Garden</option>
-                  <option value="Industrial PEB">Industrial PEB</option>
-                  <option value="Convention Hall">Convention Hall</option>
-                  <option value="Factory Shed">Factory Shed</option>
-                </select>
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-bold text-slate-800 uppercase">
+                    Project Category
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setShowNewCategoryInput(!showNewCategoryInput)}
+                    className="text-xs font-bold text-[#E5A53D] hover:text-[#d89832] flex items-center gap-1 cursor-pointer transition-colors"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    <span>{showNewCategoryInput ? "Choose from list" : "+ Add New Category"}</span>
+                  </button>
+                </div>
+
+                {showNewCategoryInput ? (
+                  <div className="p-3 rounded-xl bg-amber-50/90 border border-[#E5A53D]/50 space-y-2 animate-in fade-in">
+                    <div className="text-xs font-bold text-slate-800 flex items-center justify-between">
+                      <span>Type New Category Name:</span>
+                      <button
+                        type="button"
+                        onClick={() => setShowNewCategoryInput(false)}
+                        className="text-slate-400 hover:text-slate-700 cursor-pointer"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={newCategoryName}
+                        onChange={(e) => setNewCategoryName(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            handleAddCustomCategory();
+                          }
+                        }}
+                        placeholder="e.g. Modern Steel Showroom, Resort Villa..."
+                        className="flex-1 px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-900 text-sm font-medium focus:outline-hidden focus:border-[#E5A53D]"
+                        autoFocus
+                      />
+                      <button
+                        type="button"
+                        onClick={handleAddCustomCategory}
+                        className="px-3.5 py-2 rounded-lg bg-[#E5A53D] hover:bg-[#d89832] text-slate-950 font-bold text-xs shrink-0 cursor-pointer shadow-xs active:scale-95"
+                      >
+                        Add Category
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <select
+                    value={formData.category}
+                    onChange={(e) => {
+                      if (e.target.value === "__NEW__") {
+                        setShowNewCategoryInput(true);
+                      } else {
+                        setFormData({ ...formData, category: e.target.value });
+                      }
+                    }}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm font-medium focus:outline-hidden focus:border-[#E5A53D] focus:bg-white"
+                  >
+                    {categoryList.map((cat) => (
+                      <option key={cat} value={cat}>
+                        {cat}
+                      </option>
+                    ))}
+                    <option value="__NEW__" className="font-bold text-[#E5A53D]">
+                      + Add New Category...
+                    </option>
+                  </select>
+                )}
               </div>
 
               <div className="space-y-1">
@@ -315,6 +464,7 @@ export default function AdminProjectsPage() {
                       src={imagePreview}
                       alt="Project preview"
                       fill
+                      unoptimized
                       className="object-cover"
                     />
                   </div>
@@ -335,16 +485,10 @@ export default function AdminProjectsPage() {
                       <Upload className="w-4 h-4 text-[#E5A53D]" />
                       <span>Choose File from Device</span>
                     </button>
-                    <input
-                      type="text"
-                      value={formData.image}
-                      onChange={(e) => {
-                        setFormData({ ...formData, image: e.target.value });
-                        setImagePreview(e.target.value);
-                      }}
-                      placeholder="or paste image path (e.g. /d1.jpg)"
-                      className="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-xs font-mono text-slate-700 focus:outline-hidden focus:border-[#E5A53D]"
-                    />
+                    <div className="flex items-center gap-1.5 text-xs text-emerald-700 font-semibold pt-0.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      <span>Photo selected &amp; ready to publish</span>
+                    </div>
                   </div>
                 </div>
               </div>

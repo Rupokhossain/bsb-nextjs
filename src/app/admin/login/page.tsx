@@ -13,27 +13,33 @@ import {
   ShieldCheck,
   Building2,
   ArrowLeft,
-  CheckCircle2,
+  AlertCircle,
 } from "lucide-react";
+import { authApi } from "@/lib/api";
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("admin@nirmanbsb.com");
-  const [password, setPassword] = useState("bsb2026");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      router.push("/admin");
-    }, 600);
-  };
+    setErrorMessage(null);
 
-  const handleAutofill = () => {
-    setEmail("admin@nirmanbsb.com");
-    setPassword("bsb2026");
+    try {
+      await authApi.login({ email, password });
+      router.push("/admin");
+    } catch (err: any) {
+      setErrorMessage(
+        err.message || "Failed to sign in. Please verify your credentials."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -70,22 +76,30 @@ export default function AdminLoginPage() {
             </p>
           </div>
 
+          {/* Error message alert */}
+          {errorMessage && (
+            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-xs sm:text-sm flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
           {/* Login Form */}
           <form onSubmit={handleLogin} className="space-y-3.5">
             {/* Email Field */}
             <div className="space-y-1">
-              <label className="text-sm font-bold text-slate-800 uppercase tracking-wide">
-                Admin Email / Username
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600">
+                Staff / Admin Email
               </label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
-                  type="text"
+                  type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@nirmanbsb.com"
-                  className="w-full pl-9 pr-3 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-hidden focus:border-[#E5A53D] focus:bg-white transition-colors"
+                  placeholder="Enter your email address"
+                  className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E5A53D] focus:border-transparent transition-all placeholder:text-slate-400 font-medium"
                 />
               </div>
             </div>
@@ -93,29 +107,30 @@ export default function AdminLoginPage() {
             {/* Password Field */}
             <div className="space-y-1">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-bold text-slate-800 uppercase tracking-wide">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600">
                   Password
                 </label>
-                <span className="text-xs text-[#E5A53D] font-bold cursor-pointer hover:underline">
-                  Default: bsb2026
-                </span>
               </div>
               <div className="relative">
-                <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
                   type={showPassword ? "text" : "password"}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="w-full pl-9 pr-10 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-hidden focus:border-[#E5A53D] focus:bg-white transition-colors"
+                  placeholder="Enter your password"
+                  className="w-full pl-9 pr-10 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#E5A53D] focus:border-transparent transition-all placeholder:text-slate-400 font-medium"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
                 >
-                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  {showPassword ? (
+                    <EyeOff className="w-4 h-4" />
+                  ) : (
+                    <Eye className="w-4 h-4" />
+                  )}
                 </button>
               </div>
             </div>
@@ -125,7 +140,6 @@ export default function AdminLoginPage() {
               <label className="flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-600">
                 <input
                   type="checkbox"
-                  defaultChecked
                   className="rounded border-slate-300 text-[#E5A53D] focus:ring-[#E5A53D]"
                 />
                 <span>Remember this workstation</span>
@@ -139,7 +153,7 @@ export default function AdminLoginPage() {
               className="w-full py-2.5 rounded-lg bg-[#E5A53D] hover:bg-[#d89832] text-slate-950 font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-2xs transition-all active:scale-[0.99] disabled:opacity-70 cursor-pointer"
             >
               {loading ? (
-                <span>Authenticating...</span>
+                <span>Authenticating with BSB Server...</span>
               ) : (
                 <>
                   <span>Sign In to Dashboard</span>
@@ -148,18 +162,6 @@ export default function AdminLoginPage() {
               )}
             </button>
           </form>
-
-          {/* Quick Demo Access Bar */}
-          <div className="pt-2 border-t border-slate-150 flex items-center justify-between text-xs text-slate-500">
-            <span>Demo Test Access:</span>
-            <button
-              type="button"
-              onClick={handleAutofill}
-              className="font-bold text-[#E5A53D] hover:underline"
-            >
-              Auto-fill demo credentials
-            </button>
-          </div>
         </div>
       </div>
 

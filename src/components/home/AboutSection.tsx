@@ -1,17 +1,59 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { siteContentApi } from "@/lib/api";
 
 interface AboutSectionProps {
   bannerImageUrl?: string;
+  initialData?: any;
 }
 
 export default function AboutSection({
-  bannerImageUrl = "/hero-bg-1.jpeg",
+  bannerImageUrl = "/luxury-steel-duplex-villa.jpg",
+  initialData,
 }: AboutSectionProps) {
+  const [data, setData] = useState(() => ({
+    eyebrow: initialData?.aboutEyebrow || "ABOUT NIRMAN BSB",
+    headline:
+      initialData?.aboutHeadline ||
+      "Nirman BSB is the specialized architectural, rooftop engineering, and turnkey steel construction wing of Bangladesh Steel Builders Ltd.",
+    stat1Number: initialData?.stat1Number || "17+",
+    stat1Label: initialData?.stat1Label || "Years of Engineering Excellence",
+    stat2Number: initialData?.stat2Number || "500+",
+    stat2Label: initialData?.stat2Label || "Completed Structures across Bangladesh",
+    stat3Number: initialData?.stat3Number || "150,000",
+    stat3Label: initialData?.stat3Label || "sq.ft Modern Fabrication Yard",
+    imageUrl: initialData?.aboutImageUrl || bannerImageUrl,
+  }));
+
+  useEffect(() => {
+    siteContentApi
+      .getAll()
+      .then((res) => {
+        if (res?.dictionary?.home) {
+          const h = res.dictionary.home;
+          setData((prev) => ({
+            ...prev,
+            eyebrow: h.aboutEyebrow || prev.eyebrow,
+            headline: h.aboutHeadline || prev.headline,
+            stat1Number: h.stat1Number || prev.stat1Number,
+            stat1Label: h.stat1Label || prev.stat1Label,
+            stat2Number: h.stat2Number || prev.stat2Number,
+            stat2Label: h.stat2Label || prev.stat2Label,
+            stat3Number: h.stat3Number || prev.stat3Number,
+            stat3Label: h.stat3Label || prev.stat3Label,
+            imageUrl: h.aboutImageUrl || prev.imageUrl,
+          }));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const activeImage = data.imageUrl || bannerImageUrl || "/luxury-steel-duplex-villa.jpg";
+
   return (
     <section
       id="about"
@@ -30,11 +72,11 @@ export default function AboutSection({
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-bold tracking-wider uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 inline-block" />
-              <span>ABOUT NIRMAN BSB</span>
+              <span>{data.eyebrow}</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-bold tracking-tight text-neutral-950 leading-[1.25]">
-              Nirman BSB is the specialized architectural, rooftop engineering, and turnkey steel construction wing of Bangladesh Steel Builders Ltd.
+              {data.headline}
             </h2>
 
             <div className="pt-2">
@@ -80,9 +122,9 @@ export default function AboutSection({
               efficiency, and guaranteed on-time completion.
             </p>
 
-            {/* 4 STATS GRID (Matching Real Company Data) */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-5 border-t border-neutral-100">
-              {/* Stat 1: 28+ Employees */}
+            {/* 4 Stat Badges Grid */}
+            <div className="grid grid-cols-2 gap-6 pt-2">
+              {/* Stat 1 */}
               <div className="flex items-start gap-3.5">
                 <div className="w-10 h-10 rounded-full bg-[#E5A53D]/15 text-[#E5A53D] flex items-center justify-center shrink-0 mt-0.5">
                   <svg
@@ -101,18 +143,15 @@ export default function AboutSection({
                 </div>
                 <div>
                   <span className="block text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-                    28
-                    <sup className="text-lg sm:text-xl font-bold text-[#E5A53D]">
-                      +
-                    </sup>
+                    {data.stat1Number}
                   </span>
                   <span className="block text-xs sm:text-sm text-neutral-600 font-medium leading-snug">
-                    Employees
+                    {data.stat1Label}
                   </span>
                 </div>
               </div>
 
-              {/* Stat 2: 12+ Programs & Trainings */}
+              {/* Stat 2 */}
               <div className="flex items-start gap-3.5">
                 <div className="w-10 h-10 rounded-full bg-[#E5A53D]/15 text-[#E5A53D] flex items-center justify-center shrink-0 mt-0.5">
                   <svg
@@ -131,19 +170,16 @@ export default function AboutSection({
                 </div>
                 <div>
                   <span className="block text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-                    12
-                    <sup className="text-lg sm:text-xl font-bold text-[#E5A53D]">
-                      +
-                    </sup>
+                    {data.stat2Number}
                   </span>
                   <span className="block text-xs sm:text-sm text-neutral-600 font-medium leading-snug">
-                    Programs & Trainings
+                    {data.stat2Label}
                   </span>
                 </div>
               </div>
 
-              {/* Stat 3: 112+ Successfully Projects */}
-              <div className="flex items-start gap-3.5">
+              {/* Stat 3 */}
+              <div className="flex items-start gap-3.5 sm:col-span-2">
                 <div className="w-10 h-10 rounded-full bg-[#E5A53D]/15 text-[#E5A53D] flex items-center justify-center shrink-0 mt-0.5">
                   <svg
                     className="w-5 h-5"
@@ -161,43 +197,10 @@ export default function AboutSection({
                 </div>
                 <div>
                   <span className="block text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-                    112
-                    <sup className="text-lg sm:text-xl font-bold text-[#E5A53D]">
-                      +
-                    </sup>
+                    {data.stat3Number}
                   </span>
                   <span className="block text-xs sm:text-sm text-neutral-600 font-medium leading-snug">
-                    Successful Projects
-                  </span>
-                </div>
-              </div>
-
-              {/* Stat 4: 17+ Years of experience */}
-              <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 rounded-full bg-[#E5A53D]/15 text-[#E5A53D] flex items-center justify-center shrink-0 mt-0.5">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <span className="block text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-                    17
-                    <sup className="text-lg sm:text-xl font-bold text-[#E5A53D]">
-                      +
-                    </sup>
-                  </span>
-                  <span className="block text-xs sm:text-sm text-neutral-600 font-medium leading-snug">
-                    Years of Experience
+                    {data.stat3Label}
                   </span>
                 </div>
               </div>
@@ -207,6 +210,7 @@ export default function AboutSection({
 
         {/* MIDDLE: Big Wide Architectural Image Banner */}
         <motion.div
+          key={activeImage}
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-80px" }}
@@ -214,9 +218,10 @@ export default function AboutSection({
           className="relative w-full h-[320px] sm:h-[460px] lg:h-[580px] overflow-hidden rounded-sm shadow-md bg-neutral-100"
         >
           <Image
-            src={bannerImageUrl}
+            src={activeImage}
             alt="BSB Architectural Custom Project Banner"
             fill
+            unoptimized
             className="object-cover object-center hover:scale-[1.02] transition-transform duration-700 ease-out"
             sizes="(max-width: 1440px) 100vw, 1440px"
           />
