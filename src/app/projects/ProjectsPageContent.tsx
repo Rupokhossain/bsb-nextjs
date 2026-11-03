@@ -23,17 +23,19 @@ const projectTypes = [
 
 // 📍 Key Industrial Delivery Zones across Bangladesh
 const engineeringServices = [
-  { name: 'Industrial Epoxy & PU Flooring' },
-  { name: 'Structural Retrofitting & Repair' },
-  { name: 'Chemical Waterproofing & Membrane' },
-  { name: 'PEB & Heavy Steel Structure' },
-  { name: 'Heavy Machinery Foundation Grouting' },
-  { name: 'Concrete Crack Injection & Rehabilitation' },
-  { name: 'Thermal Insulation & Fair Facing' },
+  { name: "Industrial Epoxy & PU Flooring" },
+  { name: "Structural Retrofitting & Repair" },
+  { name: "Chemical Waterproofing & Membrane" },
+  { name: "PEB & Heavy Steel Structure" },
+  { name: "Heavy Machinery Foundation Grouting" },
+  { name: "Concrete Crack Injection & Rehabilitation" },
+  { name: "Thermal Insulation & Fair Facing" },
 ];
 
 export default function ProjectsPageContent() {
-  const [projects, setProjects] = useState<CompletedProject[]>(completedProjectsData);
+  const [projects, setProjects] = useState<CompletedProject[]>(
+    completedProjectsData,
+  );
 
   // Fetch live projects directly from the database
   useEffect(() => {
@@ -42,7 +44,12 @@ export default function ProjectsPageContent() {
     const loadLiveProjects = async () => {
       try {
         const res = await projectsApi.getAll({ limit: 100 });
-        if (isMounted && res?.data && Array.isArray(res.data) && res.data.length > 0) {
+        if (
+          isMounted &&
+          res?.data &&
+          Array.isArray(res.data) &&
+          res.data.length > 0
+        ) {
           const mapped: CompletedProject[] = res.data.map((p: any) => ({
             id: p.slug || p.id,
             title: p.title,
@@ -85,7 +92,11 @@ export default function ProjectsPageContent() {
             </h1>
 
             <p className="text-sm sm:text-base text-neutral-600 max-w-2xl mx-auto font-light leading-relaxed pt-2">
-              We have extensive experience in delivering steel building projects across various industries and locations in Bangladesh. Our completed projects demonstrate our capability to handle small to large-scale steel construction with efficiency and professionalism.
+              We have extensive experience in delivering steel building projects
+              across various industries and locations in Bangladesh. Our
+              completed projects demonstrate our capability to handle small to
+              large-scale steel construction with efficiency and
+              professionalism.
             </p>
           </HeroMotion>
         </section>
@@ -106,7 +117,8 @@ export default function ProjectsPageContent() {
                   </h2>
                 </div>
                 <p className="text-xs sm:text-sm text-neutral-600 font-light max-w-md leading-relaxed">
-                  Each project is designed according to client requirements, site conditions, and international engineering standards.
+                  Each project is designed according to client requirements,
+                  site conditions, and international engineering standards.
                 </p>
               </div>
 
@@ -118,8 +130,18 @@ export default function ProjectsPageContent() {
                     className="flex items-center gap-3 p-4 bg-white rounded-sm border border-neutral-200/70 shadow-xs transition-colors group"
                   >
                     <div className="w-7 h-7 rounded-full bg-[#E5A53D]/20 text-neutral-950 flex items-center justify-center shrink-0 group-hover:bg-[#E5A53D] group-hover:text-neutral-950 transition-colors">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M4.5 12.75l6 6 9-13.5"
+                        />
                       </svg>
                     </div>
                     <span className="text-xs sm:text-sm font-bold text-neutral-900 tracking-tight leading-snug">
@@ -148,7 +170,10 @@ export default function ProjectsPageContent() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  unoptimized={project.image.startsWith("http") || project.image.startsWith("blob:")}
+                  unoptimized={
+                    project.image.startsWith("http") ||
+                    project.image.startsWith("blob:")
+                  }
                   className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
@@ -158,7 +183,8 @@ export default function ProjectsPageContent() {
 
                 {/* Index Pill in Top Left */}
                 <div className="absolute top-4 left-4 z-10 px-2.5 py-1 rounded-sm bg-neutral-900/50 backdrop-blur-md text-white text-[10px] font-bold tracking-wider uppercase border border-white/20">
-                  {String(idx + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+                  {String(idx + 1).padStart(2, "0")} /{" "}
+                  {String(projects.length).padStart(2, "0")}
                 </div>
 
                 {/* Category Pill in Top Right */}
@@ -195,23 +221,26 @@ export default function ProjectsPageContent() {
         <section className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16">
           <FadeIn>
             <div className="p-6 sm:p-10 lg:p-12 rounded-sm bg-neutral-950 text-white shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
-              
               {/* 👈 বাম পাশ (৭ কলাম): বড় টাইটেল, ক্লিয়ার টেক্সট ও ৪টি বুলেট */}
               <div className="lg:col-span-7 space-y-5">
-                {/* টপ ব্যাজ */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#E5A53D] text-neutral-950 text-xs font-black tracking-wider uppercase">
-                  <span className="w-2 h-2 rounded-full bg-neutral-950 inline-block" />
-                  <span>NATIONWIDE EXECUTION &amp; COVERAGE</span>
+                {/* বড় হেডলাইন ও ৬৪ জেলার ডেডিকেটেড সাব-হেডলাইন */}
+                <div>
+                  <h2 className="text-2xl sm:text-3xl lg:text-[32px] xl:text-[36px] font-black tracking-tight text-white uppercase leading-tight">
+                    Nationwide Project Execution &amp; Delivery{" "}
+                    <span className="text-[#E5A53D]">
+                      Across All 64 Districts
+                    </span>
+                  </h2>
                 </div>
-
-                {/* বড় ও স্পষ্ট হেডলাইন */}
-                <h2 className="text-2xl sm:text-3xl lg:text-[32px] xl:text-[36px] font-black tracking-tight text-white uppercase leading-tight">
-                  Nationwide Project Execution &amp; Delivery
-                </h2>
 
                 {/* সহজে পড়ার মতো বড় প্যারাগ্রাফ */}
                 <p className="text-sm sm:text-base text-neutral-200/90 font-light leading-relaxed">
-                  We deliver turnkey industrial engineering and steel building solutions across all 64 districts of Bangladesh. No matter the scale or remote location of your facility, our certified site engineers mobilize directly on-location with specialized machinery to ensure uniform precision, certified materials, and international standards.
+                  We deliver turnkey industrial engineering and steel building
+                  solutions across all 64 districts of Bangladesh. No matter the
+                  scale or remote location of your facility, our certified site
+                  engineers mobilize directly on-location with specialized
+                  machinery to ensure uniform precision, certified materials,
+                  and international standards.
                 </p>
 
                 {/* ৪টি বড় ও স্পষ্ট বুলেট পয়েন্ট */}
@@ -226,7 +255,9 @@ export default function ProjectsPageContent() {
                   </div>
                   <div className="flex items-center gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#E5A53D] shrink-0" />
-                    <span>Structural retrofitting &amp; load strengthening</span>
+                    <span>
+                      Structural retrofitting &amp; load strengthening
+                    </span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#E5A53D] shrink-0" />
@@ -262,7 +293,6 @@ export default function ProjectsPageContent() {
                   </a>
                 </div>
               </div>
-
             </div>
           </FadeIn>
         </section>
